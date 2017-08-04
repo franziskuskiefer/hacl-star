@@ -210,7 +210,7 @@ val poly1305_complete:
          (* /\ acc == invariant (Spec.MkState r' acc' log') *)
          (* /\ Spec.MkState r' acc' log' == Hacl.Spe.Poly1305_64.poly1305_partial m len k)) *)
     ))
-#reset-options "--initial_fuel 0 --max_fuel 0 --z3rlimit 226"
+#reset-options "--initial_fuel 0 --max_fuel 0 --z3rlimit 300"
 let poly1305_complete st m len k =
   let kr = Buffer.sub k 0ul 16ul in
   let len16 = U64.(len >>^  4ul) in
@@ -234,7 +234,7 @@ let poly1305_complete st m len k =
   P.(sum_modifications st.h st.r h0 h1 h2)
 
 
-#reset-options "--initial_fuel 0 --max_fuel 0 --z3rlimit 50"
+//#reset-options "--initial_fuel 0 --max_fuel 0 --z3rlimit 50"
 
 val crypto_onetimeauth_:
   output:P.uint8_p{length output = 16} ->

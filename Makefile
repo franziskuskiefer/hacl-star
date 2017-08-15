@@ -9,6 +9,9 @@ all: build
 world: build experimental
 
 prepare:
+	@echo $(CYAN)"\n# Make sure we use the right OCaml version"$(NORMAL)
+	opam switch 4.04.2
+	eval `opam config env`
 	@echo $(CYAN)"\n# Installing OCaml packages required by F*"$(NORMAL)
 	opam install ocamlfind batteries sqlite3 fileutils stdint zarith yojson pprint menhir
 	@echo $(CYAN)"\n# Installing OCaml packages required by KreMLin"$(NORMAL)
@@ -16,10 +19,15 @@ prepare:
 	@echo $(CYAN)"\n# Installing submodules for F* and KreMLin"$(NORMAL)
 	git submodule update --init
 	@echo $(CYAN)"\n# Compiling F*"$(NORMAL)
+	mkfile_path=$(abspath $(lastword $(MAKEFILE_LIST)))
 	$(MAKE) -C dependencies/FStar/src/ocaml-output
 	$(MAKE) -C dependencies/FStar/ulib/ml
 	@echo $(CYAN)"\n# Compiling KreMLin"$(NORMAL)
 	$(MAKE) -C dependencies/kremlin
+	@echo $(CYAN)"\n# OpenSSL"$(NORMAL)
+	cd other_providers/openssl && ./config && make -j10
+	@echo $(CYAN)"\n# LibSodium"$(NORMAL)
+	cd other_providers/libsodium && ./autogen.sh && ./configure && make -j10
 	@echo $(CYAN)"\nDone ! Run 'make' to compile the library."$(NORMAL)
 
 build:
@@ -41,7 +49,7 @@ hints:
 	$(MAKE) -C code hints
 	$(MAKE) -C secure_api hints
 	$(MAKE) -C specs hints
-	$(MAKE) -C test hints 
+	$(MAKE) -C test hints
 
 refresh-hints:
 	$(MAKE) -B hints
@@ -56,10 +64,14 @@ clean:
 	rm -rf *~
 	rm -rf build
 	rm -rf build-experimental
+	rm -rf other_providers/openssl/*
+	rm -rf other_providers/libsodium/*
 	$(MAKE) -C specs clean
 	$(MAKE) -C code clean
 	$(MAKE) -C apps clean
 	$(MAKE) -C test clean
+	$(MAKE) -C dependencies/FStar/src/ocaml-output clean
+	$(MAKE) -C dependencies/kremlin clean
 
 
 # Check if GCC-6 is installed, uses GCC otherwise

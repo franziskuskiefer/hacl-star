@@ -6,6 +6,8 @@ MAINTAINER Benjamin Beurdouche <benjamin.beurdouche@inria.fr>
 # Define versions of dependencies
 ENV opamv 4.04.2
 ENV z3v 4.5.1.1f29cebd4df6-x64-ubuntu-14.04
+ENV fstarv 787a4fb921ea2ceee65396bb8c6276d3de99a94e
+ENV kremlinv 32c177d6622badce550aa08c1158f8b824480531
 
 # Install required packages and set versions
 RUN apt-get -qq update
@@ -30,30 +32,14 @@ RUN opam install ocamlfind batteries sqlite3 fileutils yojson ppx_deriving_yojso
 RUN wget https://github.com/FStarLang/binaries/raw/master/z3-tested/z3-${z3v}.zip
 RUN unzip z3-${z3v}.zip
 RUN mv z3-${z3v} z3
-ENV PATH "~/z3/bin:$PATH"
-WORKDIR /home/Work
-
-# Prepare and build F*
-RUN git clone https://github.com/FStarLang/FStar.git
-WORKDIR /home/Work/FStar
-RUN git checkout 787a4fb921ea2ceee65396bb8c6276d3de99a94e
-ENV PATH "~/FStar/bin:$PATH"
-RUN opam config exec -- make -C src/ocaml-output
-WORKDIR /home/Work
-
-# Prepare and build KreMLin
-RUN git clone https://github.com/FStarLang/kremlin.git
-WORKDIR /home/Work/kremlin
-# RUN git checkout 32c177d6622badce550aa08c1158f8b824480531
-ENV PATH "~/kremlin:$PATH"
-RUN opam config exec -- make
+ENV PATH "/home/Work/z3/bin:$PATH"
 WORKDIR /home/Work
 
 # Prepare and build HaCl*
 RUN git clone https://github.com/mitls/hacl-star.git
 WORKDIR /home/Work/hacl-star
 RUN git checkout production-nss
-ENV FSTAR_HOME /home/Work/FStar
-ENV KREMLIN_HOME /home/Work/kremlin
-RUN opam config exec -- make nss
+ENV FSTAR_HOME /home/Work/hacl-star/dependencies/FStar
+ENV KREMLIN_HOME /home/Work/hacl-star/dependencies/kremlin
+RUN opam config exec -- make
 WORKDIR /home/Work

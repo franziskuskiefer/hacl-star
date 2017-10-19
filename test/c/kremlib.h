@@ -152,6 +152,12 @@ FStar_Seq_Base_seq FStar_Seq_Base_slice(FStar_Seq_Base_seq x,
 #if defined(__linux__) || defined(__CYGWIN__)
 #include <endian.h>
 
+/* ... for the BSDs */
+#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+#include <sys/endian.h>
+#elif defined(__OpenBSD__)
+#include <endian.h>
+
 // ... for OSX
 #elif defined(__APPLE__)
 #include <libkern/OSByteOrder.h>

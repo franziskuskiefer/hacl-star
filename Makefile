@@ -70,6 +70,7 @@ verify-nss:
 	$(MAKE) ct -C code/salsa-family
 	$(MAKE) verify -C code/salsa-family
 	$(MAKE) Spec.Chacha20.fst-verify -C specs
+	$(MAKE) Spec.Chacha20_vec.fst-verify -C specs
 
 
 #

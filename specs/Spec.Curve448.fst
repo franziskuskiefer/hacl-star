@@ -68,7 +68,7 @@ let add_and_double qx nq nqp1 =
 
 let ith_bit (k:scalar) (i:nat{i < 448}) : uint8 =
   let (&.) = logand #U8 in
-  let q = i / 8 in let r = u32 (i % 8) in
+  let q = i / 8 in let r = size (i % 8) in
   (k.[q] >>. r) &. u8 1
 
 let rec montgomery_ladder_ (init:elem) x xp1 (k:scalar) (ctr:nat{ctr<=448})
@@ -97,3 +97,9 @@ let scalarmult (k:scalar) (u:serialized_point) : Tot serialized_point =
   let u = decodePoint u in
   let res = montgomery_ladder u k in
   encodePoint res
+
+val secret_to_public: lbytes 56 -> Tot (lbytes 56)
+let secret_to_public kpriv =
+  let basepoint_zeros = create 56 (u8 0) in
+  let basepoint = upd basepoint_zeros (56 - 1) (u8 0x09) in
+  scalarmult kpriv basepoint

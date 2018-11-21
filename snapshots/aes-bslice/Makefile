@@ -1,6 +1,6 @@
 
-CC?=gcc-7
-CCOPTS=-O3 -Wall -Wextra -march=native -mtune=native
+CC?=gcc-8
+CCOPTS=-O3 -Wall -Wextra -march=native -mtune=native 
 #CCOPTS=-O3 -Wall -Wextra -m64 -mtune=generic
 
 aes: aes_generic4_test.exe aes_test.exe tiny_aes_test.exe aes_bslice_test.exe aes_ni_test.exe aes_bslice4_test.exe aes_ni4_test.exe aes_ni_bear_test.exe
@@ -32,6 +32,14 @@ gf128_ni4_test.exe: gf128_ni4.c gf128_test.c
 	$(CC) $(CCOPTS) gf128_ni4.c gf128_test.c -o gf128_ni4_test.exe
 	./gf128_ni4_test.exe
 
+
+chacha20_test.exe: chacha20.c chacha20_test.c
+	$(CC) $(CCOPTS) chacha20.c chacha20_test.c -o chacha20_test.exe
+	./chacha20_test.exe
+
+chacha20_old_test.exe: chacha20_old.c chacha20_test.c
+	$(CC) $(CCOPTS) chacha20_old.c chacha20_test.c -o chacha20_old_test.exe
+	./chacha20_old_test.exe
 
 aes_test.exe: aes.c aes_test.c
 	$(CC) $(CCOPTS) aes.c aes_test.c -o aes_test.exe

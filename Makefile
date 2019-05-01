@@ -9,7 +9,7 @@ all: display
 display:
 	@echo "HACL* Makefile:"
 	@echo "If you want to run and test the C library:"
-	@echo "- 'make build' will use CMake to generate static and shared libraries for snapshots/hacl-c (no verification)"
+	@echo "- 'makcibuild' will use CMake to generate static and shared libraries for snapshots/hacl-c (no verification)"
 	@echo "- 'make build-make' will use Makefiles to do the same thing (no verification)"
 	@echo "- 'make unit-tests' will run tests on the library built from the hacl-c snapshot (no verification)"
 	@echo "- 'make clean-build' will clean 'build' artifacts"
@@ -152,10 +152,16 @@ CC = $(GCC)
 
 ci: .clean-banner .clean-git .clean-snapshots
 	$(MAKE) -C lib
-	$(MAKE) -C code/blake2 verify
+	$(MAKE) -C specs all verify
 	$(MAKE) -C code/sha3
-	$(MAKE) -C frodo/spec
-	$(MAKE) -C frodo/code TARGET=
+	$(MAKE) -C code/blake2s
+	$(MAKE) -C code/chacha20 all verify
+	$(MAKE) -C code/poly1305
+	$(MAKE) -C code/chacha20poly1305
+	$(MAKE) -C code/curve25519
+	$(MAKE) -C code/experimental/aes-gcm
+	$(MAKE) -C code/frodo/spec
+	$(MAKE) -C code/frodo/code TARGET=
 	# $(MAKE) extract-specs
 	# $(MAKE) extract-all
 	# $(MAKE) -C code clean-c

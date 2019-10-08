@@ -117,7 +117,8 @@ all-unstaged: compile-compact compile-compact-msvc compile-compact-gcc \
 	cp $< $@
 
 test: test-staged
-test-unstaged: test-handwritten test-c test-ml test-benchmark
+test-unstaged: test-c test-ml
+test-bench-unstaged: test-unstaged test-handwritten test-benchmark
 
 # Any file in code/tests is taken to contain an `int main()` function.
 # Test should be renamed into Test.EverCrypt
@@ -131,9 +132,17 @@ test-benchmark: all-unstaged
 	$(MAKE) -C tests/benchmark all
 
 # Not reusing the -staged automatic target so as to export NOSHORTLOG
-ci:
-	NOSHORTLOG=1 $(MAKE) vale-fst
-	FSTAR_DEPEND_FLAGS="--warn_error +285" NOSHORTLOG=1 $(MAKE) all-unstaged test-unstaged
+ci: ci-common
+	FSTAR_DEPEND_FLAGS="--warn_error +285" NOSHORTLOG=1 $(MAKE) test-unstaged
+
+ci-bench: ci-common
+  FSTAR_DEPEND_FLAGS="--warn_error +285" NOSHORTLOG=1 $(MAKE) test-bench-unstaged
+
+ci-build:
+  NOSHORTLOG=1 $(MAKE) vale-fst
+  FSTAR_DEPEND_FLAGS="--warn_error +285" NOSHORTLOG=1 $(MAKE) all-unstaged
+
+ci-common: ci-build
 	NOSHORTLOG=1 $(MAKE) wasm
 	$(MAKE) -C providers/quic_provider # needs a checkout of miTLS, only valid on CI
 	./tools/sloccount.sh

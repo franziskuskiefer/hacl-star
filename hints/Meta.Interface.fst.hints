@@ -1,5 +1,5 @@
 [
-  "ÑÌ¯ÖdF‘Ôñœ‰(<â¥8",
+  "íYÎƒô(t>!ˇ-≠å„⁄ù",
   [
     [
       "Meta.Interface.__proj__Inline__item__new_name",
@@ -84,7 +84,7 @@
         "typing_FStar.Pervasives.Native.uu___is_Some"
       ],
       0,
-      "013de218c5cd230a2d610cc384ba3559"
+      "78e4ecc4cfa87974aac11fb389e19c64"
     ],
     [
       "Meta.Interface.visit_function",
@@ -109,23 +109,33 @@
         "disc_equation_FStar.Pervasives.Native.Some",
         "disc_equation_Meta.Interface.Inline",
         "disc_equation_Meta.Interface.Specialize",
-        "equation_FStar.Reflection.Types.name",
+        "equation_FStar.Reflection.Data.argv",
+        "equation_FStar.Reflection.Types.name", "equation_Prims.eqtype",
         "fuel_guarded_inversion_FStar.Tactics.Result.__result",
         "fuel_guarded_inversion_Meta.Interface.mapping",
         "fuel_guarded_inversion_Meta.Interface.state",
         "function_token_typing_FStar.Reflection.Types.bv",
+        "function_token_typing_FStar.Reflection.Types.term",
+        "function_token_typing_Prims.string",
+        "kinding_FStar.Pervasives.Native.tuple3@tok",
+        "kinding_Meta.Interface.mapping@tok", "kinding_Prims.list@tok",
         "lemma_FStar.Pervasives.invertOption",
+        "projection_inverse_BoxBool_proj_0",
         "projection_inverse_FStar.Tactics.Result.Failed_a",
         "projection_inverse_FStar.Tactics.Result.Failed_exn",
         "projection_inverse_FStar.Tactics.Result.Failed_ps",
         "projection_inverse_FStar.Tactics.Result.Success_a",
         "projection_inverse_FStar.Tactics.Result.Success_ps",
         "projection_inverse_FStar.Tactics.Result.Success_v",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "typing_FStar.List.Tot.Base.assoc",
-        "typing_FStar.Reflection.Types.name", "unit_typing"
+        "typing_FStar.Pervasives.Native.uu___is_None",
+        "typing_FStar.Reflection.Basic.inspect_fv",
+        "typing_FStar.Reflection.Types.name",
+        "typing_Meta.Interface.__proj__Mkstate__item__seen", "unit_typing"
       ],
       0,
-      "7dce70f17ef27c4b79df2821daf9ae06"
+      "49a72895783d473ae68a57b55e6fdc65"
     ]
   ]
 ]

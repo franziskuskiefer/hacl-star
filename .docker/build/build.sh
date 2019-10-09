@@ -46,6 +46,15 @@ function hacl_test_and_hints() {
     hacl_test && refresh_hacl_hints
 }
 
+function hacl_build() {
+    fetch_and_make_kremlin &&
+        fetch_and_make_mlcrypto &&
+        fetch_mitls &&
+        fetch_vale &&
+        export_home OPENSSL "$(pwd)/mlcrypto/openssl" &&
+        env VALE_SCONS_PARALLEL_OPT="-j $threads" make -j $threads ci-build -k
+}
+
 function fetch_and_make_kremlin() {
     fetch_kremlin
     # Default build target is minimal, unless specified otherwise
@@ -226,6 +235,14 @@ function exec_build() {
         else
           export OTHERFLAGS="--record_hints $OTHERFLAGS --z3rlimit_factor 2"
           hacl_test_and_hints && echo -n true >$status_file
+        fi
+    elif [[ $target == "hacl-build" ]]; then
+        echo target - >hacl-build
+        if [[ $branchname == "vale" ||  $branchname == "_vale" ]]; then
+          vale_test && echo -n true >$status_file
+        else
+          export OTHERFLAGS="--record_hints $OTHERFLAGS --z3rlimit_factor 2"
+          hacl_build && echo -n true >$status_file
         fi
     else
         echo "Invalid target"

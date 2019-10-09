@@ -3,19 +3,21 @@
 
     "BaseContainerIsEverestImage" : true,
     "BaseContainerImageName" : "fstar",
-    "BaseContainerImageTagOrCommitId": "latest",
+    "BaseContainerImageTagOrCommitId": "3e91694de530",
     "BranchName" : "master",
     "GithubCommitUrl" : "https://github.com/FStarLang/FStar/commit",
     "OnDemandBuildDefinition" : "FStar\\FStar-{agentOS}",
 
-    "DockerFile": ".docker/build/{agentOS}/Dockerfile",
+    "DockerStyle": "run",   
+    "DockerFile": ".docker/build/{agentOS}/Dockerfile.build",
     "DependencyFiles" : [
         ".docker/build/build_helper.sh",
         ".docker/build/build.sh"
     ],
+    "DockerCommand": "docker -H localhost:2375",
 
     "DockerCacheEnabled" : true,
-    "CIBuildTarget" : "hacl-ci",
+    "CIBuildTarget" : "hacl-ci-build",
     "NightlyBuildTarget" : "hacl-nightly",
     "HasLogsToExtract" : true,
 

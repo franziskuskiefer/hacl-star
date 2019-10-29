@@ -22,4 +22,9 @@ dist
 .last_vale_version
 Makefile.config
 .#*
+hacl-ci
+kremlin
+mitls-fstar
+mlcrypto
+valebin
 tests/benchmark/build

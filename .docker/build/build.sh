@@ -34,12 +34,16 @@ function vale_test() {
 }
 
 function hacl_test() {
+    env=""
+    if [[ $target == "hacl-ci-mozilla" ]]; then
+        env="FAST_BUILD=1"
+    fi
     fetch_and_make_kremlin &&
         fetch_and_make_mlcrypto &&
         fetch_mitls &&
         fetch_vale &&
         export_home OPENSSL "$(pwd)/mlcrypto/openssl" &&
-        env VALE_SCONS_PARALLEL_OPT="-j $threads" make -j $threads ci -k
+        env VALE_SCONS_PARALLEL_OPT="-j $threads" $env make -j $threads ci -k
 }
 
 function hacl_test_and_hints() {
@@ -200,7 +204,7 @@ function exec_build() {
     export_home HACL "$(pwd)"
     export_home EVERCRYPT "$(pwd)/providers"
 
-    if [[ $target == "hacl-ci" ]]; then
+    if [[ $target == "hacl-ci" ]] || [[ $target == "hacl-ci-mozilla" ]]; then
         echo target - >hacl-ci
         if [[ $branchname == "vale" ||  $branchname == "_vale" ]]; then
           vale_test && echo -n true >$status_file

@@ -121,10 +121,16 @@ all-unstaged: compile-compact compile-compact-msvc compile-compact-gcc \
 	cp $< $@
 
 test: test-staged
-test-unstaged: test-handwritten test-c test-ml
+test-unstaged: test-c test-ml
+
+ifneq ($(FAST_BUILD),1)
+test-unstaged: test-handwritten
+endif
 
 ifneq ($(OS),Windows_NT)
+ifneq ($(FAST_BUILD),1)
 test-unstaged: test-benchmark
+endif
 endif
 
 # Any file in code/tests is taken to contain an `int main()` function.

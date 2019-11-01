@@ -14,7 +14,7 @@
         ".docker/build/build_helper.sh",
         ".docker/build/build.sh"
     ],
-    "DockerCommand": "sudo docker",
+    "DockerCommand": "docker",
 
     "DockerCacheEnabled" : true,
     "CIBuildTarget" : "hacl-ci-mozilla",

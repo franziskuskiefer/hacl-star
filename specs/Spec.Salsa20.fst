@@ -1,40 +1,43 @@
 module Spec.Salsa20
 
-module ST = FStar.HyperStack.ST
-
 open FStar.Mul
-open FStar.Seq
-open FStar.UInt32
-open FStar.Endianness
-open Spec.Lib
-open Seq.Create
+open Lib.IntTypes
+open Lib.Sequence
+open Lib.ByteSequence
+open Lib.RawIntTypes
+open Lib.LoopCombinators
 
-(* This should go elsewhere! *)
+#set-options "--max_fuel 0 --z3rlimit 100"
 
-#set-options "--initial_fuel 0 --max_fuel 0 --z3rlimit 100"
+(* Constants *)
+let size_key = 32 (* in bytes *)
+let size_block = 64  (* in bytes *)
+let size_nonce = 8   (* in bytes *)
+let size_xnonce = 16   (* in bytes *)
 
-let keylen = 32 (* in bytes *)
-let blocklen = 64  (* in bytes *)
-let noncelen = 8   (* in bytes *)
+type key = lbytes size_key
+type block = lbytes size_block
+type nonce = lbytes size_nonce
+type xnonce = lbytes size_xnonce
+type counter = size_nat
 
-type key = lbytes keylen
-type block = lbytes blocklen
-type nonce = lbytes noncelen
-type counter = UInt.uint_t 64
-type state = m:seq UInt32.t {length m = 16}
-type idx = n:nat{n < 16}
+type state = lseq uint32 16
+type idx = n:size_nat{n < 16}
 type shuffle = state -> Tot state
 
-val line: idx -> idx -> idx -> s:UInt32.t {0 < v s /\ v s < 32} -> shuffle
-let line a b d s m =
-  let m = upd m a (index m a ^^ ((index m b +%^ index m d) <<< s)) in
+// Using @ as a functional substitute for ;
+let op_At f g = fun x -> g (f x)
+
+
+let line (a:idx) (b:idx) (d:idx) (s:rotval U32) (m:state) : state =
+  let m = m.[a] <- (m.[a] ^. ((m.[b] +. m.[d]) <<<. s)) in
   m
 
 let quarter_round a b c d : shuffle =
-  line b a d 7ul @
-  line c b a 9ul @
-  line d c b 13ul @
-  line a d c 18ul
+  line b a d (size 7) @
+  line c b a (size 9) @
+  line d c b (size 13) @
+  line a d c (size 18)
 
 let column_round : shuffle =
   quarter_round 0 4 8 12 @
@@ -52,129 +55,129 @@ let double_round: shuffle =
   column_round @ row_round (* 2 rounds *)
 
 let rounds : shuffle =
-    Spec.Loops.repeat_spec 10 double_round (* 20 rounds *)
+  repeat 10 double_round (* 20 rounds *)
 
-let salsa20_core (s:state) : Tot state =
-    let s' = rounds s in
-    Spec.Loops.seq_map2 (fun x y -> x +%^ y) s' s
+let salsa20_add_counter (s:state) (ctr:counter) : Tot state =
+  s.[8] <- s.[8] +. (u32 ctr)
+
+let salsa20_core (ctr:counter) (s:state) : Tot state =
+  let s' = salsa20_add_counter s ctr in
+  let s' = rounds s' in
+  let s' = map2 (+.) s' s in
+  salsa20_add_counter s' ctr
 
 (* state initialization *)
-
-unfold inline_for_extraction
-let constant0 = 0x61707865ul
-unfold inline_for_extraction
-let constant1 = 0x3320646eul
-unfold inline_for_extraction
-let constant2 = 0x79622d32ul
-unfold inline_for_extraction
-let constant3 = 0x6b206574ul
-
-let setup (k:key) (n:nonce) (c:counter): state =
-  let ks = uint32s_from_le 8 k in
-  let ns = uint32s_from_le 2 n in
-  let c64 = UInt64.uint_to_t c in
-  let c0 = FStar.Int.Cast.uint64_to_uint32 c64 in
-  let c1 = FStar.Int.Cast.uint64_to_uint32 FStar.UInt64.(c64 >>^ 32ul) in
-  create_16 constant0    (index ks 0) (index ks 1) (index ks 2)
-          (index ks 3) constant1    (index ns 0) (index ns 1)
-	  c0 	       c1	    constant2    (index ks 4)
-          (index ks 5) (index ks 6) (index ks 7) constant3
+inline_for_extraction
+let constant0 = u32 0x61707865
+inline_for_extraction
+let constant1 = u32 0x3320646e
+inline_for_extraction
+let constant2 = u32 0x79622d32
+inline_for_extraction
+let constant3 = u32 0x6b206574
 
 
-let salsa20_block (k:key) (n:nonce) (c:counter): block =
-    let st = setup k n c in
-    let st' = salsa20_core st in
-    uint32s_to_le 16 st'
+let setup (k:key) (n:nonce) (ctr0:counter) (st:state) : Tot state =
+  let ks = uints_from_bytes_le #U32 #SEC #8 k in
+  let ns = uints_from_bytes_le #U32 #SEC #2 n in
+  let st = st.[0] <- constant0 in
+  let st = update_sub st 1 4 (slice ks 0 4) in
+  let st = st.[5] <- constant1 in
+  let st = update_sub st 6 2 ns in
+  let st = st.[8] <- u32 ctr0 in
+  let st = st.[9] <- u32 0 in
+  let st = st.[10] <- constant2 in
+  let st = update_sub st 11 4 (slice ks 4 8) in
+  let st = st.[15] <- constant3 in
+  st
+
+let salsa20_init (k:key) (n:nonce) (ctr0:counter) : Tot state =
+  let st = create 16 (u32 0) in
+  let st  = setup k n ctr0 st in
+  st
+
+let xsetup (k:key) (n:xnonce) (st:state) : Tot state =
+  let ks = uints_from_bytes_le #U32 #SEC #8 k in
+  let ns = uints_from_bytes_le #U32 #SEC #4 n in
+  let st = st.[0] <- constant0 in
+  let st = update_sub st 1 4 (slice ks 0 4) in
+  let st = st.[5] <- constant1 in
+  let st = update_sub st 6 4 ns in
+  let st = st.[10] <- constant2 in
+  let st = update_sub st 11 4 (slice ks 4 8) in
+  let st = st.[15] <- constant3 in
+  st
+
+let hsalsa20_init (k:key) (n:xnonce) : Tot state =
+  let st = create 16 (u32 0) in
+  let st  = xsetup k n st in
+  st
+
+let hsalsa20 (k:key) (n:xnonce) : Tot (lbytes 32) =
+  let st = hsalsa20_init k n in
+  let st = rounds st in
+  [@inline_let]
+  let res_l = [st.[0]; st.[5]; st.[10]; st.[15]; st.[6]; st.[7]; st.[8]; st.[9]] in
+  assert_norm(List.Tot.length res_l == 8);
+  let res = createL res_l in
+  uints_to_bytes_le res
+
+let salsa20_key_block (st:state) : Tot block =
+  let st' = salsa20_core 0 st in
+  uints_to_bytes_le st'
+
+let salsa20_key_block0 (k:key) (n:nonce) : Tot block =
+  let st = salsa20_init k n 0 in
+  salsa20_key_block st
+
+let xor_block (k:state) (b:block) : block  =
+  let ib = uints_from_bytes_le b in
+  let ob = map2 (^.) ib k in
+  uints_to_bytes_le ob
+
+let salsa20_encrypt_block (st0:state) (incr:counter) (b:block) : Tot block =
+  let k = salsa20_core incr st0 in
+  xor_block k b
+
+let salsa20_encrypt_last (st0:state) (incr:counter)
+			  (len:size_nat{len < size_block})
+			  (b:lbytes len) : lbytes len =
+  let plain = create size_block (u8 0) in
+  let plain = update_sub plain 0 (length b) b in
+  let cipher = salsa20_encrypt_block st0 incr plain in
+  sub cipher 0 len
+
+val salsa20_update:
+    ctx: state
+  -> msg: bytes{length msg / size_block <= max_size_t}
+  -> cipher: bytes{length cipher == length msg}
+
+let salsa20_update ctx msg =
+  let cipher = msg in
+  map_blocks size_block cipher
+    (salsa20_encrypt_block ctx)
+    (salsa20_encrypt_last ctx)
 
 
-let salsa20_ctx: Spec.CTR.block_cipher_ctx =
-    let open Spec.CTR in
-    {
-    keylen = keylen;
-    blocklen = blocklen;
-    noncelen = noncelen;
-    counterbits = 64;
-    incr = 1
-    }
+val salsa20_encrypt_bytes:
+    k: key
+  -> n: nonce
+  -> c: counter
+  -> msg: bytes{length msg / size_block <= max_size_t}
+  -> cipher: bytes{length cipher == length msg}
 
-let salsa20_cipher: Spec.CTR.block_cipher salsa20_ctx = salsa20_block
-
-let salsa20_encrypt_bytes key nonce counter m =
-    Spec.CTR.counter_mode salsa20_ctx salsa20_cipher key nonce counter m
+let salsa20_encrypt_bytes key nonce ctr0 msg =
+  let st0 = salsa20_init key nonce ctr0 in
+  salsa20_update st0 msg
 
 
+val salsa20_decrypt_bytes:
+    k: key
+  -> n: nonce
+  -> c: counter
+  -> cipher: bytes{length cipher / size_block <= max_size_t}
+  -> msg: bytes{length cipher == length msg}
 
-(* TESTS: https://cr.yp.to/snuffle/spec.pdf *)
-
-//#set-options "--lax"
-
-let test_quarter_round () =
-    let st = create 16 0ul in
-    let st1 = quarter_round 0 1 2 3 st in
-    let st2 = quarter_round 0 1 2 3 (upd st 0 1ul) in
-    (slice st1 0 4) = createL [0ul;0ul;0ul;0ul] &&
-    (slice st2 0 4) = createL [0x08008145ul;0x80ul;0x010200ul;0x20500000ul]
-
-
-let test_row_round () =
-    let st = create 16 0ul in
-    let st = upd st 0 1ul in
-    let st = upd st 4 1ul in
-    let st = upd st 8 1ul in
-    let st = upd st 12 1ul in
-    let st = row_round st in
-    st = createL [
-        0x08008145ul; 0x00000080ul; 0x00010200ul; 0x20500000ul;
-	0x20100001ul; 0x00048044ul; 0x00000080ul; 0x00010000ul;
-	0x00000001ul; 0x00002000ul; 0x80040000ul; 0x00000000ul;
-	0x00000001ul; 0x00000200ul; 0x00402000ul; 0x88000100ul
-	]
-
-let test_column_round () =
-    let st = create 16 0ul in
-    let st = upd st 0 1ul in
-    let st = upd st 4 1ul in
-    let st = upd st 8 1ul in
-    let st = upd st 12 1ul in
-    let st = column_round st in
-    st = createL [
-       	 0x10090288ul; 0x00000000ul; 0x00000000ul; 0x00000000ul;
- 	 0x00000101ul; 0x00000000ul; 0x00000000ul; 0x00000000ul;
-    	 0x00020401ul; 0x00000000ul; 0x00000000ul; 0x00000000ul;
-    	 0x40a04001ul; 0x00000000ul; 0x00000000ul; 0x00000000ul
-		 ]
-let test_column_round2 () =
-    let st = createL [
-    	 0x08521bd6ul; 0x1fe88837ul; 0xbb2aa576ul; 0x3aa26365ul;
-    	 0xc54c6a5bul; 0x2fc74c2ful; 0x6dd39cc3ul; 0xda0a64f6ul;
-	 0x90a2f23dul; 0x067f95a6ul; 0x06b35f61ul; 0x41e4732eul;
-    	 0xe859c100ul; 0xea4d84b7ul; 0x0f619bfful; 0xbc6e965aul] in
-    let st = column_round st in
-    st = createL [
-         0x8c9d190aul; 0xce8e4c90ul; 0x1ef8e9d3ul; 0x1326a71aul;
-	 0x90a20123ul; 0xead3c4f3ul; 0x63a091a0ul; 0xf0708d69ul;
-	 0x789b010cul; 0xd195a681ul; 0xeb7d5504ul; 0xa774135cul;
-	 0x481c2027ul; 0x53a8e4b5ul; 0x4c1f89c5ul; 0x3f78c9c8ul
-		 ]
-
-let test_salsa20_core () =
-    let st = uint32s_from_le 16 (createL [
-    	   211uy;159uy; 13uy;115uy; 76uy; 55uy; 82uy;183uy; 3uy;117uy;222uy; 37uy;191uy;187uy;234uy;136uy;
-	   49uy;237uy;179uy; 48uy; 1uy;106uy;178uy;219uy;175uy;199uy;166uy; 48uy; 86uy; 16uy;179uy;207uy;
-	   31uy;240uy; 32uy; 63uy; 15uy; 83uy; 93uy;161uy;116uy;147uy; 48uy;113uy;238uy; 55uy;204uy; 36uy;
-	   79uy;201uy;235uy; 79uy; 3uy; 81uy;156uy; 47uy;203uy; 26uy;244uy;243uy; 88uy;118uy;104uy; 54uy
-	   ])   in
-    let st = salsa20_core st in
-    st = uint32s_from_le 16 (createL[
-           109uy; 42uy;178uy;168uy;156uy;240uy;248uy;238uy;168uy;196uy;190uy;203uy; 26uy;110uy;170uy;154uy;
-	   29uy; 29uy;150uy; 26uy;150uy; 30uy;235uy;249uy;190uy;163uy;251uy; 48uy; 69uy;144uy; 51uy; 57uy;
-	   118uy; 40uy;152uy;157uy;180uy; 57uy; 27uy; 94uy;107uy; 42uy;236uy; 35uy; 27uy;111uy;114uy;114uy;
-	   219uy;236uy;232uy;135uy;111uy;155uy;110uy; 18uy; 24uy;232uy; 95uy;158uy;179uy; 19uy; 48uy;202uy
-	   ])
-
-let test() =
-    test_quarter_round () &&
-    test_row_round() &&
-    test_column_round() &&
-    test_column_round2() &&
-    test_salsa20_core()
+let salsa20_decrypt_bytes key nonce ctr0 cipher =
+  let st0 = salsa20_init key nonce ctr0 in
+  salsa20_update st0 cipher

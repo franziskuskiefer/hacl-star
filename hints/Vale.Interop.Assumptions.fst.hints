@@ -1,0 +1,29 @@
+[
+  "ãÂK&\u001bëÉGh•Æ™\u0007«1ó",
+  [
+    [
+      "Vale.Interop.Assumptions.st_put",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_b16bf82b210653a34e4d7322fab91ffb"
+      ],
+      0,
+      "de4527ad3fcc0c357a217cc601278841"
+    ],
+    [
+      "Vale.Interop.Assumptions.st_put",
+      2,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_b16bf82b210653a34e4d7322fab91ffb"
+      ],
+      0,
+      "6619550cfcd7fee4ef2e5ac8f8e69be8"
+    ]
+  ]
+]

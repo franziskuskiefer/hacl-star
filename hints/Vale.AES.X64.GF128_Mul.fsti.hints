@@ -1,0 +1,41 @@
+[
+  "ô\u0016’ùH­¦A\u0005[ûfáÇ2~",
+  [
+    [
+      "Vale.AES.X64.GF128_Mul.va_quick_ShiftLeft128_1",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
+      ],
+      0,
+      "e4f555a8054248a9a1ecf4995efd79f7"
+    ],
+    [
+      "Vale.AES.X64.GF128_Mul.va_quick_ReduceMulRev128",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
+      ],
+      0,
+      "a3f35708e78bcbdf0c036c2c1e13d58c"
+    ],
+    [
+      "Vale.AES.X64.GF128_Mul.va_quick_Gf128MulRev128",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
+      ],
+      0,
+      "db8e2b77ca9d2e8db2ba88aa90fe6062"
+    ]
+  ]
+]

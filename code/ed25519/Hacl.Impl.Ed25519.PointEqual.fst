@@ -1,85 +1,200 @@
 module Hacl.Impl.Ed25519.PointEqual
 
 module ST = FStar.HyperStack.ST
-
+open FStar.HyperStack
 open FStar.HyperStack.All
-
 open FStar.Mul
-open FStar.Buffer
-open FStar.UInt32
 
+open Lib.IntTypes
+open Lib.Buffer
 
-#reset-options "--max_fuel 0 --z3rlimit 100"
+open Hacl.Bignum25519
 
-val lemma_pos:
-  a:nat -> b:pos -> c:nat -> d:pos -> e:nat -> f:pos -> g:nat -> h:pos -> i:nat -> 
-  Lemma (a + b * c + d * e + f * g + h * i >= 0)
-let lemma_pos a b c d e f g h i = ()
+module F51 = Hacl.Impl.Ed25519.Field51
+module F56 = Hacl.Impl.Ed25519.Field56
+module S51 = Hacl.Spec.Curve25519.Field51.Definition
+module S56 = Hacl.Spec.Ed25519.Field56.Definition
 
-open Hacl.UInt64
+module SC = Spec.Curve25519
 
-val lemma_pos':
-  s:Seq.seq Hacl.UInt64.t{Seq.length s = 5} ->
-  Lemma (v (Seq.index s 0) + pow2 51 * v (Seq.index s 1) + pow2 102 * v (Seq.index s 2) + pow2 153 * v (Seq.index s 3) + pow2 204 * v (Seq.index s 4) >= 0)
-let lemma_pos' s =
-  lemma_pos (v (Seq.index s 0)) (pow2 51) (v (Seq.index s 1)) (pow2 102) (v (Seq.index s 2)) (pow2 153) (v (Seq.index s 3)) (pow2 204) (v (Seq.index s 4))
+#reset-options "--z3rlimit 20 --max_fuel 0 --max_ifuel 0"
 
-
-let uint8_p = buffer UInt8.t
-let felem   = b:buffer UInt64.t{length b = 5}
-
-#reset-options "--max_fuel 0 --z3rlimit 200"
+val gte_q:
+  s:lbuffer uint64 5ul ->
+  Stack bool
+    (requires fun h -> live h s /\
+      (let s = as_seq h s in
+       let op_String_Access = Seq.index in
+       v s.[0] < 0x100000000000000 /\
+       v s.[1] < 0x100000000000000 /\
+       v s.[2] < 0x100000000000000 /\
+       v s.[3] < 0x100000000000000 /\
+       v s.[4] < 0x100000000000000)
+     )
+    (ensures  fun h0 b h1 -> h0 == h1 /\
+      (b <==> F56.as_nat h0 s >= Spec.Ed25519.q)
+    )
 
 let gte_q s =
-  let h0 = ST.get() in
-  assert_norm(pow2 64 = 0x10000000000000000);
+  let h0 = get() in
   let s0 = s.(0ul) in
   let s1 = s.(1ul) in
   let s2 = s.(2ul) in
   let s3 = s.(3ul) in
   let s4 = s.(4ul) in
+  assert_norm (Spec.Ed25519.q == 0x1000000000000000000000000000000014def9dea2f79cd65812631a5cf5d3ed);
   let open FStar.UInt64 in
-       if s4 >^ 0x00000010000000uL then true
-  else if s4 <^ 0x00000010000000uL then false
-  else if s3 >^ 0x00000000000000uL then true
-  else if s2 >^ 0x000000000014deuL then true
-  else if s2 <^ 0x000000000014deuL then false
-  else if s1 >^ 0xf9dea2f79cd658uL then true
-  else if s1 <^ 0xf9dea2f79cd658uL then false
-  else if s0 >=^ 0x12631a5cf5d3eduL then true
-  else false
+  let open Lib.RawIntTypes in
+  if u64_to_UInt64 s4 >^ 0x00000010000000uL then true
+  else if u64_to_UInt64 s4 <^ 0x00000010000000uL then false
+  else (if u64_to_UInt64 s3 >^ 0x00000000000000uL then true
+  else if u64_to_UInt64 s2 >^ 0x000000000014deuL then true
+  else if u64_to_UInt64 s2 <^ 0x000000000014deuL then false
+  else if u64_to_UInt64 s1 >^ 0xf9dea2f79cd658uL then true
+  else if u64_to_UInt64 s1 <^ 0xf9dea2f79cd658uL then false
+  else if u64_to_UInt64 s0 >=^ 0x12631a5cf5d3eduL then true
+  else false)
 
-#reset-options "--max_fuel 0 --z3rlimit 20"
+let u51 = n:nat{n < 0x8000000000000}
 
-val eq:
-  a:felem ->
-  b:felem ->
-  Stack bool
-    (requires (fun h -> live h a /\ live h b /\ Hacl.Bignum25519.red_51 (as_seq h a) /\ Hacl.Bignum25519.red_51 (as_seq h b) /\
-      (let a = as_seq h a in let b = as_seq h b in
-       (Hacl.UInt64.(v (Seq.index a 0)+ pow2 51 * v (Seq.index a 1) + pow2 102 * v (Seq.index a 2)
-                     + pow2 153 * v (Seq.index a 3) + pow2 204 * v (Seq.index a 4)
-                     < Spec.Curve25519.prime)) /\
-      (Hacl.UInt64.(v (Seq.index b 0) + pow2 51 * v (Seq.index b 1) + pow2 102 * v (Seq.index b 2)
-                     + pow2 153 * v (Seq.index b 3) + pow2 204 * v (Seq.index b 4) < Spec.Curve25519.prime)))))
-    (ensures (fun h0 r h1 -> live h0 a /\ live h0 b /\ h0 == h1 /\
-      (r <==> Hacl.Bignum25519.seval (as_seq h0 b) == Hacl.Bignum25519.seval (as_seq h0 a))))
+val lemma_equality1:
+  a:u51 -> b:u51 -> c:u51 -> d:u51 -> e:u51 ->
+  a':u51 -> b':u51 -> c':u51 -> d':u51 -> e':u51 ->
+  Lemma (requires a < pow2 51 /\ b < pow2 51 /\ c < pow2 51 /\ d < pow2 51 /\ e < pow2 51 /\
+                  a' < pow2 51 /\ b' < pow2 51 /\ c' < pow2 51 /\ d' < pow2 51 /\ e' < pow2 51)
+        (ensures (a + pow2 51 * b + pow2 102 * c + pow2 153 * d + pow2 204 * e ==
+                  a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d' + pow2 204 * e') <==>
+          (a == a' /\ b == b' /\ c == c' /\ d == d' /\ e == e'))
 
-#reset-options "--max_fuel 0 --z3rlimit 500"
 
-open Hacl.UInt64
+open FStar.Calc
 
-let eq a b =
+#push-options "--z3rlimit 100"
+
+let lemma_equality1 a b c d e a' b' c' d' e' =
   assert_norm(pow2 51 = 0x8000000000000);
   assert_norm(pow2 102 = 0x40000000000000000000000000);
   assert_norm(pow2 153 = 0x200000000000000000000000000000000000000);
   assert_norm(pow2 204 = 0x1000000000000000000000000000000000000000000000000000);
-  assert_norm(pow2 255 - 19 = 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed);
-  let h = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_red_51 (as_seq h a);
-  Hacl.Bignum25519.lemma_reveal_red_51 (as_seq h b);
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h a);
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h b);
+  let lemma_l_imp () : Lemma
+    (requires a + pow2 51 * b + pow2 102 * c + pow2 153 * d + pow2 204 * e ==
+                  a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d' + pow2 204 * e')
+    (ensures a == a' /\ b == b' /\ c == c' /\ d == d' /\ e == e')
+    =
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 51) b (pow2 51 - 1);
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 102) c (pow2 51 - 1);
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 153) d (pow2 51 - 1);
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 51) b' (pow2 51 - 1);
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 102) c' (pow2 51 - 1);
+    FStar.Math.Lemmas.lemma_mult_le_left (pow2 153) d' (pow2 51 - 1);
+    assert_norm (pow2 51 - 1 + pow2 51 * (pow2 51 - 1) < pow2 102);
+    assert_norm (pow2 51 - 1 + pow2 51 * (pow2 51 - 1) + pow2 102 * (pow2 51 - 1) < pow2 153);
+
+    assert_norm (pow2 51 - 1 + pow2 51 * (pow2 51 - 1) + pow2 102 * (pow2 51 - 1) + pow2 153 * (pow2 51 - 1) < pow2 204);
+
+    calc (==) {
+      (a + pow2 51 * b + pow2 102 * c + pow2 153 * d + pow2 204 * e) % (pow2 204);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a + pow2 51 * b + pow2 102 * c + pow2 153 * d)
+         (pow2 204 * e)
+         (pow2 204);
+           FStar.Math.Lemmas.cancel_mul_mod e (pow2 204)
+        }
+      (a + pow2 51 * b + pow2 102 * c + pow2 153 * d) % (pow2 204);
+    };
+    calc (==) {
+      (a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d' + pow2 204 * e') % (pow2 204);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d')
+         (pow2 204 * e')
+         (pow2 204);
+           FStar.Math.Lemmas.cancel_mul_mod e' (pow2 204)
+        }
+      (a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d') % (pow2 204);
+    };
+    FStar.Math.Lemmas.lemma_mod_injective (pow2 204)
+      (a + pow2 51 * b + pow2 102 * c + pow2 153 * d)
+      (a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d');
+
+    calc (==) {
+      (a + pow2 51 * b + pow2 102 * c + pow2 153 * d) % (pow2 153);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a + pow2 51 * b + pow2 102 * c)
+         (pow2 153 * d)
+         (pow2 153);
+           FStar.Math.Lemmas.cancel_mul_mod d (pow2 153)
+        }
+      (a + pow2 51 * b + pow2 102 * c) % (pow2 153);
+    };
+    calc (==) {
+      (a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d') % (pow2 153);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a' + pow2 51 * b' + pow2 102 * c')
+         (pow2 153 * d')
+         (pow2 153);
+           FStar.Math.Lemmas.cancel_mul_mod d' (pow2 153)
+        }
+      (a' + pow2 51 * b' + pow2 102 * c') % (pow2 153);
+    };
+    FStar.Math.Lemmas.lemma_mod_injective (pow2 153)
+      (a + pow2 51 * b + pow2 102 * c)
+      (a' + pow2 51 * b' + pow2 102 * c');
+
+
+    calc (==) {
+      (a + pow2 51 * b + pow2 102 * c) % (pow2 102);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a + pow2 51 * b)
+         (pow2 102 * c)
+         (pow2 102);
+           FStar.Math.Lemmas.cancel_mul_mod c (pow2 102)
+        }
+      (a + pow2 51 * b) % (pow2 102);
+    };
+    calc (==) {
+      (a' + pow2 51 * b' + pow2 102 * c') % (pow2 102);
+      (==) { FStar.Math.Lemmas.lemma_mod_plus_distr_r
+         (a' + pow2 51 * b')
+         (pow2 102 * c')
+         (pow2 102);
+           FStar.Math.Lemmas.cancel_mul_mod c' (pow2 102)
+        }
+      (a' + pow2 51 * b') % (pow2 102);
+    };
+    FStar.Math.Lemmas.lemma_mod_injective (pow2 102)
+      (a + pow2 51 * b)
+      (a' + pow2 51 * b');
+
+    FStar.Math.Lemmas.cancel_mul_mod b (pow2 51);
+    FStar.Math.Lemmas.cancel_mul_mod b' (pow2 51);
+    FStar.Math.Lemmas.lemma_mod_injective (pow2 51) a a'
+
+  in
+  let lemma_r_imp () : Lemma
+    (requires a == a' /\ b == b' /\ c == c' /\ d == d' /\ e == e')
+    (ensures a + pow2 51 * b + pow2 102 * c + pow2 153 * d + pow2 204 * e ==
+                  a' + pow2 51 * b' + pow2 102 * c' + pow2 153 * d' + pow2 204 * e')
+    = ()
+  in
+  Classical.move_requires lemma_l_imp ();
+  Classical.move_requires lemma_r_imp ()
+
+
+val eq:
+    a:felem
+  -> b:felem ->
+  Stack bool
+    (requires fun h -> live h a /\ live h b /\
+      F51.fevalh h a == F51.as_nat h a /\
+      F51.fevalh h b == F51.as_nat h b /\
+      F51.felem_fits h a (1, 1, 1, 1, 1) /\
+      F51.felem_fits h b (1, 1, 1, 1, 1)
+    )
+    (ensures  fun h0 r h1 -> h0 == h1 /\
+      (r <==> F51.fevalh h0 a == F51.fevalh h0 b)
+    )
+
+let eq a b =
   let a0 = a.(0ul) in
   let a1 = a.(1ul) in
   let a2 = a.(2ul) in
@@ -90,182 +205,91 @@ let eq a b =
   let b2 = b.(2ul) in
   let b3 = b.(3ul) in
   let b4 = b.(4ul) in
-  Hacl.Impl.Ed25519.Verify.Lemmas.lemma_equality (v a0) (v a1) (v a2) (v a3) (v a4) (v b0) (v b1) (v b2) (v b3) (v b4);
-  let z = FStar.UInt64.(a0 =^ b0 && a1 =^ b1 && a2 =^ b2 && a3 =^ b3 && a4 =^ b4) in
-  let h = ST.get() in
-  Seq.lemma_eq_intro (as_seq h a) (if z then as_seq h b else as_seq h a);
-  z
-
-
-open Hacl.Impl.Ed25519.ExtPoint
-open Hacl.Impl.Ed25519.Ladder.Step
-
+  assert_norm(pow2 51 = 0x8000000000000);
+  assert_norm(pow2 102 = 0x40000000000000000000000000);
+  assert_norm(pow2 153 = 0x200000000000000000000000000000000000000);
+  assert_norm(pow2 204 = 0x1000000000000000000000000000000000000000000000000000);
+  assert_norm(pow2 255 - 19 = 0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffed);
+  let h0 = get() in
+  lemma_equality1 (v a0) (v a1) (v a2) (v a3) (v a4) (v b0) (v b1) (v b2) (v b3) (v b4);
+  let open Lib.RawIntTypes in
+  let open FStar.UInt64 in
+  (u64_to_UInt64 a0 =^ u64_to_UInt64 b0 &&
+   u64_to_UInt64 a1 =^ u64_to_UInt64 b1 &&
+   u64_to_UInt64 a2 =^ u64_to_UInt64 b2 &&
+   u64_to_UInt64 a3 =^ u64_to_UInt64 b3 &&
+   u64_to_UInt64 a4 =^ u64_to_UInt64 b4)
 
 val point_equal_1:
-  p:Hacl.Impl.Ed25519.ExtPoint.point ->
-  q:Hacl.Impl.Ed25519.ExtPoint.point ->
-  tmp:buffer Hacl.UInt64.t{length tmp = 20 /\ disjoint tmp p /\ disjoint tmp q} ->
+    p:point
+  -> q:point
+  -> tmp:lbuffer uint64 20ul ->
   Stack bool
-    (requires (fun h -> live h p /\ live h q /\ point_inv h p /\ point_inv h q /\ live h tmp))
-    (ensures (fun h0 z h1 -> live h0 p /\ live h0 q /\ live h1 tmp /\ modifies_1 tmp h0 h1 /\ (
-      let px, py, pz, pt = as_point h0 p in
-      let qx, qy, qz, qt = as_point h0 q in
-      z == Spec.Curve25519.(if ((px `fmul` qz) <> (qx `fmul` pz)) then false else true)) ))
+    (requires fun h ->
+      live h p /\ live h q /\ live h tmp /\
+      disjoint tmp p /\ disjoint tmp q /\
+      F51.point_inv_t h p /\ F51.point_inv_t h q
+    )
+    (ensures  fun h0 z h1 -> modifies (loc tmp) h0 h1 /\
+      (let px, py, pz, pt = F51.point_eval h0 p in
+      let qx, qy, qz, qt = F51.point_eval h0 q in
+      z <==> ((px `SC.fmul` qz) == (qx `SC.fmul` pz))
+      )
+    )
 
 let point_equal_1 p q tmp =
-  assert_norm(pow2 51 = 0x8000000000000);
-  let pxqz = Buffer.sub tmp 0ul 5ul in
-  let qxpz = Buffer.sub tmp 5ul 5ul in
-  let pyqz = Buffer.sub tmp 10ul 5ul in
-  let qypz = Buffer.sub tmp 15ul 5ul in
-  let h0 = ST.get() in
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (getx p));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (gety p));
-  Hacl.Bignum25519.lemma_red_513_is_red_5413 (as_seq h0 (getz p));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (getx q));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (gety q));
-  Hacl.Bignum25519.lemma_red_513_is_red_5413 (as_seq h0 (getz q));
-  Hacl.Bignum25519.fmul pxqz (Hacl.Impl.Ed25519.ExtPoint.getx p) (Hacl.Impl.Ed25519.ExtPoint.getz q);
-  let h0'  = ST.get() in
-  assert(Hacl.Bignum25519.seval (as_seq h0' pxqz) == Spec.Curve25519.(Hacl.Bignum25519.seval (as_seq h0 (getx p)) `fmul` Hacl.Bignum25519.seval (as_seq h0 (getz q))));
-  Hacl.Bignum25519.reduce pxqz;
-  let h1 = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h1 pxqz);
-  lemma_pos' (as_seq h1 pxqz);
-  Math.Lemmas.modulo_lemma (let s = as_seq h1 pxqz in Hacl.UInt64.(v (Seq.index s 0)
-                               + pow2 51 * v (Seq.index s 1)
-                               + pow2 102 * v (Seq.index s 2)
-                               + pow2 153 * v (Seq.index s 3)
-                               + pow2 204 * v (Seq.index s 4))) Spec.Curve25519.prime;
-  no_upd_lemma_1 h0 h1 pxqz (getx p);
-  no_upd_lemma_1 h0 h1 pxqz (gety p);
-  no_upd_lemma_1 h0 h1 pxqz (getz p);
-  no_upd_lemma_1 h0 h1 pxqz (getx q);
-  no_upd_lemma_1 h0 h1 pxqz (gety q);
-  no_upd_lemma_1 h0 h1 pxqz (getz q);
-  Hacl.Bignum25519.fmul qxpz (Hacl.Impl.Ed25519.ExtPoint.getx q) (Hacl.Impl.Ed25519.ExtPoint.getz p);
-  let h1' = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h1' qxpz);  
-  Hacl.Bignum25519.reduce qxpz;
-  let h2 = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h2 qxpz);
-  lemma_pos' (as_seq h2 qxpz);
-  Math.Lemmas.modulo_lemma (let s = as_seq h2 qxpz in Hacl.UInt64.(v (Seq.index s 0)
-                               + pow2 51 * v (Seq.index s 1)
-                               + pow2 102 * v (Seq.index s 2)
-                               + pow2 153 * v (Seq.index s 3)
-                               + pow2 204 * v (Seq.index s 4))) Spec.Curve25519.prime;
-  no_upd_lemma_1 h1 h2 qxpz (getx p);
-  no_upd_lemma_1 h1 h2 qxpz (gety p);
-  no_upd_lemma_1 h1 h2 qxpz (getz p);
-  no_upd_lemma_1 h1 h2 qxpz (getx q);
-  no_upd_lemma_1 h1 h2 qxpz (gety q);
-  no_upd_lemma_1 h1 h2 qxpz (getz q);
-  no_upd_lemma_1 h1 h2 qxpz pxqz;
-  let b = eq pxqz qxpz in
-  b
-
+  let pxqz = sub tmp 0ul 5ul in
+  let qxpz = sub tmp 5ul 5ul in
+  let pyqz = sub tmp 10ul 5ul in
+  let qypz = sub tmp 15ul 5ul in
+  let h0 = get() in
+  fmul pxqz (getx p) (getz q);
+  reduce pxqz;
+  fmul qxpz (getx q) (getz p);
+  reduce qxpz;
+  eq pxqz qxpz
 
 val point_equal_2:
-  p:Hacl.Impl.Ed25519.ExtPoint.point ->
-  q:Hacl.Impl.Ed25519.ExtPoint.point ->
-  tmp:buffer Hacl.UInt64.t{length tmp = 20 /\ disjoint tmp p /\ disjoint tmp q} ->
+    p:point
+  -> q:point
+  -> tmp:lbuffer uint64 20ul ->
   Stack bool
-    (requires (fun h -> live h p /\ live h q /\ point_inv h p /\ point_inv h q /\ live h tmp))
-    (ensures (fun h0 z h1 -> live h0 p /\ live h0 q /\ live h1 tmp /\ modifies_1 tmp h0 h1 /\ (
-      let px, py, pz, pt = as_point h0 p in
-      let qx, qy, qz, qt = as_point h0 q in
-      z == Spec.Curve25519.(if ((py `fmul` qz) <> (qy `fmul` pz)) then false else true)) ))
+    (requires fun h ->
+      live h p /\ live h q /\live h tmp /\
+      disjoint tmp p /\ disjoint tmp q /\
+      F51.point_inv_t h p /\ F51.point_inv_t h q
+    )
+    (ensures  fun h0 z h1 -> modifies (loc tmp) h0 h1 /\
+      (let px, py, pz, pt = F51.point_eval h0 p in
+      let qx, qy, qz, qt = F51.point_eval h0 q in
+      z == (if ((py `SC.fmul` qz) <> (qy `SC.fmul` pz)) then false else true))
+    )
 
 let point_equal_2 p q tmp =
-  assert_norm(pow2 51 = 0x8000000000000);
-  let pxqz = Buffer.sub tmp 0ul 5ul in
-  let qxpz = Buffer.sub tmp 5ul 5ul in
-  let pyqz = Buffer.sub tmp 10ul 5ul in
-  let qypz = Buffer.sub tmp 15ul 5ul in
-  let h0 = ST.get() in
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (getx p));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (gety p));
-  Hacl.Bignum25519.lemma_red_513_is_red_5413 (as_seq h0 (getz p));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (getx q));
-  Hacl.Bignum25519.lemma_red_513_is_red_53 (as_seq h0 (gety q));
-  Hacl.Bignum25519.lemma_red_513_is_red_5413 (as_seq h0 (getz q));
-  Hacl.Bignum25519.fmul pyqz (Hacl.Impl.Ed25519.ExtPoint.gety p) (Hacl.Impl.Ed25519.ExtPoint.getz q);
-  let h0'  = ST.get() in
-  assert(Hacl.Bignum25519.seval (as_seq h0' pyqz) == Spec.Curve25519.(Hacl.Bignum25519.seval (as_seq h0 (gety p)) `fmul` Hacl.Bignum25519.seval (as_seq h0 (getz q))));
-  Hacl.Bignum25519.reduce pyqz;
-  let h1 = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h1 pyqz);
-  lemma_pos' (as_seq h1 pyqz);  
-  Math.Lemmas.modulo_lemma (let s = as_seq h1 pyqz in Hacl.UInt64.(v (Seq.index s 0)
-                               + pow2 51 * v (Seq.index s 1)
-                               + pow2 102 * v (Seq.index s 2)
-                               + pow2 153 * v (Seq.index s 3)
-                               + pow2 204 * v (Seq.index s 4))) Spec.Curve25519.prime;
-  no_upd_lemma_1 h0 h1 pyqz (getx p);
-  no_upd_lemma_1 h0 h1 pyqz (gety p);
-  no_upd_lemma_1 h0 h1 pyqz (getz p);
-  no_upd_lemma_1 h0 h1 pyqz (getx q);
-  no_upd_lemma_1 h0 h1 pyqz (gety q);
-  no_upd_lemma_1 h0 h1 pyqz (getz q);
-  Hacl.Bignum25519.fmul qypz (Hacl.Impl.Ed25519.ExtPoint.gety q) (Hacl.Impl.Ed25519.ExtPoint.getz p);
-  let h1' = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h1' qypz);  
-  Hacl.Bignum25519.reduce qypz;
-  let h2 = ST.get() in
-  Hacl.Bignum25519.lemma_reveal_seval (as_seq h2 qypz);
-  lemma_pos' (as_seq h2 qypz);  
-  Math.Lemmas.modulo_lemma (let s = as_seq h2 qypz in Hacl.UInt64.(v (Seq.index s 0)
-                               + pow2 51 * v (Seq.index s 1)
-                               + pow2 102 * v (Seq.index s 2)
-                               + pow2 153 * v (Seq.index s 3)
-                               + pow2 204 * v (Seq.index s 4))) Spec.Curve25519.prime;
-  no_upd_lemma_1 h1 h2 qypz (getx p);
-  no_upd_lemma_1 h1 h2 qypz (gety p);
-  no_upd_lemma_1 h1 h2 qypz (getz p);
-  no_upd_lemma_1 h1 h2 qypz (getx q);
-  no_upd_lemma_1 h1 h2 qypz (gety q);
-  no_upd_lemma_1 h1 h2 qypz (getz q);
-  no_upd_lemma_1 h1 h2 qypz pxqz;
-  let b = eq pyqz qypz in
-  b
+  let pxqz = sub tmp 0ul 5ul in
+  let qxpz = sub tmp 5ul 5ul in
+  let pyqz = sub tmp 10ul 5ul in
+  let qypz = sub tmp 15ul 5ul in
+  fmul pyqz (gety p) (getz q);
+  reduce pyqz;
+  fmul qypz (gety q) (getz p);
+  reduce qypz;
+  eq pyqz qypz
 
-
-val point_equal_:
-  p:Hacl.Impl.Ed25519.ExtPoint.point ->
-  q:Hacl.Impl.Ed25519.ExtPoint.point ->
-  tmp:buffer Hacl.UInt64.t{length tmp = 20 /\ disjoint tmp p /\ disjoint tmp q} ->
+val point_equal:
+    p:point
+  -> q:point ->
   Stack bool
-    (requires (fun h -> live h p /\ live h q /\ point_inv h p /\ point_inv h q /\ live h tmp))
-    (ensures (fun h0 z h1 -> live h0 p /\ live h0 q /\ modifies_1 tmp h0 h1 /\ live h1 tmp /\
-      z == Spec.Ed25519.point_equal (as_point h0 p) (as_point h0 q) ))
-
-#reset-options "--max_fuel 0 --z3rlimit 200"
-
-val lemma_point_inv:
-  h:HyperStack.mem -> p:point{live h p} -> h':HyperStack.mem -> p':point{live h' p'} ->
-  Lemma (requires (as_seq h p == as_seq h' p' /\ point_inv h p))
-        (ensures (point_inv h' p'))
-let lemma_point_inv h p h' p' = ()
-
-#reset-options "--max_fuel 0 --z3rlimit 100"
-
-let point_equal_ p q tmp =
-  let h0 = ST.get() in
-  let b = point_equal_1 p q tmp in
-  let h1 = ST.get() in
-  no_upd_lemma_1 h0 h1 tmp p;
-  no_upd_lemma_1 h0 h1 tmp q;
-  lemma_point_inv h0 p h1 p;
-  lemma_point_inv h0 q h1 q;
-  if b = true then
-    point_equal_2 p q tmp
-  else false
-
-
+    (requires fun h -> live h p /\ live h q /\
+      F51.point_inv_t h p /\ F51.point_inv_t h q
+    )
+    (ensures  fun h0 z h1 -> modifies0 h0 h1 /\
+      (z <==> Spec.Ed25519.point_equal (F51.point_eval h0 p) (F51.point_eval h0 q))
+    )
 let point_equal p q =
   push_frame();
-  let tmp = create 0uL 20ul in
-  let res = point_equal_ p q tmp in
+  let tmp = create 20ul (u64 0) in
+  let b = point_equal_1 p q tmp in
+  let res = if b then point_equal_2 p q tmp else false in
   pop_frame();
   res

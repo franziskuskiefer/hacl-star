@@ -1,146 +1,49 @@
-include ../../Makefile.include
+# CUSTOMIZE HERE: determine what is the main target of this Makefile, e.g. a C
+# test, a Low* test, or just a binary archive (like libcurve.a).
+all: dist/curve64-ours.exe
 
-# Verify everything with the used parameters
-BIGNUM= \
-	../bignum/Hacl.Bignum.Fdifference.fst \
-	../bignum/Hacl.Bignum.Fmul.fst \
-	../bignum/Hacl.Bignum.Fproduct.fst \
-	../bignum/Hacl.Bignum.Fscalar.fst \
-	../bignum/Hacl.Bignum.Fsum.fst \
-	../bignum/Hacl.Bignum.Limb.fst \
-	../bignum/Hacl.Bignum.Wide.fst \
-	../bignum/Hacl.Bignum.fst \
-	../bignum/Hacl.Spec.Bignum.Bigint.fst \
-	../bignum/Hacl.Spec.Bignum.Fdifference.fst \
-	../bignum/Hacl.Spec.Bignum.Field.fst \
-	../bignum/Hacl.Spec.Bignum.Fmul.fst \
-	../bignum/Hacl.Spec.Bignum.Fproduct.fst \
-	../bignum/Hacl.Spec.Bignum.Fscalar.fst \
-	../bignum/Hacl.Spec.Bignum.Fsum.fst \
-	../bignum/Hacl.Spec.Bignum.fst
+test: all
+	dist/curve64-ours.exe
 
-X25519_SPECIFIC= \
-	Hacl.Spec.Curve25519.Lemmas.fst \
-	Hacl.Bignum.Parameters.fst \
-	Hacl.Spec.Bignum.Modulo.fst \
-	Hacl.Spec.EC.AddAndDouble.fst \
-	Hacl.Spec.Bignum.Fsquare.fst \
-	Hacl.Spec.Bignum.Crecip.fst \
-	Hacl.Bignum.Modulo.fst \
-	Hacl.Bignum.Fsquare.fst \
-	Hacl.Bignum.Crecip.fst \
-	Hacl.Spec.EC.Point.fst \
-	Hacl.EC.Point.fst \
-	Hacl.Spec.EC.AddAndDouble2.fst \
-	Hacl.Spec.EC.AddAndDouble3.fst \
-	Hacl.Spec.EC.Format.Lemmas.fst \
-	Hacl.Spec.EC.Format.fst \
-	Hacl.EC.Format.fst \
-	Hacl.EC.AddAndDouble.fst \
-	Hacl.Spec.EC.Ladder.Lemmas.fst \
-	Hacl.Spec.EC.Ladder.fst \
-	Hacl.EC.Ladder.SmallLoop.fst \
-	Hacl.EC.Ladder.BigLoop.fst \
-	Hacl.EC.Ladder.fst \
-	Hacl.Spec.EC.fst \
-	Hacl.EC.fst \
-	Hacl.Curve25519.fst
+FSTAR_ROOTS = Hacl.Curve25519_64_Local.fst Hacl.Curve25519_64_Slow.fst Hacl.Curve25519_51.fst
 
-# Files that are too slow and for which verification speed must improve
-SLOW=
+# Defines rules for producing .checked, .krml, .depend, etc.
+include ../../Makefile.local
 
-X25519_FILES=$(BIGNUM) $(X25519_SPECIFIC)
+# CUSTOMIZE HERE: how to produce binary objects
+dist:
+	mkdir -p $@
 
-FSTAR_INCLUDES+=--include ../bignum
+# An archive with all the compiled code in this directory.
+dist/libcurve.a: dist/curve25519-inline-tweaked.h dist/Makefile.basic | dist
+	$(MAKE) -C dist -f Makefile.basic
 
-# Parameters for interactive mode
-%.fst-in:
-	@echo $(OPTIONS) --hint_info \
-	$(FSTAR_INCLUDES)
+dist/curve25519-inline-tweaked.h: $(HACL_HOME)/dist/vale/curve25519-inline.h | dist
+	sed 's/_inline//g' $< > $@
 
-ct: $(addsuffix -lax, $(X25519_FILES))
-	# Using the --verify_all argument to lift abstractions, typechecks all dependencies of Curve25519.fst
-	$(FSTAR) --lax --verify_all Hacl.Curve25519.fst
+$(HACL_HOME)/dist/vale/curve25519-inline.h:
+	$(error Please run a full build first in $(HACL_HOME) so as to obtain $@)
 
-bignum-ver: $(addsuffix -reloc-verify, $(BIGNUM))
-specific-ver: $(addsuffix -verify, $(X25519_SPECIFIC))
-verify: bignum-ver specific-ver
-all-ver: verify
-all-ct: ct
+# CUSTOMIZE HERE: if necessary, move the bundle from $(HACL_HOME)/Makefile to
+# $(HACL_HOME)/Makefile.common; then, provide suitable compile flags.
+dist/Makefile.basic: $(filter-out %/prims.krml,$(ALL_KRML_FILES)) | dist
+	$(KRML) $^ -o libcurve.a $(BASE_FLAGS) $(VALE_BUNDLES) $(CURVE_BUNDLE_LOCAL) \
+	  -no-prefix 'Hacl.Impl.Curve25519.Field64.Local' \
+	  -drop 'Hacl.Impl.Curve25519.Field64.Local' \
+	  -add-include '"curve25519-inline-tweaked.h"' \
+	  -add-include '<stdbool.h>' \
+	  -add-include '"local.h"' \
+	  -tmpdir dist \
+	  -ccopts -std=gnu11,-g,-O3 \
+	  -skip-compilation
 
-# Hints regeneration
-bignum-hints: $(addsuffix .reloc.hints, $(BIGNUM))
-specific-hints: $(addsuffix .hints, $(X25519_SPECIFIC))
-hints: bignum-hints specific-hints
-all-hints: hints
+$(HACL_HOME)/tests/curve64-ours.o : dist/Makefile.basic
 
-# For CI, all modules restricted from incomplete or slow ones
-bignum-ci: $(addsuffix -reloc-verify, $(filter-out $(SLOW), $(BIGNUM)))
-specific-ci: $(addsuffix -verify, $(filter-out $(SLOW), $(X25519_SPECIFIC)))
-all-ci: bignum-ci specific-ci
+# CUSTOMIZE HERE: list the dependencies for each test (there may be multiple)
+dist/curve64-ours.exe: $(HACL_HOME)/tests/curve64-ours.o dist/libcurve.a
 
+%.exe:
+	$(CC) $^ $(KREMLIB_A) -o $@
 
-CFLAGS=-Wall -Wextra -Wno-unused-parameter -Wno-unused-variable
-KREMLIN_ARGS+=-I ../bignum -tmpdir x25519-c \
-	-drop Spec.*,Hacl.Spec.*,Hacl.Cast,Hacl.UInt.*,Hacl.Endianness,Hacl.UInt8,Hacl.UInt16,Hacl.UInt32,Hacl.UInt64,Hacl.UInt128,Prims \
-	$(KREMLIN_TESTLIB)
-
-# Acknowledge the F* dependency graph
-.PHONY: depend
-depend:
-	$(FSTAR) --dep make $(X25519_FILES) > .depend
--include .depend
-
-x25519-c/out.krml: $(X25519_FILES) Hacl.Test.X25519.fst
-	$(KREMLIN) $(KREMLIN_ARGS) -skip-translation $^ -o $@
-
-x25519-c/Hacl_Curve25519.c x25519-c/Hacl_Test_X25519.c: x25519-c/out.krml
-	$(KREMLIN) $(KREMLIN_ARGS) -no-prefix Hacl.Test.X25519 \
-	 	-bundle 'Hacl.Curve25519=Hacl.Bignum,Hacl.Bignum.*,Hacl.EC,Hacl.EC.*' \
-		-skip-compilation $^ -o $@
-
-x25519.exe: x25519-c/out.krml
-	$(KREMLIN) $(KREMLIN_ARGS) -no-prefix Hacl.Test.X25519 \
-	 	-bundle 'Hacl.Curve25519=Hacl.Bignum,Hacl.Bignum.*,Hacl.EC,Hacl.EC.*' \
-		$^ -o $@
-	./$@
-
-extract-c: x25519-c/Hacl_Curve25519.c x25519-c/Hacl_Test_X25519.c
-
-test: x25519.exe
-
-X25519_LIB= \
-	Hacl.Bignum.Parameters.fst \
-	Hacl.Spec.Bignum.Modulo.fst \
-	Hacl.Spec.EC.AddAndDouble.fst \
-	Hacl.Spec.Bignum.Fsquare.fst \
-	Hacl.Spec.Bignum.Crecip.fst \
-	Hacl.Bignum.Modulo.fst \
-	Hacl.Bignum.Fsquare.fst \
-	Hacl.Bignum.Crecip.fst \
-	Hacl.EC.Point.fst \
-	Hacl.Spec.EC.Format.Lemmas.fst \
-	Hacl.Spec.EC.Format.fst \
-	Hacl.EC.Format.fst \
-
-
-X25519_ONLY=Hacl.Spec.EC.Point.fst \
-	Hacl.Spec.Curve25519.Lemmas.fst \
-	Hacl.Spec.EC.AddAndDouble2.fst \
-	Hacl.EC.AddAndDouble.fst \
-	Hacl.Spec.EC.Ladder.Lemmas.fst \
-	Hacl.Spec.EC.Ladder.fst \
-	Hacl.EC.Ladder.SmallLoop.fst \
-	Hacl.EC.Ladder.BigLoop.fst \
-	Hacl.EC.Ladder.fst \
-	Hacl.Spec.EC.fst \
-	Hacl.EC.fst
-
-count-line:
-	@echo "X25519 LIB LOC"
-	cloc --force-lang=ocaml $(X25519_LIB)
-	@echo "X25519 ONLY LOC"
-	cloc --force-lang=ocaml $(X25519_ONLY)
-
-clean:
-	rm -rf *.exe *.exe.* *.out *~ x25519-c
+clean-c:
+	$(MAKE) -C dist/ -f Makefile.basic clean

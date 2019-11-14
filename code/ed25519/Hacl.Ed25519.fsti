@@ -1,49 +1,64 @@
 module Hacl.Ed25519
 
 module ST = FStar.HyperStack.ST
-
 open FStar.HyperStack.All
 
-open FStar.Buffer
-
-#reset-options "--max_fuel 0 --z3rlimit 20"
-
-(* Abbreviations *)
-let uint8_p = buffer UInt8.t
-let hint8_p = buffer Hacl.UInt8.t
-
-private let op_String_Access (h:HyperStack.mem) (b:uint8_p{live h b}) =
-  Hacl.Spec.Endianness.reveal_sbytes (as_seq h b)
-
+open Lib.IntTypes
+open Lib.Buffer
 
 val sign:
-  signature:hint8_p{length signature = 64} ->
-  secret:hint8_p{length secret = 32} ->
-  msg:hint8_p{length msg < pow2 32 - 64} ->
-  len:UInt32.t{UInt32.v len = length msg} ->
+    signature:lbuffer uint8 64ul
+  -> secret:lbuffer uint8 32ul
+  -> len:size_t{v len + 64 <= max_size_t}
+  -> msg:lbuffer uint8 len ->
   Stack unit
-    (requires (fun h -> live h signature /\ live h msg /\ live h secret))
-    (ensures (fun h0 _ h1 -> live h0 signature /\ live h0 msg /\ live h0 secret /\
-      live h1 signature /\ modifies_1 signature h0 h1 /\
-      h1.[signature] == Spec.Ed25519.sign h0.[secret] h0.[msg]))
-
+    (requires fun h -> live h signature /\ live h msg /\ live h secret)
+    (ensures  fun h0 _ h1 -> modifies (loc signature) h0 h1 /\
+      as_seq h1 signature == Spec.Ed25519.sign (as_seq h0 secret) (as_seq h0 msg))
 
 val verify:
-  output:uint8_p{length output = 32} ->
-  msg:uint8_p ->
-  len:UInt32.t{length msg = UInt32.v len /\ length msg < pow2 32 - 64} ->
-  signature:uint8_p{length signature = 64} ->
+    output:lbuffer uint8 32ul
+  -> len:size_t{v len + 64 <= max_size_t}
+  -> msg:lbuffer uint8 len
+  -> signature:lbuffer uint8 64ul ->
   Stack bool
-    (requires (fun h -> live h output /\ live h msg /\ live h signature))
-    (ensures (fun h0 b h1 -> live h0 output /\ live h0 msg /\ live h0 signature /\
-      modifies_0 h0 h1 /\
-      b == Spec.Ed25519.verify h0.[output] h0.[msg] h0.[signature]))
-
+    (requires fun h -> live h output /\ live h msg /\ live h signature)
+    (ensures  fun h0 b h1 -> modifies0 h0 h1 /\
+      b == Spec.Ed25519.verify (as_seq h0 output) (as_seq h0 msg) (as_seq h0 signature)
+    )
 
 val secret_to_public:
-  output:hint8_p{length output = 32} ->
-  secret:hint8_p{length secret = 32 /\ disjoint output secret} ->
+    output:lbuffer uint8 32ul
+  -> secret:lbuffer uint8 32ul ->
   Stack unit
-    (requires (fun h -> live h output /\ live h secret))
-    (ensures (fun h0 _ h1 -> live h0 output /\ live h0 secret /\ live h1 output /\ modifies_1 output h0 h1 /\
-      as_seq h1 output == Spec.Ed25519.secret_to_public h0.[secret]))
+    (requires fun h -> live h output /\ live h secret /\ disjoint output secret)
+    (ensures  fun h0 _ h1 -> modifies (loc output) h0 h1 /\
+      as_seq h1 output == Spec.Ed25519.secret_to_public (as_seq h0 secret)
+    )
+
+val expand_keys:
+    ks:lbuffer uint8 96ul
+  -> secret:lbuffer uint8 32ul ->
+  Stack unit
+    (requires fun h -> live h ks /\ live h secret /\ disjoint ks secret)
+    (ensures  fun h0 _ h1 -> modifies (loc ks) h0 h1 /\
+      (let pub, s, prefix = Spec.Ed25519.expand_keys (as_seq h0 secret) in
+      as_seq h1 (gsub ks 0ul 32ul) == pub /\
+      as_seq h1 (gsub ks 32ul 32ul) == s /\
+      as_seq h1 (gsub ks 64ul 32ul) == prefix)
+    )
+
+val sign_expanded:
+    signature:lbuffer uint8 64ul
+  -> ks:lbuffer uint8 96ul
+  -> len:size_t{v len + 64 <= max_size_t}
+  -> msg:lbuffer uint8 len ->
+  Stack unit
+    (requires fun h -> live h signature /\ live h msg /\ live h ks)
+    (ensures  fun h0 _ h1 -> modifies (loc signature) h0 h1 /\
+      as_seq h1 signature == Spec.Ed25519.sign_expanded
+        (as_seq h0 (gsub ks 0ul 32ul))
+        (as_seq h0 (gsub ks 32ul 32ul))
+        (as_seq h0 (gsub ks 64ul 32ul))
+        (as_seq h0 msg)
+    )

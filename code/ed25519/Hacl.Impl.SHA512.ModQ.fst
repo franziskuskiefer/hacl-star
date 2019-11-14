@@ -1,147 +1,131 @@
 module Hacl.Impl.SHA512.ModQ
 
 module ST = FStar.HyperStack.ST
-
 open FStar.HyperStack.All
 
-open FStar.Buffer
-open Hacl.Impl.BignumQ.Mul
-open Hacl.UInt64
+open Lib.IntTypes
+open Lib.ByteSequence
+open Lib.Sequence
+open Lib.Buffer
 
+module F56 = Hacl.Impl.Ed25519.Field56
 
-#reset-options "--max_fuel 0 --z3rlimit 20"
+#reset-options "--z3rlimit 200 --max_fuel 0 --max_ifuel 0"
 
-open Hacl.Spec.Endianness
-
-private
-val lemma_modifies_0_2: #a:Type -> #a':Type -> h0:HyperStack.mem -> h1:HyperStack.mem -> h2:HyperStack.mem -> b:buffer a -> b':buffer a' -> Lemma (requires (live h0 b /\ b' `unused_in` h0 /\ live h1 b' /\ frameOf b' = FStar.HyperStack.(h0.tip)
-    /\ modifies_0 h0 h1 /\ modifies_2 b b' h1 h2))
-       (ensures (modifies_2_1 b h0 h2))
-let lemma_modifies_0_2 #a #a' h0 h1 h2 b b' =
-  lemma_reveal_modifies_0 h0 h1;
-  lemma_reveal_modifies_2 b b' h1 h2;
-  lemma_intro_modifies_2_1 b h0 h2
-
-
-#reset-options "--max_fuel 0 --z3rlimit 20"
-
-[@ "substitute"]
-private
-val sha512_modq_pre_:
-  out:qelemB ->
-  prefix:buffer Hacl.UInt8.t{length prefix = 32 /\ disjoint prefix out} ->
-  input:buffer Hacl.UInt8.t{disjoint input out} ->
-  len  :UInt32.t{UInt32.v len = length input /\ length input < pow2 32 - 32} ->
-  tmp:buffer Hacl.UInt64.t{length tmp = 10 /\ disjoint out tmp} ->
+//FIX
+val sha512_pre_msg:
+    hash:lbuffer uint8 64ul
+  -> prefix:lbuffer uint8 32ul
+  -> len:size_t{v len + 32 <= max_size_t}
+  -> input:lbuffer uint8 len ->
   Stack unit
-        (requires (fun h0 -> live h0 input /\ live h0 out /\ live h0 tmp /\ live h0 prefix))
-        (ensures  (fun h0 _ h1 -> live h0 input /\ live h1 out /\ modifies_2 out tmp h0 h1 /\
-          live h0 prefix /\ live h1 prefix /\
-          Hacl.Spec.BignumQ.Eval.eval_q (reveal_h64s (as_seq h1 out)) == Spec.Ed25519.sha512_modq FStar.Seq.(reveal_sbytes (as_seq h0 prefix @| as_seq h0 input)) /\
-          (let out = as_seq h1 out in let op_String_Access = Seq.index in
-           v (out.[0]) < 0x100000000000000 /\ v (out.[1]) < 0x100000000000000 /\
-           v (out.[2]) < 0x100000000000000 /\ v (out.[3]) < 0x100000000000000 /\
-           v (out.[4]) < 0x100000000000000) ))
-#reset-options "--max_fuel 0 --z3rlimit 200"
-let sha512_modq_pre_ out prefix input len tmp =
-  (**) assert_norm(pow2 32 = 0x100000000);
-  (**) let h0 = ST.get() in
+    (requires fun h ->
+      live h hash /\ live h prefix /\ live h input /\
+      disjoint input hash /\ disjoint prefix hash)
+    (ensures fun h0 _ h1 -> modifies (loc hash) h0 h1 /\
+      as_seq h1 hash == Spec.Agile.Hash.hash Spec.Hash.Definitions.SHA2_512
+           (concat #uint8 #32 #(v len) (as_seq h0 prefix) (as_seq h0 input))
+    )
+let sha512_pre_msg h prefix len input =
+  push_frame ();
+  assert_norm(pow2 32 <= pow2 125 - 1);
+  let pre_msg = create (len +. 32ul) (u8 0) in
+  concat2 32ul prefix len input pre_msg;
+  Hacl.Hash.SHA2.hash_512_lib (len +. 32ul) pre_msg h;
+  pop_frame ()
+
+//FIX
+val sha512_pre_pre2_msg:
+    hash:lbuffer uint8 64ul
+  -> prefix:lbuffer uint8 32ul
+  -> prefix2:lbuffer uint8 32ul
+  -> len:size_t{v len + 64 <= max_size_t}
+  -> input:lbuffer uint8 len ->
+  Stack unit
+    (requires fun h ->
+      live h hash /\ live h prefix /\ live h prefix2 /\ live h input /\
+      disjoint prefix hash /\ disjoint prefix2 hash /\ disjoint input hash
+    )
+    (ensures fun h0 _ h1 -> modifies (loc hash) h0 h1 /\
+      as_seq h1 hash == Spec.Agile.Hash.hash Spec.Hash.Definitions.SHA2_512
+        (concat #uint8 #64 #(v len)
+          (concat #uint8 #32 #32 (as_seq h0 prefix) (as_seq h0 prefix2))
+          (as_seq h0 input)
+        )
+    )
+
+
+let sha512_pre_pre2_msg h prefix prefix2 len input =
+  push_frame ();
+  let pre_msg = create (len +. 64ul) (u8 0) in
+  assert_norm(pow2 32 <= pow2 125 - 1);
+  concat3 32ul prefix 32ul prefix2 len input pre_msg;
+  Hacl.Hash.SHA2.hash_512_lib (len +. 64ul) pre_msg h;
+  pop_frame ()
+
+val sha512_modq_pre:
+    out:lbuffer uint64 5ul
+  -> prefix:lbuffer uint8 32ul
+  -> len:size_t{v len + 32 <= max_size_t}
+  -> input:lbuffer uint8 len ->
+  Stack unit
+    (requires fun h ->
+      live h input /\ live h out /\ live h prefix /\
+      disjoint prefix out /\  disjoint out input)
+    (ensures  fun h0 _ h1 -> modifies (loc out) h0 h1 /\
+      (let s = as_seq h1 out in
+       v (Seq.index s 0) < pow2 56 /\
+       v (Seq.index s 1) < pow2 56 /\
+       v (Seq.index s 2) < pow2 56 /\
+       v (Seq.index s 3) < pow2 56 /\
+       v (Seq.index s 4) < pow2 32) /\
+      F56.as_nat h1 out ==
+      Spec.Ed25519.sha512_modq (32 + v len)
+        (concat #uint8 #32 #(v len) (as_seq h0 prefix) (as_seq h0 input))
+    )
+
+let sha512_modq_pre out prefix len input =
   push_frame();
-  (**) let h1 = ST.get() in
-  let hash = create (Hacl.Cast.uint8_to_sint8 0uy) 64ul in
-  (**) let h2 = ST.get() in
-  (**) no_upd_lemma_0 h1 h2 prefix;
-  (**) no_upd_lemma_0 h1 h2 input;
-  Hacl.Impl.Sha512.sha512_pre_msg hash prefix input len;
-  (**) let h3 = ST.get() in
-  (**) lemma_modifies_0_1' hash h1 h2 h3;
+  let tmp = create 10ul (u64 0) in
+  let hash = create 64ul (u8 0) in
+  sha512_pre_msg hash prefix len input;
   Hacl.Impl.Load56.load_64_bytes tmp hash;
-  (**) let h4 = ST.get() in
-  (**) lemma_modifies_0_1 tmp h1 h3 h4;
-  pop_frame();
-  let h5 = ST.get() in
-  (**) modifies_popped_1 tmp h0 h1 h4 h5;
-  (**) assert(modifies_1 tmp h0 h5);
-  (**) assert(let t = as_seq h5 tmp in Hacl.Impl.BignumQ.Mul.all_10_bellow_56 t);
-  (**) assert(let t = reveal_h64s (as_seq h5 tmp) in let op_String_Access = Seq.index in
-    Hacl.Spec.BignumQ.Eval.eval_q_10 t.[0] t.[1] t.[2] t.[3] t.[4] t.[5] t.[6] t.[7] t.[8] t.[9] < pow2 512);
   Hacl.Impl.BignumQ.Mul.barrett_reduction out tmp;
-  (**) let h6 = ST.get() in
-  (**) lemma_modifies_1_1 tmp out h0 h5 h6;
-  (**) assert_norm(pow2 252 + 27742317777372353535851937790883648493 =
-    0x1000000000000000000000000000000014def9dea2f79cd65812631a5cf5d3ed)
-
-
-
-#reset-options "--max_fuel 0 --z3rlimit 200"
-
-let sha512_modq_pre out prefix input len =
-  push_frame();
-  let h0 = ST.get() in
-  let tmp = create (Hacl.Cast.uint64_to_sint64 0uL) 10ul in
-  let h1 = ST.get() in
-  sha512_modq_pre_ out prefix input len tmp;
-  let h2 = ST.get() in
-  lemma_modifies_0_2 h0 h1 h2 out tmp;
+  assert_norm (pow2 56 == 0x100000000000000);
   pop_frame()
 
-
-#reset-options "--max_fuel 0 --z3rlimit 20"
-
-[@ "substitute"]
-private
-val sha512_modq_pre_pre2_:
-  out:qelemB ->
-  prefix:buffer Hacl.UInt8.t{length prefix = 32 /\ disjoint out prefix} ->
-  prefix2:buffer Hacl.UInt8.t{length prefix2 = 32 /\ disjoint out prefix2} ->
-  input:buffer Hacl.UInt8.t{disjoint out input} ->
-  len  :UInt32.t{UInt32.v len = length input /\ length input < pow2 32 - 64} ->
-  tmp:buffer Hacl.UInt64.t{length tmp = 10 /\ disjoint out tmp} ->
+val sha512_modq_pre_pre2:
+    out:lbuffer uint64 5ul
+  -> prefix:lbuffer uint8 32ul
+  -> prefix2:lbuffer uint8 32ul
+  -> len:size_t{v len + 64 <= max_size_t}
+  -> input:lbuffer uint8 len ->
   Stack unit
-        (requires (fun h -> live h input /\ live h out /\ live h tmp /\ live h prefix /\ live h prefix2))
-        (ensures  (fun h0 _ h1 -> live h0 input /\ live h1 out /\ modifies_2 out tmp h0 h1 /\
-          live h0 prefix /\ live h1 prefix /\ live h0 prefix2 /\ live h1 prefix2 /\
-          Hacl.Spec.BignumQ.Eval.eval_q (reveal_h64s (as_seq h1 out)) == Spec.Ed25519.sha512_modq FStar.Seq.(reveal_sbytes (as_seq h0 prefix @| as_seq h0 prefix2 @| as_seq h0 input)) /\
-          (let out = as_seq h1 out in let op_String_Access = Seq.index in
-           v (out.[0]) < 0x100000000000000 /\ v (out.[1]) < 0x100000000000000 /\
-           v (out.[2]) < 0x100000000000000 /\ v (out.[3]) < 0x100000000000000 /\
-           v (out.[4]) < 0x100000000000000) ))
-#reset-options "--max_fuel 0 --z3rlimit 200"
-let sha512_modq_pre_pre2_ out prefix prefix2 input len tmp =
-  assert_norm(pow2 32 = 0x100000000);
-  let h0 = ST.get() in
+    (requires fun h ->
+      live h input /\ live h out /\ live h prefix /\ live h prefix2 /\
+      disjoint prefix out /\ disjoint prefix2 out /\ disjoint out input)
+    (ensures  fun h0 _ h1 ->  modifies (loc out) h0 h1 /\
+      (let s = as_seq h1 out in
+       v (Seq.index s 0) < pow2 56 /\
+       v (Seq.index s 1) < pow2 56 /\
+       v (Seq.index s 2) < pow2 56 /\
+       v (Seq.index s 3) < pow2 56 /\
+       v (Seq.index s 4) < pow2 32) /\
+     F56.as_nat h1 out ==
+      Spec.Ed25519.sha512_modq (64 + v len)
+        (concat #uint8 #64 #(v len)
+          (concat #uint8 #32 #32
+            (as_seq h0 prefix)
+            (as_seq h0 prefix2))
+          (as_seq h0 input)
+        )
+      )
+let sha512_modq_pre_pre2 out prefix prefix2 len input =
   push_frame();
-  let h1 = ST.get() in
-  let hash = create (Hacl.Cast.uint8_to_sint8 0uy) 64ul in
-  let h2 = ST.get() in
-  Hacl.Impl.Sha512.sha512_pre_pre2_msg hash prefix prefix2 input len;  
-  let h3 = ST.get() in
-  (**) lemma_modifies_0_1' hash h1 h2 h3;
+  let tmp = create 10ul (u64 0) in
+  let hash = create 64ul (u8 0) in
+  sha512_pre_pre2_msg hash prefix prefix2 len input;
   Hacl.Impl.Load56.load_64_bytes tmp hash;
-  let h4 = ST.get() in
-  (**) lemma_modifies_0_1 tmp h1 h3 h4;
-  pop_frame();
-  (**) let hfin = ST.get() in
-  (**) modifies_popped_1 tmp h0 h1 h4 hfin;
-  let h1 = ST.get() in
-  assert(modifies_1 tmp h0 h1);
-  assert(let t = as_seq h1 tmp in Hacl.Impl.BignumQ.Mul.all_10_bellow_56 t);
-  assert(let t = reveal_h64s (as_seq h1 tmp) in let op_String_Access = Seq.index in
-    Hacl.Spec.BignumQ.Eval.eval_q_10 t.[0] t.[1] t.[2] t.[3] t.[4] t.[5] t.[6] t.[7] t.[8] t.[9] < pow2 512);
   Hacl.Impl.BignumQ.Mul.barrett_reduction out tmp;
-  assert_norm(pow2 252 + 27742317777372353535851937790883648493 =
-    0x1000000000000000000000000000000014def9dea2f79cd65812631a5cf5d3ed)
-
-
-
-#reset-options "--max_fuel 0 --z3rlimit 200"
-
-let sha512_modq_pre_pre2 out prefix prefix2 input len =
-  push_frame();
-  let h0 = ST.get() in
-  let tmp = create (Hacl.Cast.uint64_to_sint64 0uL) 10ul in
-  let h1 = ST.get() in
-  sha512_modq_pre_pre2_ out prefix prefix2 input len tmp;
-  let h2 = ST.get() in
-  lemma_modifies_0_2 h0 h1 h2 out tmp;
+  assert_norm (pow2 56 == 0x100000000000000);
   pop_frame()

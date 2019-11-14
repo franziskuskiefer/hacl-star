@@ -29,17 +29,21 @@ function export_home() {
 function vale_test() {
   echo Running Vale Test &&
   fetch_kremlin &&
-        fetch_and_make_vale &&
+        fetch_vale &&
         env VALE_SCONS_PARALLEL_OPT="-j $threads" make -j $threads vale.build -k
 }
 
 function hacl_test() {
+    make_target=ci
+    if [[ $target == "mozilla-ci" ]]; then
+        make_target=mozilla-ci
+    fi
     fetch_and_make_kremlin &&
         fetch_and_make_mlcrypto &&
         fetch_mitls &&
-        fetch_and_make_vale &&
+        fetch_vale &&
         export_home OPENSSL "$(pwd)/mlcrypto/openssl" &&
-        env VALE_SCONS_PARALLEL_OPT="-j $threads" make -j $threads ci -k
+        env VALE_SCONS_PARALLEL_OPT="-j $threads" make -j $threads $make_target -k
 }
 
 function hacl_test_and_hints() {
@@ -68,7 +72,12 @@ function fetch_kremlin() {
     fi
     cd kremlin
     git fetch origin
-    local ref=$(if [ -f ../.kremlin_version ]; then cat ../.kremlin_version | tr -d '\r\n'; else echo origin/master; fi)
+    local ref=$(jq -c -r '.RepoVersions["kremlin_version"]' "$rootPath/.docker/build/config.json" )
+    if [[ $ref == "" || $ref == "null" ]]; then
+        echo "Unable to find RepoVersions.kremlin_version on $rootPath/.docker/build/config.json"
+        return -1
+    fi
+
     echo Switching to KreMLin $ref
     git reset --hard $ref
     cd ..
@@ -86,7 +95,12 @@ function fetch_mlcrypto() {
     fi
     cd mlcrypto
     git fetch origin
-    local ref=$(if [ -f ../.mlcrypto_version ]; then cat ../.mlcrypto_version | tr -d '\r\n'; else echo origin/master; fi)
+    local ref=$(jq -c -r '.RepoVersions["mlcrypto_version"]' "$rootPath/.docker/build/config.json" )
+    if [[ $ref == "" || $ref == "null" ]]; then
+        echo "Unable to find RepoVersions.mlcrypto_version on $rootPath/.docker/build/config.json"
+        return -1
+    fi
+
     echo Switching to MLCrypto $ref
     git reset --hard $ref
     git submodule update
@@ -101,7 +115,12 @@ function fetch_mitls() {
     fi
     cd mitls-fstar
     git fetch origin
-    local ref=$(if [ -f ../.mitls_version ]; then cat ../.mitls_version | tr -d '\r\n'; else echo origin/master; fi)
+    local ref=$(jq -c -r '.RepoVersions["mitls_version"]' "$rootPath/.docker/build/config.json" )
+    if [[ $ref == "" || $ref == "null" ]]; then
+        echo "Unable to find RepoVersions.mitls_version on $rootPath/.docker/build/config.json"
+        return -1
+    fi
+
     echo Switching to mitls-fstar $ref
     git reset --hard $ref
     git clean -fdx
@@ -110,23 +129,8 @@ function fetch_mitls() {
 }
 
 function fetch_vale() {
-    # NOTE: the name of the directory where Vale is downloaded MUST NOT be vale, because the latter already exists
-    # so let's call it valebin
-    if [ ! -d valebin ]; then
-        git clone https://github.com/project-everest/vale valebin
-    fi
-    cd valebin
-    git fetch origin
-    local ref=$(if [ -f ../.vale_version ]; then cat ../.vale_version | tr -d '\r\n'; else echo origin/master; fi)
-    echo Switching to Vale $ref
-    git reset --hard $ref
-    cd ..
-    export_home VALE "$(pwd)/valebin"
-}
-
-function fetch_and_make_vale() {
-    fetch_vale
-    pushd valebin && ./run_scons.sh -j $threads && popd
+    HACL_HOME=$(pwd) tools/get_vale.sh
+    export_home VALE "$(pwd)/../vale"
 }
 
 function refresh_hacl_hints() {
@@ -148,7 +152,7 @@ function refresh_hints() {
     local hints_dir="$4"
 
     # Figure out the branch
-    CI_BRANCH=$branchname
+    CI_BRANCH=${branchname##refs/heads/}
     echo "Current branch_name=$CI_BRANCH"
 
     # Add all the hints, even those not under version control
@@ -173,8 +177,16 @@ function refresh_hints() {
     # Silent, always-successful merge
     export GIT_MERGE_AUTOEDIT=no
     git merge $commit -Xtheirs
+
+    # If build hints branch exists on remote, remove it
+    exists=$(git branch -r -l "origin/BuildHints-$CI_BRANCH")
+    if [ ! -z $exists ]; then
+        git push $remote :BuildHints-$CI_BRANCH
+    fi
+
     # Push.
-    git push $remote $CI_BRANCH
+    git checkout -b BuildHints-$CI_BRANCH
+    git push $remote BuildHints-$CI_BRANCH
 }
 
 function exec_build() {
@@ -192,7 +204,7 @@ function exec_build() {
     export_home HACL "$(pwd)"
     export_home EVERCRYPT "$(pwd)/providers"
 
-    if [[ $target == "hacl-ci" ]]; then
+    if [[ $target == "hacl-ci" || $target == "mozilla-ci" ]]; then
         echo target - >hacl-ci
         if [[ $branchname == "vale" ||  $branchname == "_vale" ]]; then
           vale_test && echo -n true >$status_file
@@ -224,10 +236,11 @@ function exec_build() {
 
 # Some environment variables we want
 export OCAMLRUNPARAM=b
-export OTHERFLAGS="--print_z3_statistics --use_hints --query_stats"
+export OTHERFLAGS="--use_hints --query_stats"
 export MAKEFLAGS="$MAKEFLAGS -Otarget"
 
 export_home FSTAR "$(pwd)/FStar"
 cd hacl-star
+rootPath=$(pwd)
 exec_build
 cd ..

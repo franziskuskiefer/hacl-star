@@ -1,0 +1,50 @@
+[
+  "ÄÃÁüºŒ¹GhþŽö;Â˜\u0017",
+  [
+    [
+      "EverCrypt.Ed25519.sign",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "dc4536baa45f2e50dd3fc3fda607fccd"
+    ],
+    [
+      "EverCrypt.Ed25519.verify",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "ddd1172e68c3113773f833023ad593f6"
+    ],
+    [
+      "EverCrypt.Ed25519.secret_to_public",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "e0cc29c2537bd1685e7d2679f7631a98"
+    ],
+    [
+      "EverCrypt.Ed25519.expand_keys",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "997c56232de6fa9a8b7805457ce11fa7"
+    ],
+    [
+      "EverCrypt.Ed25519.sign_expanded",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "fb05e84bb7f799cad399d9c7cac6aa32"
+    ]
+  ]
+]

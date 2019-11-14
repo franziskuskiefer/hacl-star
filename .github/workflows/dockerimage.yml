@@ -10,5 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Get Info
+      run: pwd && ls -l
     - name: Build the Docker image
       run: ./build_local.sh

@@ -20,6 +20,7 @@
     "CIBuildTarget" : "hacl-ci",
     "NightlyBuildTarget" : "hacl-nightly",
     "HasLogsToExtract" : true,
+    "MaxThreads": 8,
 
     "NotificationEnabled" : true,
     "NotificationChannel" : "#hacl-build",

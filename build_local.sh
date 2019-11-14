@@ -18,6 +18,7 @@ DOCKERFILE=$( echo ${DOCKERFILE} | sed "s/{agentOS}/${agentOS}/g" )
 
 ARTIFACTPATH=$(jq -c -r ".ArtifactPath" "$FILE")
 DOCKERCOMMAND=$(jq -c -r ".DockerCommand" "$FILE")
+MAXTHREADS=$(jq -c -r ".MaxThreads" "$FILE")
 
 # Copy dockerfile to root
 cp $DOCKERFILE ./Dockerfile
@@ -48,7 +49,7 @@ echo "fake" > id_rsa
 echo "fake" > commitinfofilename.json
 
 # build container
-$DOCKERCOMMAND build --file Dockerfile --build-arg BUILDLOGFILE="buildlogfile.txt" --build-arg MAXTHREADS="8" --build-arg BUILDTARGET="$BUILDTARGET" --build-arg BRANCHNAME="$LOCALBRANCHNAME" --build-arg COMMITID="$COMMITID" --build-arg DOCKERHUBPROJECT="projecteverest/" --tag "$PROJECTNAME:local" .
+$DOCKERCOMMAND build --file Dockerfile --build-arg BUILDLOGFILE="buildlogfile.txt" --build-arg MAXTHREADS="$MAXTHREADS" --build-arg BUILDTARGET="$BUILDTARGET" --build-arg BRANCHNAME="$LOCALBRANCHNAME" --build-arg COMMITID="$COMMITID" --build-arg DOCKERHUBPROJECT="projecteverest/" --tag "$PROJECTNAME:local" .
 
 if [[ -n "$ARTIFACTPATH" ]]; then
   $DOCKERCOMMAND run -v $PWD:/mnt/hacl-star-host/ --rm -t hacl-star:local cp -r /home/everest/hacl-star/dist/ /mnt/hacl-star-host/$ARTIFACTPATH

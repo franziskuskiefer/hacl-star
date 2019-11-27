@@ -1,5 +1,5 @@
 [
-  "ž3•\u000f\u0019MÔ\u0013ðÊ Vá\u0007»«",
+  "x×\u0003HqUËüZØ>N=™\u001eN",
   [
     [
       "Vale.Stdcalls.X64.Cpuid.as_t",
@@ -8,7 +8,7 @@
       0,
       [ "@query" ],
       0,
-      "f61b2a153d3c80dd25320c206b5bc707"
+      "b763b6c774f60c27a618ad3f26ac0428"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.as_normal_t",
@@ -17,7 +17,7 @@
       0,
       [ "@query" ],
       0,
-      "5c8c4fba6c1476884aae55ab4a17041f"
+      "2ee7f4a38c4b7127b53704825189d2b9"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.dom",
@@ -36,7 +36,7 @@
         "typing_Vale.Interop.X64.max_stdcall"
       ],
       0,
-      "ab0249f037d1258aff9a3f4c035bc23b"
+      "e43dfca70d863cbed599ac6397c7dd5b"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.aesni_lemma'",
@@ -84,7 +84,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "826c3a4449b3c7707cd84587a715e51d"
+      "9b8710e37e2d7033945e8facb45da374"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.aesni_lemma",
@@ -113,7 +113,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "455719c5f998eb1dc9f69632bfb31d85"
+      "cab9bddc07f5a7f68439006ddb665e0a"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_aesni_t",
@@ -144,7 +144,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "787479af42c66733e303079d2b163023"
+      "95a74a2afce05f02f85c6fdb88bf119c"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.sha_lemma'",
@@ -211,7 +211,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "7358c7d13b0d885ed9729bcef3cd8813"
+      "e8c6775f7053e2eefafd85491145eba7"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.sha_lemma",
@@ -240,7 +240,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "f2b0eccf6f1be47b344047b630442c13"
+      "12aff303c3613882ab74ac922946dcd0"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_sha_t",
@@ -271,7 +271,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "f1c105a6bf8e87e232179877e01c7e34"
+      "4408189b2cfe3f8adb1231996d95a22d"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.adx_lemma'",
@@ -338,7 +338,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "c0c80facab882e9bc203083d7e1d691c"
+      "8c2a4f80e7a5aa5e0dbb5673df8de64d"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.adx_lemma",
@@ -367,7 +367,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "86fd510e7553f34faac42a5081cea7ba"
+      "5d7bd783c9136246b2aad88aba8279bb"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_adx_t",
@@ -398,7 +398,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "b5ea6b4912bb7210a1a88ba113a4518d"
+      "b484b2ca56effdfcaafd4390ff1dfd0d"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.avx_lemma'",
@@ -465,7 +465,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "dde58bdd547c26f928ac439d9826a6ca"
+      "84d5aae0f2c57c571815352112b62d56"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.avx_lemma",
@@ -494,7 +494,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "438242bdf926e668af805cece7384194"
+      "4db9b9128e53c7e459d0109241b42b3d"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_avx_t",
@@ -525,7 +525,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "83e7a4d97a4f2219789dd0d72a88f441"
+      "e032f4f22cfc1cc92ac92b5442321683"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.avx2_lemma'",
@@ -592,7 +592,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "dc53ef21d998d29f16348737267f42df"
+      "1dc583ec19d3c7476a9a9ccef7aed8e5"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.avx2_lemma",
@@ -621,7 +621,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "b7ff95f711f437c7da1989fb58340a26"
+      "45b866360d03c44fe414b334767b2fcf"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_avx2_t",
@@ -652,7 +652,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "91cbba2829c172f4b93ede207f4f5485"
+      "e887cc18adc4801f06e76e8594d55ff5"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.movbe_lemma'",
@@ -694,7 +694,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "771fad3044a3373f77cffcea9805c592"
+      "7a2444140b29580357102e53514210b4"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.movbe_lemma",
@@ -723,7 +723,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "491b24e0b9cd21c4adb9891619cbced3"
+      "a125b32413bd12e1485f9c78bf1711b3"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_movbe_t",
@@ -754,7 +754,7 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "3bb0a7209cf0b6978a3378560fb266de"
+      "42bdc53be21d22fa2a7308c50aa7f5a1"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.sse_lemma'",
@@ -796,7 +796,7 @@
         "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
       ],
       0,
-      "66a6a89a97afb07eba608608b983d388"
+      "d0d3cda2b63d19835353fcdb2fe4ccbd"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.sse_lemma",
@@ -825,7 +825,7 @@
         "typing_Vale.Interop.Assumptions.win"
       ],
       0,
-      "a988a0528cacd4b90ab48126d5bcf48d"
+      "44e3d250f206eaba222ed240a6bbc6c1"
     ],
     [
       "Vale.Stdcalls.X64.Cpuid.lowstar_sse_t",
@@ -856,7 +856,109 @@
         "typing_Vale.Stdcalls.X64.Cpuid.dom"
       ],
       0,
-      "c538238861fcb063c968da38a71eaa0e"
+      "2b7fbce08881dee0b3442791abbdb67f"
+    ],
+    [
+      "Vale.Stdcalls.X64.Cpuid.rdrand_lemma'",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "Vale.Interop.X64_interpretation_Tm_arrow_829b64a0a0118c2bcbf8116d158118c4",
+        "Vale.Interop.X64_interpretation_Tm_arrow_972e4e2c724f700a5019205902fe83cf",
+        "bool_inversion", "eq2-interp",
+        "equation_Vale.AsLowStar.ValeSig.vale_calling_conventions",
+        "equation_Vale.AsLowStar.ValeSig.vale_calling_conventions_stdcall",
+        "equation_Vale.AsLowStar.ValeSig.vale_save_reg",
+        "equation_Vale.AsLowStar.ValeSig.vale_save_xmm",
+        "equation_Vale.Interop.X64.regs_modified_stdcall",
+        "equation_Vale.Interop.X64.xmms_modified_stdcall",
+        "equation_Vale.Lib.X64.Cpuidstdcall.va_ens_check_rdrand_stdcall",
+        "equation_Vale.Lib.X64.Cpuidstdcall.va_req_check_rdrand_stdcall",
+        "equation_Vale.Stdcalls.X64.Cpuid.rdrand_post",
+        "equation_Vale.Stdcalls.X64.Cpuid.rdrand_pre",
+        "equation_Vale.X64.Decls.va_ensure_total",
+        "equation_Vale.X64.Decls.va_require_total",
+        "equation_Vale.X64.Machine_s.reg_64",
+        "fuel_guarded_inversion_Vale.X64.State.vale_state",
+        "function_token_typing_Prims.__cache_version_number__",
+        "function_token_typing_Vale.Interop.X64.regs_modified_stdcall",
+        "function_token_typing_Vale.Interop.X64.xmms_modified_stdcall",
+        "interpretation_Tm_abs_03aad193b1698b0c0f9f1c4cd5d9d9b7",
+        "interpretation_Tm_abs_e898f80cadac726faae28295fc918f5e",
+        "primitive_Prims.op_BarBar", "primitive_Prims.op_Equality",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_7c6d46894cde6d36beb32fea22fad00f",
+        "token_correspondence_Vale.Interop.X64.regs_modified_stdcall",
+        "token_correspondence_Vale.Interop.X64.xmms_modified_stdcall",
+        "typing_Vale.Interop.Assumptions.win",
+        "typing_Vale.Lib.X64.Cpuidstdcall.va_lemma_check_rdrand_stdcall",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok"
+      ],
+      0,
+      "4b0e534ce93dd886f53d8af36d26a292"
+    ],
+    [
+      "Vale.Stdcalls.X64.Cpuid.rdrand_lemma",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion", "eq2-interp",
+        "equation_FStar.Pervasives.Native.fst",
+        "equation_FStar.Pervasives.Native.snd",
+        "equation_Vale.AsLowStar.ValeSig.fuel_of",
+        "equation_Vale.AsLowStar.ValeSig.state_of",
+        "equation_Vale.AsLowStar.ValeSig.vale_calling_conventions_stdcall",
+        "equation_Vale.Lib.X64.Cpuidstdcall.va_ens_check_rdrand_stdcall",
+        "equation_Vale.Lib.X64.Cpuidstdcall.va_req_check_rdrand_stdcall",
+        "equation_Vale.Stdcalls.X64.Cpuid.rdrand_post",
+        "equation_Vale.Stdcalls.X64.Cpuid.rdrand_pre",
+        "equation_Vale.X64.Decls.va_require_total",
+        "equation_Vale.X64.Memory.get_vale_heap",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "fuel_guarded_inversion_Vale.X64.State.vale_state",
+        "interpretation_Tm_abs_03aad193b1698b0c0f9f1c4cd5d9d9b7",
+        "interpretation_Tm_abs_e898f80cadac726faae28295fc918f5e",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
+        "proj_equation_FStar.Pervasives.Native.Mktuple2__2",
+        "typing_Vale.Interop.Assumptions.win"
+      ],
+      0,
+      "9027d10415c64518e782a10049deaa7b"
+    ],
+    [
+      "Vale.Stdcalls.X64.Cpuid.lowstar_rdrand_t",
+      1,
+      1,
+      0,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_FStar.List.Tot.Base.length.fuel_instrumented",
+        "@query", "constructor_distinct_Prims.Nil",
+        "data_typing_intro_Prims.Nil@tok", "eq2-interp",
+        "equation_Prims.eq2", "equation_Prims.eqtype",
+        "equation_Prims.squash", "equation_Vale.Interop.Base.arg",
+        "equation_Vale.Interop.X64.arity_ok",
+        "equation_Vale.Interop.X64.arity_ok_stdcall",
+        "equation_Vale.Interop.X64.max_stdcall",
+        "equation_Vale.Stdcalls.X64.Cpuid.dom",
+        "equation_Vale.X64.Machine_Semantics_s.ins",
+        "equation_Vale.X64.Machine_Semantics_s.ocmp",
+        "equation_with_fuel_FStar.List.Tot.Base.length.fuel_instrumented",
+        "function_token_typing_Vale.Interop.Base.arg",
+        "function_token_typing_Vale.X64.MemoryAdapters.ins_equiv",
+        "function_token_typing_Vale.X64.MemoryAdapters.ocmp_equiv",
+        "kinding_Vale.Interop.Base.td@tok",
+        "projection_inverse_BoxInt_proj_0", "projection_inverse_Prims.Nil_a",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_b8c08cb8894cdb660d32da1093433103",
+        "typing_Vale.Stdcalls.X64.Cpuid.dom"
+      ],
+      0,
+      "e89f22cb1949155d6ae867ca12a165e7"
     ]
   ]
 ]

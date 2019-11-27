@@ -1,5 +1,5 @@
 [
-  "—¶C\u000e\u0005\u0000«:’E\u000e\u0016ä0\u0013\u001d",
+  "\u007fzßdþ9TC„!µÝ%\u001f\rÝ",
   [
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_aesni_support",
@@ -11,7 +11,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "f318a8f41b5ce9b1308d76209eea9b44"
+      "d3a2d426d451605423043ebf04a8cfa0"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_sha_support",
@@ -23,7 +23,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "2fa75ebde8c0dc14b561a31b9b9aea68"
+      "44701d81ff2dabe55a72df8257063196"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_adx_bmi2_support",
@@ -35,7 +35,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "7ae108a74e81f2c55b9d242be64e17f3"
+      "5f12a1ee065c9c227e449f298c5b090b"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_avx_support",
@@ -47,7 +47,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "93f19c82ac697d958248b717a5dcb234"
+      "f39204877481f392e2ae1b6489d8baf6"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_avx2_support",
@@ -59,7 +59,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "6ec8e3c973892bddda28e3813622a461"
+      "772dac534f10e252f48628b5145bf525"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_movbe_support",
@@ -71,7 +71,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "49d8b51a5b0a7e71b92543f4155fa8b0"
+      "5642b26e829c19ca7ce6797c364d03ab"
     ],
     [
       "Vale.Lib.X64.Cpuid.va_quick_check_sse_support",
@@ -83,7 +83,19 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "9a4872e310ef9592445c662677dddcd7"
+      "be2fb3239ee8a2d969c93efc24e3791b"
+    ],
+    [
+      "Vale.Lib.X64.Cpuid.va_quick_check_rdrand_support",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
+      ],
+      0,
+      "cafe05c8479e87b846e6b45cee11e87f"
     ]
   ]
 ]

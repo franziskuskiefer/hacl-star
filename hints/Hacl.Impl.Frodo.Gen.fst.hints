@@ -39,7 +39,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "503f3f55f1ff9359c363edd1a76359f8"
+      "78c2e7c631bc43e9647928daf2689ed3"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake0",
@@ -73,7 +73,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "cc5478661bd1588c1659926cab4440ea"
+      "62f5d6fc9b5aadb1387e304e5c1b952e"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake0",
@@ -139,7 +139,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "62c73ccd98d6da2a5e04476815cce00f"
+      "79fea2ca660895b24dd154dcd066448f"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake1",
@@ -180,7 +180,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "fb038b126938674e417a21e6449236d5"
+      "3a92c860fcdea41074cf3028b39cde41"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake1",
@@ -219,7 +219,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "fad70171f20c03d91aec785f634b0323"
+      "c3eae7fb456cec14852abbad45e6f664"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake1",
@@ -373,7 +373,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U64@tok"
       ],
       0,
-      "7acf213e4c131fcafe98b23a67bd28bf"
+      "9bdb1729385d71b2bcd4a0a5ec087105"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake",
@@ -394,7 +394,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "6be6158da3e53e60ca0c0bf1ed36140d"
+      "f3cec8581331d83921f8b7159c9efeaf"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake",
@@ -403,7 +403,7 @@
       0,
       [ "@query" ],
       0,
-      "103ef286614950be232f905c7392da88"
+      "c693144554884932e06d968256e9770d"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake",
@@ -485,7 +485,6 @@
         "equation_Spec.Frodo.Gen.frodo_gen_matrix_cshake_s",
         "equation_Spec.GaloisField.felem", "equation_Spec.GaloisField.gf",
         "equation_Spec.Matrix.create", "equation_Spec.Matrix.matrix",
-        "equation_Spec.SHA3.cshake128_frodo",
         "function_token_typing_FStar.Monotonic.Heap.heap",
         "function_token_typing_Lib.IntTypes.uint16",
         "function_token_typing_Lib.IntTypes.uint8",
@@ -581,6 +580,7 @@
         "refinement_interpretation_Tm_refine_66c713d37a6ed16eecfe1cdd673d1bf2",
         "refinement_interpretation_Tm_refine_695fc9bad57438f078f1918065bbd3eb",
         "refinement_interpretation_Tm_refine_6a32a668cfa99ccaca30a148b05d66f4",
+        "refinement_interpretation_Tm_refine_7e0b9b2dbca36eab00de093c1b701c6d",
         "refinement_interpretation_Tm_refine_83845a86f2550cdf941eeb1d9b59602b",
         "refinement_interpretation_Tm_refine_873133828c907cbc2718aea6e8b831ae",
         "refinement_interpretation_Tm_refine_8b40f4ba53055527eadf55a24b95d6ac",
@@ -650,7 +650,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "874ecd971413cc0545e26d2a89a1ca19"
+      "5ece8a858b4fb1a73ff869e1726a1a0d"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x0",
@@ -692,7 +692,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "dbcc6bc875a42d352da054e2a1224cc4"
+      "2fd9cb9457aec831d606cc5e9bf19bf3"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x0",
@@ -726,7 +726,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "c7ee89095996cfbdaf0acfbd1cb0a083"
+      "cdd56aee746ed4c6e1cc69e1556665ea"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x0",
@@ -812,7 +812,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "5e4c72df6ddcdbeea98f82a986288a91"
+      "4f760f5cbfaec862a85f0a1fe6c59c64"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x1",
@@ -857,7 +857,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "028342510ee7ab2044dc4dab8d5ee697"
+      "7773ca341b655d711ef0bb97c840dbfd"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x1",
@@ -899,7 +899,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "5744d7f73bb30c0d9f53ab6cfb0459c6"
+      "fdaf46d5b22127a91a4be607264899c6"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x1",
@@ -1064,7 +1064,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "39653abebeee0da4a25fc6ddf55d8c62"
+      "aa4acc30c520d033c99d26d027c42391"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x",
@@ -1086,7 +1086,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "c52f19e7a8d69684782dd9979f8c67aa"
+      "3b8da76474f665d087a6981bc2e2ce5d"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x",
@@ -1095,7 +1095,7 @@
       0,
       [ "@query" ],
       0,
-      "b3eb0d30515e29e0563f290733f6b76e"
+      "6ceb745d6ac3b9dd2a0eae22bedc6464"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_cshake_4x",
@@ -1312,7 +1312,7 @@
         "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "75ca2545364e2b93ba2532bdf68f939c"
+      "2d08bbadeafbdcb9882032fbf0e938a6"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_aes",
@@ -1343,7 +1343,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "aa06b961379425220ed00bb8555a0c38"
+      "c59126b6ef2cd6aec200ffca2c03cbe0"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_aes",
@@ -1352,7 +1352,7 @@
       0,
       [ "@query" ],
       0,
-      "3d392a9bf168570e3abac2f6f38487d4"
+      "7960752b379fdb04109179894e194460"
     ],
     [
       "Hacl.Impl.Frodo.Gen.frodo_gen_matrix_aes",
@@ -1537,7 +1537,7 @@
         "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "cb9e3b55c04cff61b8c1944d4d7787a9"
+      "1b5f7d91169b871b0319886f6a53cb4f"
     ]
   ]
 ]

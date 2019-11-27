@@ -1,5 +1,5 @@
 [
-  "s˘HﬂãrOﬁæöW8®h™ê",
+  "Z˜h›`\n¶æ[ªﬁÅò£Ö\f",
   [
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_aesni_stdcall",
@@ -14,7 +14,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "7b73234c04972842caf90499d235884a"
+      "1157f1268257313fac710bc56f71fc86"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_aesni_stdcall",
@@ -29,7 +29,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "e4ce7c76ac4d1e06c7c5b60618243a00"
+      "9a5035eaee1e695a472c7fb32bb0d175"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_aesni_stdcall",
@@ -91,7 +91,7 @@
         "unit_typing"
       ],
       0,
-      "cfc4b36b3295084174b8e3f90c6fb257"
+      "4cdaa1d7c401c8e982fc281491d8a972"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_aesni_stdcall",
@@ -164,7 +164,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "ef008664cd85c5798ebdc31f65c86660"
+      "30b71f8cdb30478f461256d685d40367"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_aesni_stdcall",
@@ -176,7 +176,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "7694925a2b6f24c7bff0251442a8d90e"
+      "adbaf5f2e20095b6c3889d4d473402a6"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_sha_stdcall",
@@ -191,7 +191,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "1ff56fb7a82739a0472d68ff8f740a49"
+      "7a906599677b2b1f5d24aeb23fad448d"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_sha_stdcall",
@@ -206,7 +206,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "5896e0c9aea3f5c4af3acf0c22226a0c"
+      "37826d70a10201ef3b6e14f516f8d3a5"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_sha_stdcall",
@@ -268,7 +268,7 @@
         "unit_typing"
       ],
       0,
-      "bc858f7b2d817c3e125f21508e0baa8c"
+      "64c17f60321648589ace0ee80bb2f6e5"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_sha_stdcall",
@@ -341,7 +341,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "76b80ecb67de8c858afa093c06cb5941"
+      "eda5e30cbbfc3e18992287ee15647c18"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_sha_stdcall",
@@ -353,7 +353,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "a257396a9011d32e10fdbf8cab21bac4"
+      "dc533e00e8207c76f2f67b16cd127c5e"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_adx_bmi2_stdcall",
@@ -368,7 +368,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "a6f3623f08675fb5a77978d45eb32d97"
+      "3261c17f25676530f7a8c9f92c7fe7ee"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_adx_bmi2_stdcall",
@@ -383,7 +383,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "464aee7b6e6eed2255ef0794f87025cf"
+      "837173a6c1ba12da95a924857bdaf710"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_adx_bmi2_stdcall",
@@ -445,7 +445,7 @@
         "unit_typing"
       ],
       0,
-      "5417b0fc5aff31c20325ee76bbae1e70"
+      "b690d0c300075c3661abd17b7d1314cd"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_adx_bmi2_stdcall",
@@ -518,7 +518,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "30fbc9f323ff95ea700b7743fbdef673"
+      "c890695b3f4de20a011d8452810167ac"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_adx_bmi2_stdcall",
@@ -530,7 +530,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "73eada8e3ccabc23385bcbed343b21dd"
+      "5d9f2a48ba58c7697b55088e99ca4cde"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_avx_stdcall",
@@ -545,7 +545,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "45d1d325e318f9c1dfb5b052fe4fe7c9"
+      "f99929b1d9c9ac5bdcd8ea2de97848f5"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_avx_stdcall",
@@ -560,7 +560,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "586d255025eccce7f10b65aea4aed0d3"
+      "4279650b3eb460ea7396ab226bb04925"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_avx_stdcall",
@@ -622,7 +622,7 @@
         "unit_typing"
       ],
       0,
-      "204648f9f5fd3702058c9e3c29a3a891"
+      "47ab6eb527bf724a474e413e19482547"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_avx_stdcall",
@@ -695,7 +695,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "5adc6778d96fd802ffaedf880b3c38a9"
+      "871993efde86494614eec591d5127473"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_avx_stdcall",
@@ -707,7 +707,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "30320cee0d77a9eb6d8df3944e0528bf"
+      "a499cc61bee680d91d3aa00907a5b20c"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_avx2_stdcall",
@@ -722,7 +722,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "0c7807eb0cdfa034dad1e0fc504c12cf"
+      "80dc01f52313b557b0d5ff5b73f2a23e"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_avx2_stdcall",
@@ -737,7 +737,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "dd47a6d79c6ae7892af5b6bbc33a4b5b"
+      "d6051e8935b55fa4e188b13e5f59e012"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_avx2_stdcall",
@@ -799,7 +799,7 @@
         "unit_typing"
       ],
       0,
-      "131811cd350ad42c53a065abb1e59359"
+      "ae1d3e9c0ea996686f34a5d0bf4eb9eb"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_avx2_stdcall",
@@ -872,7 +872,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "f9941e6010e64b68874cb6852cfeff1e"
+      "1d55d3133baf4738f46ef0a2ee62a305"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_avx2_stdcall",
@@ -884,7 +884,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "a0ab19489e17932ed72ac0a4f8657aea"
+      "80b38e0eaaf9a5436a2b1738a206172c"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_movbe_stdcall",
@@ -899,7 +899,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "187b9daae1814c0a4d1bef05787e2cfb"
+      "bd2fd2759a9720415154741eb0e2acb3"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_movbe_stdcall",
@@ -914,7 +914,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "3c101d77f9a00a8f36cf75b18b7237f5"
+      "e953cc80a48bdc860948237e8bdbb21b"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_movbe_stdcall",
@@ -976,7 +976,7 @@
         "unit_typing"
       ],
       0,
-      "9e0fd484b1e204c5893df2c1780ab5e4"
+      "6056de40a72a95e592ceab45f483e9fb"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_movbe_stdcall",
@@ -1049,7 +1049,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "bde6bfa03a9bc29d31ba8214f181d538"
+      "585e0ac6fed3e0b9de86fba22ed275a5"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_movbe_stdcall",
@@ -1061,7 +1061,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "652d25867118c617f7c6e71f3be6993b"
+      "735cc0cc6552d491d58b342bea60a7a7"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_req_check_sse_stdcall",
@@ -1076,7 +1076,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "a7d58d87e22ee668e81727eb6bfc31e2"
+      "ad0c67ada8cacf4a002872bdf598f90b"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_ens_check_sse_stdcall",
@@ -1091,7 +1091,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "cc888d288458bd9a1dbba4877054897e"
+      "d9687c85497b45430c92be167f284e5b"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_sse_stdcall",
@@ -1153,7 +1153,7 @@
         "unit_typing"
       ],
       0,
-      "d089a4bb5f3c4efa319ac5357574de73"
+      "e13999b7c4d056c009f673f2454382a9"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_sse_stdcall",
@@ -1226,7 +1226,7 @@
         "typing_Vale.X64.State.update_reg", "unit_typing"
       ],
       0,
-      "ca1e5c7ee010645f0e7f0794a5cb5acb"
+      "b62e5a57b66480c60914b58f136c3783"
     ],
     [
       "Vale.Lib.X64.Cpuidstdcall.va_quick_check_sse_stdcall",
@@ -1238,7 +1238,184 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "ffc1e10d5bfa19bf5855c636e90c29c1"
+      "64d887f3ba594b03b6283fc7796f1f08"
+    ],
+    [
+      "Vale.Lib.X64.Cpuidstdcall.va_req_check_rdrand_stdcall",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.l_and",
+        "equation_Prims.squash", "equation_Prims.subtype_of",
+        "equation_Vale.X64.Decls.va_require_total",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
+      ],
+      0,
+      "8347f65b4277805cf9e984562e5417b1"
+    ],
+    [
+      "Vale.Lib.X64.Cpuidstdcall.va_ens_check_rdrand_stdcall",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.l_and",
+        "equation_Prims.squash", "equation_Prims.subtype_of",
+        "equation_Vale.X64.Decls.va_state_eq",
+        "l_quant_interp_5b2993f9f2c0eba3627049a3b4167c7a",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
+      ],
+      0,
+      "770d7323f2904de6a5dc9a32421bcdd5"
+    ],
+    [
+      "Vale.Lib.X64.Cpuidstdcall.va_lemma_check_rdrand_stdcall",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "Prims_pretyping_f8666440faa91836cc5a13998af863fc", "b2t_def",
+        "bool_inversion", "eq2-interp", "equation_Prims.eq2",
+        "equation_Prims.l_imp", "equation_Prims.logical",
+        "equation_Prims.squash",
+        "equation_Vale.Arch.HeapImpl.vale_heap_impl",
+        "equation_Vale.Def.Prop_s.prop0", "equation_Vale.Def.Types_s.quad32",
+        "equation_Vale.Def.Words_s.nat64",
+        "equation_Vale.X64.Decls.va_ensure_total",
+        "equation_Vale.X64.Decls.va_require_total",
+        "equation_Vale.X64.Decls.va_state_eq",
+        "equation_Vale.X64.Decls.va_upd_mem",
+        "equation_Vale.X64.Decls.va_upd_ok",
+        "equation_Vale.X64.Decls.va_upd_reg",
+        "equation_Vale.X64.Decls.va_upd_reg64",
+        "equation_Vale.X64.Decls.va_upd_xmm",
+        "equation_Vale.X64.Memory.get_vale_heap",
+        "equation_Vale.X64.Memory.vale_heap_impl_equal",
+        "equation_Vale.X64.State.state_eq",
+        "equation_Vale.X64.State.update_reg_64",
+        "equation_Vale.X64.State.update_reg_xmm",
+        "fuel_guarded_inversion_Vale.X64.State.vale_state",
+        "function_token_typing_Prims.__cache_version_number__",
+        "l_imp-interp", "l_not-interp",
+        "lemma_Vale.X64.Flags.lemma_equal_intro",
+        "lemma_Vale.X64.Memory.modifies_refl",
+        "lemma_Vale.X64.QuickCodes.lemma_label_bool",
+        "lemma_Vale.X64.Regs.lemma_equal_intro",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_flags",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_heap",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_memTaint",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_ok",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_regs",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_stack",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_stackTaint",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple3__1",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_ok",
+        "refinement_interpretation_Tm_refine_2a09f2450e26fe8d9312d402cf7d7936",
+        "refinement_kinding_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "string_typing", "typing_Vale.X64.Memory.get_vale_heap",
+        "typing_Vale.X64.Memory.loc_none", "typing_Vale.X64.Memory.modifies",
+        "typing_Vale.X64.QuickCodes.label",
+        "typing_Vale.X64.QuickCodes.range1",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_flags",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_heap",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_regs",
+        "unit_typing"
+      ],
+      0,
+      "0085c09f379d9a6693e085b858c6c5a8"
+    ],
+    [
+      "Vale.Lib.X64.Cpuidstdcall.va_wpProof_check_rdrand_stdcall",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "Prims_pretyping_f8666440faa91836cc5a13998af863fc", "bool_inversion",
+        "data_typing_intro_Vale.X64.Machine_s.Reg@tok", "eq2-interp",
+        "equation_Prims.nat", "equation_Vale.Arch.HeapImpl.vale_heap_impl",
+        "equation_Vale.Lib.X64.Cpuidstdcall.va_wp_check_rdrand_stdcall",
+        "equation_Vale.X64.Decls.va_ensure_total",
+        "equation_Vale.X64.Decls.va_require_total",
+        "equation_Vale.X64.Decls.va_state_eq",
+        "equation_Vale.X64.Decls.va_upd_flags",
+        "equation_Vale.X64.Decls.va_upd_mem",
+        "equation_Vale.X64.Decls.va_upd_ok",
+        "equation_Vale.X64.Decls.va_upd_reg",
+        "equation_Vale.X64.Decls.va_upd_reg64",
+        "equation_Vale.X64.Decls.va_upd_xmm",
+        "equation_Vale.X64.Machine_s.n_reg_files",
+        "equation_Vale.X64.Machine_s.n_regs",
+        "equation_Vale.X64.Machine_s.reg_64",
+        "equation_Vale.X64.Machine_s.reg_file_id",
+        "equation_Vale.X64.Machine_s.reg_id",
+        "equation_Vale.X64.Machine_s.reg_xmm",
+        "equation_Vale.X64.Machine_s.t_reg",
+        "equation_Vale.X64.Machine_s.t_reg_file",
+        "equation_Vale.X64.Memory.get_vale_heap",
+        "equation_Vale.X64.Memory.set_vale_heap",
+        "equation_Vale.X64.QuickCode.t_ensure",
+        "equation_Vale.X64.State.state_eq",
+        "equation_Vale.X64.State.update_reg",
+        "equation_Vale.X64.State.update_reg_64",
+        "equation_Vale.X64.State.update_reg_xmm",
+        "fuel_guarded_inversion_Vale.X64.State.vale_state", "int_typing",
+        "lemma_Vale.X64.Regs.lemma_equal_elim",
+        "proj_equation_Vale.X64.Machine_s.Reg_rf",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_flags",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_heap",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_memTaint",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_ok",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_regs",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_stack",
+        "proj_equation_Vale.X64.State.Mkvale_state_vs_stackTaint",
+        "projection_inverse_BoxInt_proj_0",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple3__1",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple3__2",
+        "projection_inverse_FStar.Pervasives.Native.Mktuple3__3",
+        "projection_inverse_Vale.X64.Machine_s.Reg_rf",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_flags",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_heap",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_memTaint",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_ok",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_regs",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_stack",
+        "projection_inverse_Vale.X64.State.Mkvale_state_vs_stackTaint",
+        "refinement_interpretation_Tm_refine_0559236e7a05befcc7b6302f3642ad81",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_c365eb902b454950de62fba701d9049d",
+        "refinement_interpretation_Tm_refine_d9979b96a3f2b18961b3dd63a2783b64",
+        "typing_Vale.X64.Decls.va_upd_reg64", "typing_Vale.X64.Regs.sel",
+        "typing_Vale.X64.Regs.upd",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_flags",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_heap",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_ok",
+        "typing_Vale.X64.State.__proj__Mkvale_state__item__vs_regs",
+        "typing_Vale.X64.State.update_reg", "unit_typing"
+      ],
+      0,
+      "ae81135b390b6933f47d412e8b1df025"
+    ],
+    [
+      "Vale.Lib.X64.Cpuidstdcall.va_quick_check_rdrand_stdcall",
+      1,
+      1,
+      0,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
+      ],
+      0,
+      "71e947d2a902dce86a8a9d4fbf59ae6b"
     ]
   ]
 ]

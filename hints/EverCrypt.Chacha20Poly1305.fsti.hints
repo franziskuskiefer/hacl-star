@@ -78,7 +78,7 @@
         "typing_tok_Lib.IntTypes.U64@tok"
       ],
       0,
-      "28eabd688b79face074405b8d5510a81"
+      "316f5cd639be5f360aeb7467df27c98f"
     ],
     [
       "EverCrypt.Chacha20Poly1305.aead_decrypt",
@@ -160,7 +160,7 @@
         "typing_tok_Lib.IntTypes.U64@tok"
       ],
       0,
-      "bfc9bfb0463959b4aa62f43dfb4f01e5"
+      "6a866dc7d9f3f07d313b8e5d7dc0ec40"
     ]
   ]
 ]

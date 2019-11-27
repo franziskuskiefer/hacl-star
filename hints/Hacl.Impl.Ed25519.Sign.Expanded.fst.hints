@@ -47,7 +47,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "1b347e8033a0f7f92c7f5eac254c0348"
+      "fde86725abfd38c6c93762db33191fa4"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.xsk",
@@ -96,7 +96,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "13ec97fbec3ab83248dde9391d89ae4a"
+      "97e3b40fd8fcbe11e88486738376ff70"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.xlow",
@@ -145,7 +145,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "b5d71541b5374ae0e676da58a0bd0653"
+      "b4b3778a538932f5160af6675f08f4d0"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.xhigh",
@@ -195,7 +195,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "085d721f07c5c44490ccdbb0f8357541"
+      "0bbd6344a3018165482aa9e9da23bc8b"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.expand_keys",
@@ -257,7 +257,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "6180f75073dae0b8fc715836f20358ae"
+      "2c891906e1b2ecbfe24f077ba19f6b40"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.expand_keys",
@@ -343,7 +343,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "c6812aeccdb284df1147cbea00a83f71"
+      "47ace52dc1428ab571fbe6bbcdd4e714"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.sign_",
@@ -409,7 +409,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "447f869d3437137c6aab3ab9440e4c53"
+      "d4dba06e382d96b8b406db815f9edc96"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.sign_",
@@ -526,7 +526,7 @@
         "typing_tok_Lib.IntTypes.PUB@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "d01987b8b00de6f00870517f7fd581f3"
+      "449faaa056cf2e9c8bb9e41ce21a3223"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.sign",
@@ -592,7 +592,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "6a8f716d614b7c359400d8ff3b992e08"
+      "4db8f2af7fb5eededa25b2f993edc358"
     ],
     [
       "Hacl.Impl.Ed25519.Sign.Expanded.sign",
@@ -750,7 +750,7 @@
         "typing_tok_Lib.Buffer.MUT@tok", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "08037485290e75bd090312082abeb7b2"
+      "d62aeb5d27256f30f48ee192917b2916"
     ]
   ]
 ]

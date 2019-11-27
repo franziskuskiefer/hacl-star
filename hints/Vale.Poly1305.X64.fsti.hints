@@ -1,5 +1,5 @@
 [
-  "Ü\u001b:Ã¨ƒSŠ´ô}\u0001X#%“",
+  "º?\"¼­E?ŠžŸÄ`ní$v",
   [
     [
       "Vale.Poly1305.X64.va_req_Poly1305",
@@ -16,7 +16,7 @@
         "unit_typing"
       ],
       0,
-      "c997e868af58101457ca430bdd555a50"
+      "0821773593618edcca466c2048a036d4"
     ],
     [
       "Vale.Poly1305.X64.va_ens_Poly1305",
@@ -39,7 +39,7 @@
         "unit_typing"
       ],
       0,
-      "7975e807d81774e79a1bd423a6197dff"
+      "8c5b8aa596f2e0ecb004f7fdeb95126f"
     ],
     [
       "Vale.Poly1305.X64.va_lemma_Poly1305",
@@ -63,7 +63,7 @@
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c"
       ],
       0,
-      "7a055bc24517131a19658cf3080357f3"
+      "55bb6b6fe5b05fe8d25e8ecee2ff4477"
     ],
     [
       "Vale.Poly1305.X64.va_wp_Poly1305",
@@ -78,7 +78,7 @@
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c"
       ],
       0,
-      "8006d2085f143aab86ba17170725a58c"
+      "8308322ae647f13a65c9d431f6faafe9"
     ],
     [
       "Vale.Poly1305.X64.va_quick_Poly1305",
@@ -90,7 +90,7 @@
         "fuel_guarded_inversion_FStar.Pervasives.Native.tuple3"
       ],
       0,
-      "e2dba50495895d1b42ef806379bfff03"
+      "0054a31d6b64c6c1edf23d3e0a6afb56"
     ]
   ]
 ]

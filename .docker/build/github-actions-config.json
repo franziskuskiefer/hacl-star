@@ -14,7 +14,7 @@
         ".docker/build/build.sh"
     ],
 
-    "ArtifactPath": "",
+    "ArtifactPath": "snapshot",
     "DockerCommand": "docker",
     "DockerCacheEnabled" : true,
     "CIBuildTarget" : "mozilla-ci",

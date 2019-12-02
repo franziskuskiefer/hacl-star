@@ -20,7 +20,7 @@
     "CIBuildTarget" : "mozilla-ci",
     "NightlyBuildTarget" : "hacl-nightly",
     "HasLogsToExtract" : true,
-    "MaxThreads": 2,
+    "MaxThreads": 4,
 
     "NotificationEnabled" : true,
     "NotificationChannel" : "#hacl-build",

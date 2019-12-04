@@ -10,5 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Setup
+      run: cp .docker/build/mozilla/build_local.sh . 
     - name: Build
-      run: cp ./docker/build/mozilla/build_local.sh . && ./build_local.sh .docker/build/mozilla/config.json
+      run: ./build_local.sh .docker/build/mozilla/config.json

@@ -7,7 +7,7 @@
 # replace latest with the commit id from github using 12 characters.
 ARG DOCKERHUBPROJECT
 ARG COMMITID
-FROM projecteverest/fstar-linux:3069c05f5512
+FROM projecteverest/fstar-linux:db1e8d5ea9c4
 
 ARG BUILDLOGFILE
 ARG MAXTHREADS

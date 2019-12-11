@@ -38,7 +38,7 @@ else ifeq ($(UNAME),Linux)
 else ifeq ($(OS),Windows_NT)
   CFLAGS        += -fno-asynchronous-unwind-tables
   CC		= $(MARCH)-w64-mingw32-gcc
-  AR		= $(MARCH)-w64-mingw32-ar
+  AR		= $(MARCH)-w64-mingw32-gcc-ar
   VARIANT	= -mingw
   SO		= dll
   LDFLAGS	= -Wl,--out-implib,libevercrypt.dll.a
@@ -73,7 +73,7 @@ endif
 
 OBJS 		+= $(patsubst %.S,%.o,$(wildcard *-$(MARCH)$(VARIANT).S))
 
-include Makefile.basic
+# include Makefile.basic
 
 CFLAGS		+= -Wno-parentheses -Wno-deprecated-declarations -g -std=gnu11 -O3
 
@@ -147,3 +147,8 @@ libocamlevercrypt.cmxa: $(ALL_BINDINGS) $(ALL_ML_STUBS) $(ALL_C_STUBS) libevercr
 	ocamlfind mklib -o ocamlevercrypt $(filter-out %.so,$^) -L. -levercrypt -L$(OPENSSL_HOME) -lcrypto
 
 endif
+
+test-curve:
+	cl -Wall -I../kremlin/include -I../kremlin/kremlib/dist/minimal \
+     -c Hacl_Curve25519_51.c -c test-curve25519.c
+	./test-curve25519

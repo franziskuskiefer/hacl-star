@@ -328,7 +328,7 @@ FStar_UInt128_eq_mask(FStar_UInt128_uint128 a, FStar_UInt128_uint128 b) {
 
 inline static FStar_UInt128_uint128
 FStar_UInt128_gte_mask(FStar_UInt128_uint128 a, FStar_UInt128_uint128 b) {
-#if HAS_OPTIMIZED && 0
+#if HAS_OPTIMIZED
   // ge - compare 3,2,1,0 for >= and generating 0 or 0xffffffff for each
   // eq - compare 3,2,1,0 for == and generating 0 or 0xffffffff for each
   // slot 0 = ge0 | (eq0 & ge1) | (eq0 & eq1 & ge2) | (eq0 & eq1 & eq2 & ge3)

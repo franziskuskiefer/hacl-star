@@ -78,6 +78,7 @@ if [[ -n "$vsinstall" && -z "$VSPATH" ]]; then
     PATH="${PATH}:${UniversalCRTSdkDir}/bin/${UCRTVersion}/${m}"
     PATH="${PATH}:${WIN32_REDIST_DIR}"
     # PATH="${PATH}:${VCINSTALLDIR}/Tools/ClangC2/14.10.25903/bin/Hostx64/"
+    PATH="${PATH}:${VCINSTALLDIR}/Tools/Llvm/bin/"
     export PATH
 
     INCLUDE="${VCINSTALLDIR}/Tools/MSVC/${VCVER}/ATLMFC/include"
@@ -95,6 +96,7 @@ if [[ -n "$vsinstall" && -z "$VSPATH" ]]; then
     LIB="${LIB}:${UniversalCRTSdkDir}/lib/${UCRTVersion}/ucrt/${m}"
     LIB="${LIB}:${UniversalCRTSdkDir}/lib/${UCRTVersion}/um/${m}"
     # LIB="${LIB}:${VCINSTALLDIR}/Tools/ClangC2/14.10.25903/lib/x64/"
+    LIB="${LIB}:${VCINSTALLDIR}/Tools/Llvm/lib/"
     export LIB
 
     export GYP_MSVS_OVERRIDE_PATH="${VSPATH}"

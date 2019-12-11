@@ -149,6 +149,11 @@ libocamlevercrypt.cmxa: $(ALL_BINDINGS) $(ALL_ML_STUBS) $(ALL_C_STUBS) libevercr
 endif
 
 test-curve:
-	cl -Wall -I../kremlin/include -I../kremlin/kremlib/dist/minimal \
-     -c Hacl_Curve25519_51.c -c test-curve25519.c
+	# cl
+	clang -Wall -I../kremlin/include -I../kremlin/kremlib/dist/minimal \
+		 Hacl_Curve25519_51.c test-curve25519.c -o test-curve25519.exe
 	./test-curve25519
+
+test-clang-cl:
+	clang -I../kremlin/include -I../kremlin/kremlib/dist/minimal \
+		 Hacl_Curve25519_51.c

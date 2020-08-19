@@ -42,6 +42,7 @@ add_library(evercrypt STATIC
   ${EVERCRYPT_SRC_DIR}/Hacl_Poly1305_256.c
   ${EVERCRYPT_SRC_DIR}/Hacl_SHA3.c
   ${EVERCRYPT_SRC_DIR}/Lib_PrintBuffer.c
+  ${EVERCRYPT_SRC_DIR}/Lib_Memzero0.c
   ${EVERCRYPT_SRC_DIR}/Lib_RandomBuffer_System.c)
 target_compile_options(evercrypt PRIVATE -Wno-parentheses -std=gnu11)
 target_include_directories(evercrypt PUBLIC ${EVERCRYPT_SRC_DIR})
@@ -67,7 +68,8 @@ if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
 endif()
 
 if(EXISTS ${EVERCRYPT_SRC_DIR}/MerkleTree.c)
-  target_sources(evercrypt PRIVATE ${EVERCRYPT_SRC_DIR}/MerkleTree.c)
+  target_sources(evercrypt PRIVATE
+    ${EVERCRYPT_SRC_DIR}/MerkleTree.c)
 endif()
 if(EXISTS ${EVERCRYPT_SRC_DIR}/LowStar.c)
   target_sources(evercrypt PRIVATE ${EVERCRYPT_SRC_DIR}/LowStar.c)

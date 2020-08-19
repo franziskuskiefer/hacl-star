@@ -24,7 +24,7 @@
         "typing_Vale.Lib.Map16.sel16", "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "d4b327dd4e05c31dee779c0f8996226f"
+      "10a91c0ea9698551d9d6c24a4162e43a"
     ],
     [
       "Vale.X64.Regs.upd",
@@ -42,7 +42,7 @@
         "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "a2f33521e1cb0b08545313ee90cfaff3"
+      "4fb2003a1c430f8d4cad073e7e88c1af"
     ],
     [
       "Vale.X64.Regs.eta",
@@ -78,7 +78,7 @@
         "refinement_interpretation_Tm_refine_fe479871b3967d0c9b8d8614ccf88035"
       ],
       0,
-      "b80bbd09b9cace4fc3eb5cf6d7127783"
+      "1ec5404317ba1c24ac5fcd7ce6dabdda"
     ],
     [
       "Vale.X64.Regs.of_fun",
@@ -115,7 +115,7 @@
         "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "bf579c10a26a4a87f8d5bed1993ce34e"
+      "061cbc9bbbcb176a6cf5e532e3b2f7d7"
     ],
     [
       "Vale.X64.Regs.lemma_upd_eq",
@@ -149,7 +149,7 @@
         "typing_Vale.X64.Machine_s.__proj__Reg__item__rf"
       ],
       0,
-      "e69f3a7df612f6a3afb9a3336dcd3745"
+      "f4306f8e868fbf5593199d32788a693b"
     ],
     [
       "Vale.X64.Regs.lemma_upd_ne",
@@ -188,7 +188,7 @@
         "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "bcd92e099ffcf1c9c67b8d7b1dcffcf5"
+      "080d0da98d4c8858adae9892b2b0c15c"
     ],
     [
       "Vale.X64.Regs.lemma_equal_intro",
@@ -221,7 +221,7 @@
         "refinement_interpretation_Tm_refine_d9979b96a3f2b18961b3dd63a2783b64"
       ],
       0,
-      "7f7e2a59737aa40d915872deec157420"
+      "ee537fa2592c46c209e1999b572ddafb"
     ],
     [
       "Vale.X64.Regs.lemma_equal_elim",
@@ -230,7 +230,7 @@
       0,
       [ "@query", "eq2-interp", "equation_Vale.X64.Regs.equal" ],
       0,
-      "d06a09de9511f0ec8cc5d29ee09ecaf5"
+      "ea5e66d4393e89dc24b9bddbe1f5b68d"
     ],
     [
       "Vale.X64.Regs.lemma_eta",
@@ -275,7 +275,7 @@
         "typing_Vale.X64.Regs.eta", "typing_Vale.X64.Regs.eta_sel"
       ],
       0,
-      "64b8f56747ea3f5a664f17b8497981cf"
+      "87e38801313253cb76bc0e3947225727"
     ]
   ]
 ]

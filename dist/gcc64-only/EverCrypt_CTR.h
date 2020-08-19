@@ -21,12 +21,18 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
+
 
 #ifndef __EverCrypt_CTR_H
 #define __EverCrypt_CTR_H
@@ -37,7 +43,6 @@
 #include "EverCrypt_AutoConfig2.h"
 #include "EverCrypt_Error.h"
 #include "Hacl_Spec.h"
-
 
 typedef struct EverCrypt_CTR_state_s_s EverCrypt_CTR_state_s;
 
@@ -86,7 +91,7 @@ EverCrypt_Error_error_code
 EverCrypt_CTR_create_in(
   Spec_Agile_Cipher_cipher_alg a,
   EverCrypt_CTR_state_s **dst,
-  uint8_t *k1,
+  uint8_t *k,
   uint8_t *iv,
   uint32_t iv_len,
   uint32_t c
@@ -95,7 +100,7 @@ EverCrypt_CTR_create_in(
 void
 EverCrypt_CTR_init(
   EverCrypt_CTR_state_s *p,
-  uint8_t *k1,
+  uint8_t *k,
   uint8_t *iv,
   uint32_t iv_len,
   uint32_t c
@@ -107,3 +112,8 @@ void EverCrypt_CTR_free(EverCrypt_CTR_state_s *p);
 
 #define __EverCrypt_CTR_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

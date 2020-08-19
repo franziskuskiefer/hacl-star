@@ -21,12 +21,18 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
+
 
 #ifndef __Hacl_Chacha20Poly1305_256_H
 #define __Hacl_Chacha20Poly1305_256_H
@@ -35,13 +41,12 @@
 #include "Hacl_Chacha20_Vec256.h"
 #include "Hacl_Poly1305_256.h"
 
-
 /* SNIPPET_START: Hacl_Chacha20Poly1305_256_aead_encrypt */
 
 void
 Hacl_Chacha20Poly1305_256_aead_encrypt(
   uint8_t *k,
-  uint8_t *n1,
+  uint8_t *n,
   uint32_t aadlen,
   uint8_t *aad,
   uint32_t mlen,
@@ -57,7 +62,7 @@ Hacl_Chacha20Poly1305_256_aead_encrypt(
 uint32_t
 Hacl_Chacha20Poly1305_256_aead_decrypt(
   uint8_t *k,
-  uint8_t *n1,
+  uint8_t *n,
   uint32_t aadlen,
   uint8_t *aad,
   uint32_t mlen,
@@ -70,3 +75,8 @@ Hacl_Chacha20Poly1305_256_aead_decrypt(
 
 #define __Hacl_Chacha20Poly1305_256_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

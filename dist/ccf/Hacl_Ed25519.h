@@ -21,11 +21,17 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
+
 
 #ifndef __Hacl_Ed25519_H
 #define __Hacl_Ed25519_H
@@ -33,7 +39,6 @@
 #include "Hacl_Kremlib.h"
 #include "Hacl_Hash.h"
 #include "Hacl_Curve25519_51.h"
-
 
 void Hacl_Ed25519_sign(uint8_t *signature, uint8_t *priv, uint32_t len, uint8_t *msg);
 
@@ -47,3 +52,8 @@ void Hacl_Ed25519_sign_expanded(uint8_t *signature, uint8_t *ks, uint32_t len, u
 
 #define __Hacl_Ed25519_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

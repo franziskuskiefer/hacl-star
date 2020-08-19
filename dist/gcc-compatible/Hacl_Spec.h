@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,9 +33,9 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Spec_H
 #define __Hacl_Spec_H
-
 
 
 
@@ -42,6 +47,18 @@
 #define Spec_Hash_Definitions_MD5 5
 
 typedef uint8_t Spec_Hash_Definitions_hash_alg;
+
+#define Spec_ECDSA_NoHash 0
+#define Spec_ECDSA_Hash 1
+
+typedef uint8_t Spec_ECDSA_hash_alg_ecdsa_tags;
+
+typedef struct Spec_ECDSA_hash_alg_ecdsa_s
+{
+  Spec_ECDSA_hash_alg_ecdsa_tags tag;
+  Spec_Hash_Definitions_hash_alg _0;
+}
+Spec_ECDSA_hash_alg_ecdsa;
 
 #define Spec_Agile_Cipher_AES128 0
 #define Spec_Agile_Cipher_AES256 1
@@ -70,3 +87,8 @@ typedef uint8_t Spec_Agile_AEAD_alg;
 
 #define __Hacl_Spec_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

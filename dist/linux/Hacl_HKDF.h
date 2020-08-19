@@ -21,17 +21,22 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_HKDF_H
 #define __Hacl_HKDF_H
 
 #include "Hacl_HMAC.h"
-
 
 void Hacl_HKDF_expand_sha2_256(u8 *okm, u8 *prk, u32 prklen, u8 *info, u32 infolen, u32 len);
 
@@ -43,3 +48,8 @@ void Hacl_HKDF_extract_sha2_512(u8 *prk, u8 *salt, u32 saltlen, u8 *ikm, u32 ikm
 
 #define __Hacl_HKDF_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

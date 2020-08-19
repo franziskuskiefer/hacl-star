@@ -21,17 +21,22 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Curve25519_64_Slow_H
 #define __Hacl_Curve25519_64_Slow_H
 
 #include "Hacl_Kremlib.h"
-
 
 void Hacl_Curve25519_64_Slow_scalarmult(u8 *out, u8 *priv, u8 *pub);
 
@@ -41,3 +46,8 @@ bool Hacl_Curve25519_64_Slow_ecdh(u8 *out, u8 *priv, u8 *pub);
 
 #define __Hacl_Curve25519_64_Slow_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

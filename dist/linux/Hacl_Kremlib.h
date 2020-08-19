@@ -21,15 +21,20 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Kremlib_H
 #define __Hacl_Kremlib_H
-
 
 
 
@@ -61,3 +66,8 @@ static inline uint128_t load128_be(u8 *x0);
 
 #define __Hacl_Kremlib_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

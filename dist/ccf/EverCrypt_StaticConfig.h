@@ -21,15 +21,20 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __EverCrypt_StaticConfig_H
 #define __EverCrypt_StaticConfig_H
-
 
 
 
@@ -43,3 +48,8 @@ extern bool EverCrypt_StaticConfig_bcrypt;
 
 #define __EverCrypt_StaticConfig_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

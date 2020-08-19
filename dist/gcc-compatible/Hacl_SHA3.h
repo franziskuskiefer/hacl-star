@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,17 +33,18 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_SHA3_H
 #define __Hacl_SHA3_H
 
 #include "Hacl_Kremlib.h"
+#include "Lib_Memzero0.h"
 
+extern const uint32_t Hacl_Impl_SHA3_keccak_rotc[24U];
 
-extern uint32_t Hacl_Impl_SHA3_keccak_rotc[24U];
+extern const uint32_t Hacl_Impl_SHA3_keccak_piln[24U];
 
-extern uint32_t Hacl_Impl_SHA3_keccak_piln[24U];
-
-extern uint64_t Hacl_Impl_SHA3_keccak_rndc[24U];
+extern const uint64_t Hacl_Impl_SHA3_keccak_rndc[24U];
 
 uint64_t Hacl_Impl_SHA3_rotl(uint64_t a, uint32_t b);
 
@@ -102,3 +108,8 @@ void Hacl_SHA3_sha3_512(uint32_t inputByteLen, uint8_t *input, uint8_t *output);
 
 #define __Hacl_SHA3_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

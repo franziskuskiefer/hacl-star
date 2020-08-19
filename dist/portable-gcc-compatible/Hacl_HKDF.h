@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,11 +33,11 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_HKDF_H
 #define __Hacl_HKDF_H
 
 #include "Hacl_HMAC.h"
-
 
 /* SNIPPET_START: Hacl_HKDF_expand_sha2_256 */
 
@@ -90,3 +95,8 @@ Hacl_HKDF_extract_sha2_512(
 
 #define __Hacl_HKDF_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

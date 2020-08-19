@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,11 +33,11 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __EverCrypt_AutoConfig2_H
 #define __EverCrypt_AutoConfig2_H
 
 #include "Vale.h"
-
 
 /* SNIPPET_START: EverCrypt_AutoConfig2_has_shaext */
 
@@ -93,6 +98,12 @@ bool EverCrypt_AutoConfig2_has_movbe();
 bool EverCrypt_AutoConfig2_has_rdrand();
 
 /* SNIPPET_END: EverCrypt_AutoConfig2_has_rdrand */
+
+/* SNIPPET_START: EverCrypt_AutoConfig2_has_avx512 */
+
+bool EverCrypt_AutoConfig2_has_avx512();
+
+/* SNIPPET_END: EverCrypt_AutoConfig2_has_avx512 */
 
 /* SNIPPET_START: EverCrypt_AutoConfig2_wants_vale */
 
@@ -196,6 +207,12 @@ void EverCrypt_AutoConfig2_disable_rdrand();
 
 /* SNIPPET_END: EverCrypt_AutoConfig2_disable_rdrand */
 
+/* SNIPPET_START: EverCrypt_AutoConfig2_disable_avx512 */
+
+void EverCrypt_AutoConfig2_disable_avx512();
+
+/* SNIPPET_END: EverCrypt_AutoConfig2_disable_avx512 */
+
 /* SNIPPET_START: EverCrypt_AutoConfig2_disable_vale */
 
 void EverCrypt_AutoConfig2_disable_vale();
@@ -222,3 +239,8 @@ void EverCrypt_AutoConfig2_disable_bcrypt();
 
 #define __EverCrypt_AutoConfig2_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

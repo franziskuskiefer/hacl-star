@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,11 +33,11 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Curve25519_51_H
 #define __Hacl_Curve25519_51_H
 
 #include "Hacl_Kremlib.h"
-
 
 void Hacl_Impl_Curve25519_Field51_fadd(uint64_t *out, uint64_t *f1, uint64_t *f2);
 
@@ -43,24 +48,20 @@ Hacl_Impl_Curve25519_Field51_fmul(
   uint64_t *out,
   uint64_t *f1,
   uint64_t *f2,
-  FStar_UInt128_uint128 *uu____2959
+  FStar_UInt128_uint128 *uu___
 );
 
 void Hacl_Impl_Curve25519_Field51_fmul1(uint64_t *out, uint64_t *f1, uint64_t f2);
 
 void
-Hacl_Impl_Curve25519_Field51_fsqr(
-  uint64_t *out,
-  uint64_t *f,
-  FStar_UInt128_uint128 *uu____6941
-);
+Hacl_Impl_Curve25519_Field51_fsqr(uint64_t *out, uint64_t *f, FStar_UInt128_uint128 *uu___);
 
 void
 Hacl_Curve25519_51_fsquare_times(
   uint64_t *o,
   uint64_t *inp,
   FStar_UInt128_uint128 *tmp,
-  uint32_t n1
+  uint32_t n
 );
 
 void Hacl_Curve25519_51_finv(uint64_t *o, uint64_t *i, FStar_UInt128_uint128 *tmp);
@@ -73,3 +74,8 @@ bool Hacl_Curve25519_51_ecdh(uint8_t *out, uint8_t *priv, uint8_t *pub);
 
 #define __Hacl_Curve25519_51_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

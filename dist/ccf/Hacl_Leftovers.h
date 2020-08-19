@@ -21,17 +21,22 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Leftovers_H
 #define __Hacl_Leftovers_H
 
 #include "Hacl_Spec.h"
-
 
 extern uint32_t Hacl_HMAC_DRBG_reseed_interval;
 
@@ -53,3 +58,8 @@ Hacl_HMAC_DRBG_state;
 
 #define __Hacl_Leftovers_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

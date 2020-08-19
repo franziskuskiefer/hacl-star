@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,15 +33,15 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __EverCrypt_Ed25519_H
 #define __EverCrypt_Ed25519_H
 
 #include "Hacl_Ed25519.h"
 
-
 /* SNIPPET_START: EverCrypt_Ed25519_sign */
 
-void EverCrypt_Ed25519_sign(uint8_t *signature, uint8_t *secret1, uint32_t len, uint8_t *msg);
+void EverCrypt_Ed25519_sign(uint8_t *signature, uint8_t *secret, uint32_t len, uint8_t *msg);
 
 /* SNIPPET_END: EverCrypt_Ed25519_sign */
 
@@ -48,13 +53,13 @@ bool EverCrypt_Ed25519_verify(uint8_t *output, uint32_t len, uint8_t *msg, uint8
 
 /* SNIPPET_START: EverCrypt_Ed25519_secret_to_public */
 
-void EverCrypt_Ed25519_secret_to_public(uint8_t *output, uint8_t *secret1);
+void EverCrypt_Ed25519_secret_to_public(uint8_t *output, uint8_t *secret);
 
 /* SNIPPET_END: EverCrypt_Ed25519_secret_to_public */
 
 /* SNIPPET_START: EverCrypt_Ed25519_expand_keys */
 
-void EverCrypt_Ed25519_expand_keys(uint8_t *ks, uint8_t *secret1);
+void EverCrypt_Ed25519_expand_keys(uint8_t *ks, uint8_t *secret);
 
 /* SNIPPET_END: EverCrypt_Ed25519_expand_keys */
 
@@ -67,3 +72,8 @@ EverCrypt_Ed25519_sign_expanded(uint8_t *signature, uint8_t *ks, uint32_t len, u
 
 #define __EverCrypt_Ed25519_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

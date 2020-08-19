@@ -52,6 +52,8 @@ let ins_Shl64 = make_ins (fun dst amt -> print_s "shl" [P64 dst; PShift amt])
 
 let ins_Cpuid = make_ins (print "cpuid" [])
 
+let ins_Xgetbv = make_ins (print "xgetbv" [])
+
 let ins_Movdqu = make_ins (fun dst src -> print "movdqu" [PXmm dst; PXmm src])
 
 let ins_Pxor = make_ins (fun dst src -> print "pxor" [PXmm dst; PXmm src])
@@ -145,3 +147,5 @@ let ins_LargeComment s = make_ins (print (";# " ^ s) [])
 let ins_Newline = make_ins (print "" [])
 
 let ins_Space n = make_ins (print "" [])
+
+let ins_Prefetchnta = make_ins (fun loc -> print_s "prefetchnta" [P64 loc])

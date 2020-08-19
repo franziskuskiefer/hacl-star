@@ -22,16 +22,6 @@ let modifies_includes l1 l2 h0 h1 = ()
 let modifies_trans l1 l2 h0 h1 h2 = ()
 let live_sub #t #a #len b start n h = ()
 let modifies_sub #t #a #len b start n h0 h1 = ()
-let modifies0_is_modifies1 #a0 b0 h0 h1 = ()
-let modifies0_is_modifies2 #a0 #a1 b0 b1 h0 h1 = ()
-let modifies0_is_modifies3 #a0 #a1 #a2 b0 b1 b2 h0 h1 = ()
-let modifies0_is_modifies4 #a0 #a1 #a2 #a3 b0 b1 b2 b3 h0 h1 = ()
-let modifies1_is_modifies2 #a0 #a1 b0 b1 h0 h1 = ()
-let modifies1_is_modifies3 #a0 #a1 #a2 b0 b1 b2 h0 h1 = ()
-let modifies1_is_modifies4 #a0 #a1 #a2 #a3 b0 b1 b2 b3 h0 h1 = ()
-let modifies2_is_modifies3 #a0 #a1 #a2 b0 b1 b2 h0 h1 = ()
-let modifies2_is_modifies4 #a0 #a1 #a2 #a3 b0 b1 b2 b3 h0 h1 = ()
-let modifies3_is_modifies4 #a0 #a1 #a2 #a3 b0 b1 b2 b3 h0 h1 = ()
 
 let as_seq_gsub #t #a #len h b start n = ()
 
@@ -39,11 +29,13 @@ let sub #t #a #len b start n =
   match t with
   | MUT -> B.sub (b <: buffer a) start n
   | IMMUT -> IB.isub (b <: ibuffer a) start n
+  | CONST -> CB.sub (b <: cbuffer a) start n
 
 let index #t #a #len b i =
   match t with
   | MUT -> B.index (b <: buffer a) i
   | IMMUT -> IB.index (b <: ibuffer a) i
+  | CONST -> CB.index (b <: cbuffer a) i
 
 let upd #a #len b i v =
   let h0 = ST.get() in
@@ -58,6 +50,7 @@ let recall #t #a #len b =
   match t with
   | IMMUT -> B.recall (b <: ibuffer a)
   | MUT -> B.recall (b <: buffer a)
+  | CONST -> B.recall (CB.cast (b <: cbuffer a))
 
 let create #a clen init =
   B.alloca init (normalize_term clen)
@@ -68,11 +61,12 @@ let createL #a init =
   B.alloca_of_list init
 
 let createL_global #a init =
-  IB.igcmalloc_of_list #a root init
+  CB.of_ibuffer (IB.igcmalloc_of_list #a root init)
 
 let recall_contents #a #len b s =
-  B.recall_p (b <: ibuffer a) (cpred s)
+  B.recall_p (CB.to_ibuffer b) (cpred s)
 
+(* JP: why triplicate the code? would it not extract if we just cast i to a monotonic buffer?! *)
 let copy #t #a #len o i =
   match t with
   | MUT ->
@@ -85,6 +79,11 @@ let copy #t #a #len o i =
     LowStar.BufferOps.blit (i <: ibuffer a) 0ul (o <: buffer a) 0ul len;
     let h1 = ST.get () in
     assert (Seq.slice (as_seq h1 o) 0 (v len) == Seq.slice (as_seq h0 i) 0 (v len))
+  | CONST ->
+    let h0 = ST.get () in
+    LowStar.BufferOps.blit (CB.cast (i <: cbuffer a)) 0ul (o <: buffer a) 0ul len;
+    let h1 = ST.get () in
+    assert (Seq.slice (as_seq h1 o) 0 (v len) == Seq.slice (as_seq h0 i) 0 (v len))
 
 let memset #a #blen b init len =
   B.fill #a #(fun _ _ -> True) #(fun _ _ -> True) b init len
@@ -94,21 +93,32 @@ let memset #a #blen b init len =
 let update_sub #t #a #len dst start n src =
   match t with
   | MUT ->
-  let h0 = ST.get () in
-  LowStar.BufferOps.blit (src <: buffer a) 0ul (dst <: buffer a) (size_to_UInt32 start) (size_to_UInt32 n);
-  let h1 = ST.get () in
-  assert (forall (k:nat{k < v n}). bget h1 dst (v start + k) == bget h0 src k);
-  FStar.Seq.lemma_eq_intro
-    (as_seq h1 dst)
-    (Seq.update_sub #a #(v len) (as_seq h0 dst) (v start) (v n) (as_seq h0 src))
+      let h0 = ST.get () in
+      LowStar.BufferOps.blit (src <: buffer a)
+        0ul (dst <: buffer a) (size_to_UInt32 start) (size_to_UInt32 n);
+      let h1 = ST.get () in
+      assert (forall (k:nat{k < v n}). bget h1 dst (v start + k) == bget h0 src k);
+      FStar.Seq.lemma_eq_intro
+        (as_seq h1 dst)
+        (Seq.update_sub #a #(v len) (as_seq h0 dst) (v start) (v n) (as_seq h0 src))
   | IMMUT ->
-  let h0 = ST.get () in
-  LowStar.BufferOps.blit (src <: ibuffer a) 0ul (dst <: buffer a) (size_to_UInt32 start) (size_to_UInt32 n);
-  let h1 = ST.get () in
-  assert (forall (k:nat{k < v n}). bget h1 dst (v start + k) == bget h0 src k);
-  FStar.Seq.lemma_eq_intro
-    (as_seq h1 dst)
-    (Seq.update_sub #a #(v len) (as_seq h0 dst) (v start) (v n) (as_seq h0 src))
+      let h0 = ST.get () in
+      LowStar.BufferOps.blit (src <: ibuffer a)
+        0ul (dst <: buffer a) (size_to_UInt32 start) (size_to_UInt32 n);
+      let h1 = ST.get () in
+      assert (forall (k:nat{k < v n}). bget h1 dst (v start + k) == bget h0 src k);
+      FStar.Seq.lemma_eq_intro
+        (as_seq h1 dst)
+        (Seq.update_sub #a #(v len) (as_seq h0 dst) (v start) (v n) (as_seq h0 src))
+  | CONST ->
+      let h0 = ST.get () in
+      LowStar.BufferOps.blit (CB.cast (src <: cbuffer a))
+        0ul (dst <: buffer a) (size_to_UInt32 start) (size_to_UInt32 n);
+      let h1 = ST.get () in
+      assert (forall (k:nat{k < v n}). bget h1 dst (v start + k) == bget h0 src k);
+      FStar.Seq.lemma_eq_intro
+        (as_seq h1 dst)
+        (Seq.update_sub #a #(v len) (as_seq h0 dst) (v start) (v n) (as_seq h0 src))
 
 let update_sub_f #a #len h0 buf start n spec f =
   let tmp = sub buf start n in
@@ -185,7 +195,7 @@ let salloc1_with_inv #a #res h len x footprint spec spec_inv impl =
   let h2 = ST.get() in
   let r = impl b in
   let h3 = ST.get() in
-  memset #a #len b x len;
+  Lib.Memzero0.memzero #a b len;
   let h4 = ST.get() in
   pop_frame();
   let h5 = ST.get() in
@@ -234,7 +244,7 @@ val loopi_blocks_f:
       Sequence.repeati_blocks_f (v blocksize) (as_seq h0 inp) spec_f (v nb) (v i) (as_seq h0 w))
 
 let loopi_blocks_f #a #b #blen bs inpLen inp spec_f f nb i w =
-  Math.Lemmas.lemma_mult_lt_right (v bs) (v i) (v nb);
+  Math.Lemmas.lemma_mult_le_right (v bs) (v i) (v nb);
   assert ((v i + 1) * v bs == v i * v bs + v bs);
   assert (v i * v bs + v bs <= v nb * v bs);
   assert (v nb * v bs <= v inpLen);
@@ -263,7 +273,7 @@ val loopi_blocks_f_nospec:
     (requires fun h -> live h inp /\ live h w /\ disjoint inp w)
     (ensures  fun h0 _ h1 -> modifies (loc w) h0 h1)
 
-#set-options "--z3rlimit 200 --max_fuel 0"
+#set-options "--z3rlimit 300 --max_fuel 0"
 
 let loopi_blocks_f_nospec #a #b #blen bs inpLen inp f nb i w =
   assert ((v i + 1) * v bs <= v nb * v bs);
@@ -381,9 +391,9 @@ let fill_blocks #t h0 len n output a_spec refl footprint spec impl =
     norm [delta] Seq.generate_blocks (v len) (v n) (v n) a_spec (spec h0) (refl h0 0));
   let h1 = ST.get() in
   assert(refl' h1 (v n) == Loop.repeat_gen (v n)
-	       (Sequence.generate_blocks_a t (v len) (v n) a_spec)
-	       (Sequence.generate_blocks_inner t (v len) (v n) a_spec (spec h0))
-	       (refl' h0 0));
+         (Sequence.generate_blocks_a t (v len) (v n) a_spec)
+         (Sequence.generate_blocks_inner t (v len) (v n) a_spec (spec h0))
+         (refl' h0 0));
   assert(B.loc_includes (loc output) (loc (gsub output 0ul (n *! len))));
   assert(B.modifies (B.loc_union (footprint (v n)) (loc (gsub output 0ul (n *! len)))) h0 h1);
   B.loc_includes_union_l (footprint (v n)) (loc output) (footprint (v n));
@@ -392,11 +402,12 @@ let fill_blocks #t h0 len n output a_spec refl footprint spec impl =
   assert(B.loc_includes (B.loc_union (footprint (v n)) (loc output)) (B.loc_union (footprint (v n)) (loc (gsub output 0ul (n *! len)))));
   assert(B.modifies (B.loc_union (footprint (v n)) (loc output)) h0 h1)
 
+#restart-solver
 #reset-options "--z3rlimit 300 --max_fuel 1"
 
 let fill_blocks_simple #a h0 bs n output spec_f impl_f =
   [@inline_let]
-  let refl h (i:nat{i <= v n}) : GTot (Seq.map_blocks_a a (v bs) (v n) i) =
+  let refl h (i:nat{i <= v n}) : GTot (Sequence.generate_blocks_simple_a a (v bs) (v n) i) =
     FStar.Math.Lemmas.lemma_mult_le_right (v bs) i (v n);
     assert (v (size i *! bs) <= v n * v bs);
     as_seq h (gsub output (size 0) (size i *! bs)) in
@@ -405,11 +416,12 @@ let fill_blocks_simple #a h0 bs n output spec_f impl_f =
   [@inline_let]
   let spec h0 = Sequence.generate_blocks_simple_f #a (v bs) (v n) (spec_f h0) in
   let h0 = ST.get () in
-  loop h0 n (Seq.map_blocks_a a (v bs) (v n)) refl footprint spec
+  loop h0 n (Sequence.generate_blocks_simple_a a (v bs) (v n)) refl footprint spec
   (fun i ->
-    Loop.unfold_repeat_gen (v n) (Seq.map_blocks_a a (v bs) (v n))
+    Loop.unfold_repeat_gen (v n) (Sequence.generate_blocks_simple_a a (v bs) (v n))
       (Sequence.generate_blocks_simple_f #a (v bs) (v n) (spec_f h0)) (refl h0 0) (v i);
     FStar.Math.Lemmas.lemma_mult_le_right (v bs) (v i + 1) (v n);
+    assert (v i * v bs <= maxint U32);
     assert (v (i *! bs) + v bs <= v n * v bs);
     let block = sub output (i *! bs) bs in
     let h0_ = ST.get() in
@@ -454,12 +466,12 @@ let fill #a h0 clen out spec impl =
   loop h0 clen a_spec refl footprint spec
   (fun i ->
            Loop.unfold_repeat_gen (v clen) a_spec (spec h0) (refl h0 0) (v i);
-	   let os = sub out 0ul (i +! 1ul) in
-	   let h = ST.get() in
-	   let x = impl i in
-	   os.(i) <- x;
-	   let h' = ST.get() in
-	   assert (Seq.equal (refl h' (v i + 1)) (spec h0 (v i) (refl h (v i))))
+     let os = sub out 0ul (i +! 1ul) in
+     let h = ST.get() in
+     let x = impl i in
+     os.(i) <- x;
+     let h' = ST.get() in
+     assert (Seq.equal (refl h' (v i + 1)) (spec h0 (v i) (refl h (v i))))
   )
 
 inline_for_extraction noextract
@@ -476,11 +488,11 @@ val lemma_eq_disjoint:
   -> h1: mem
   -> Lemma
   (requires (live h0 b1 /\ live h0 b2 /\ eq_or_disjoint b1 b2 /\
-	     modifies1 #a1 (gsub b1 0ul n) h0 h1))
+       modifies1 #a1 (gsub b1 0ul n) h0 h1))
   (ensures (let b2s = gsub b2 n (clen2 -! n) in
-	    as_seq h0 b2s == as_seq h1 b2s /\
-	    Seq.index (as_seq h0 b2) (v n) ==
-	    Seq.index (as_seq h1 b2) (v n)))
+      as_seq h0 b2s == as_seq h1 b2s /\
+      Seq.index (as_seq h0 b2) (v n) ==
+      Seq.index (as_seq h1 b2) (v n)))
 
 let lemma_eq_disjoint #t2 #a1 #a2 clen1 clen2 b1 b2 n h0 h1 =
   let b1s = gsub b1 0ul n in
@@ -500,9 +512,9 @@ let mapT #t #a #b clen out f inp =
   let spec h = Seq.map_inner f (as_seq h inp) in
   fill h0 clen out spec
     (fun i -> let x = inp.(i) in
-	   let h1 = ST.get() in
-	   lemma_eq_disjoint #t clen clen out inp i h0 h1;
-	   f x)
+     let h1 = ST.get() in
+     lemma_eq_disjoint #t clen clen out inp i h0 h1;
+     f x)
 
 inline_for_extraction
 let map2T #t #a1 #a2 #b clen out f inp1 inp2 =
@@ -564,7 +576,7 @@ val div_mul_le: b:pos -> a:nat -> Lemma
   ((a / b) * b <= a)
 let div_mul_le b a = ()
 
-#reset-options "--z3rlimit 500 --max_fuel 0 --max_ifuel 0"
+#reset-options "--z3rlimit 2000 --max_fuel 0 --max_ifuel 0"
 
 let map_blocks #t #a h0 len blocksize inp output spec_f spec_l impl_f impl_l =
   div_mul_le (v blocksize) (v len);

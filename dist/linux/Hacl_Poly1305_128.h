@@ -21,17 +21,22 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_Poly1305_128_H
 #define __Hacl_Poly1305_128_H
 
 #include "Hacl_Kremlib.h"
-
 
 void Hacl_Impl_Poly1305_Field32xN_128_load_acc2(Lib_IntVector_Intrinsics_vec128 *acc, u8 *b);
 
@@ -58,3 +63,8 @@ void Hacl_Poly1305_128_poly1305_mac(u8 *tag, u32 len, u8 *text, u8 *key);
 
 #define __Hacl_Poly1305_128_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

@@ -21,15 +21,20 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_AES128_H
 #define __Hacl_AES128_H
-
 
 
 
@@ -39,3 +44,8 @@ extern void Hacl_AES128_aes128_encrypt_block(u16 *cipher, u16 *plain, u8 *expand
 
 #define __Hacl_AES128_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

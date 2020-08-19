@@ -1,5 +1,5 @@
 [
-  "LBÙê\\f]O×Q~.>Ñ˜",
+  "ÝÖ4Â\u0005ž\u001aÁ\u0011\u0010îÿ\u001d\\´<",
   [
     [
       "Spec.Matrix.index_lt",
@@ -21,7 +21,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "0da3331761f1839c220cfacf018e2b56"
+      "9874cc0ccc93598f102f33c315c015fa"
     ],
     [
       "Spec.Matrix.index_lt_s",
@@ -43,7 +43,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "9003ce1d3f0504cfa991a867d19c3471"
+      "cf67bd61e0bdb6ef97dfbe4cc0df93a3"
     ],
     [
       "Spec.Matrix.index_neq",
@@ -64,13 +64,13 @@
         "refinement_kinding_Tm_refine_c1424615841f28cac7fc34e92b7ff33c"
       ],
       0,
-      "a282749c26287770d2dedc3db3d01fce"
+      "38428025b148425411de3003fef4d2e3"
     ],
     [
       "Spec.Matrix.index_neq",
       2,
       0,
-      0,
+      4,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented", "@query",
@@ -79,10 +79,9 @@
         "equation_Lib.IntTypes.unsigned", "equation_Prims.eqtype",
         "equation_Prims.nat", "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "lemma_FStar.UInt.pow2_values",
-        "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
-        "primitive_Prims.op_LessThan", "primitive_Prims.op_Multiply",
-        "primitive_Prims.op_Subtraction",
+        "lemma_FStar.UInt.pow2_values", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThan",
+        "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_0ec011aea9f93256a3547ad9f0c667f1",
@@ -95,7 +94,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "890f0ff9021b3cd35d3dd2b1ad562dd7"
+      "42dddef89758d5dc66128d324aea45e9"
     ],
     [
       "Spec.Matrix.matrix",
@@ -110,7 +109,7 @@
         "refinement_interpretation_Tm_refine_b8224c6c43e6e9f067a2437fa08acf99"
       ],
       0,
-      "c04f7a672c5f351908f8654967ff9b02"
+      "7c759e0533301d0dfbb0159dcb751a84"
     ],
     [
       "Spec.Matrix.create",
@@ -136,7 +135,7 @@
         "typing_tok_Lib.IntTypes.U16@tok"
       ],
       0,
-      "717efac405f1ebb4cae4fa79991fabe3"
+      "7e966b441d39941ca51be2e9c9bf20e2"
     ],
     [
       "Spec.Matrix.mget",
@@ -157,7 +156,7 @@
         "typing_FStar.Seq.Base.length"
       ],
       0,
-      "56fbcdeefe6956a18de59238d8e84d45"
+      "3eb59b25bb55412237e735fc4eb49d15"
     ],
     [
       "Spec.Matrix.mset",
@@ -179,7 +178,7 @@
         "refinement_kinding_Tm_refine_f37327594b97f54132ce6bcb98ee4847"
       ],
       0,
-      "56ad3568704f6d2b03aa7865da63664f"
+      "fdefb6b03ae46fb5f516e88dcbd6b504"
     ],
     [
       "Spec.Matrix.mset",
@@ -214,7 +213,7 @@
         "typing_FStar.Seq.Base.length"
       ],
       0,
-      "6b9e971b7f8dfd746f53c23d6d472cc5"
+      "33b847d4c4387e563b9542139f0e079a"
     ],
     [
       "Spec.Matrix.extensionality",
@@ -223,7 +222,7 @@
       0,
       [ "@query" ],
       0,
-      "0dd4b63489688441bfc3e1cdfd91bb31"
+      "34654f2755bbe2f745e82baff795e491"
     ],
     [
       "Spec.Matrix.extensionality",
@@ -249,7 +248,7 @@
         "typing_FStar.Seq.Base.length"
       ],
       0,
-      "162d74d8e86dff38bd14d149c5a7fdaa"
+      "939e259a11ddc3c413a46e472bf5697b"
     ],
     [
       "Spec.Matrix.extensionality",
@@ -275,7 +274,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "b783da79eda48f8269dcca1f4598237c"
+      "a3536202ce725c9d82bdbca43c1ec356"
     ],
     [
       "Spec.Matrix.map2",
@@ -284,7 +283,7 @@
       0,
       [ "@query" ],
       0,
-      "b2f222902f6cc80936db0cfa413b9bfa"
+      "72a80c5bc0fd9d449595b45bb76191b8"
     ],
     [
       "Spec.Matrix.map2",
@@ -313,7 +312,7 @@
         "typing_Spec.Matrix.mset"
       ],
       0,
-      "8b7af296ae0635e50e16c3fec7a7d42e"
+      "c6413f6c908f77c4c62182a2bd795335"
     ],
     [
       "Spec.Matrix.add",
@@ -328,7 +327,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "707f0792d8af3d8f3054168343548eca"
+      "8bfd644e9ac249e2b0eb1224c57fcd6e"
     ],
     [
       "Spec.Matrix.add",
@@ -343,7 +342,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "d66cd5e3560ed879ad2dd88be43f999b"
+      "f9007ff5bcba800f38cc9482381188c6"
     ],
     [
       "Spec.Matrix.sub",
@@ -358,7 +357,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "f46e5d6528e6d6f7f5c1f4def5dfbef7"
+      "6972499fc2017c15e2cab8d6a86de18c"
     ],
     [
       "Spec.Matrix.sub",
@@ -373,7 +372,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "06cc09ec0b105c04f02113e9bef67abb"
+      "63e293dc0413b51dd5c30366faa6921d"
     ],
     [
       "Spec.Matrix.sum_",
@@ -405,7 +404,7 @@
         "typing_tok_Lib.IntTypes.U16@tok", "well-founded-ordering-on-nat"
       ],
       0,
-      "ac2c23b2eee106f8ddf40bf22302a27f"
+      "93ec30cd9f90154797d2a8b97531928c"
     ],
     [
       "Spec.Matrix.sum",
@@ -414,7 +413,7 @@
       0,
       [ "@query" ],
       0,
-      "aacf265cef4987c49adb647c9e32dcf1"
+      "b5739c925d9cd4f4ef99f1e722a09e9a"
     ],
     [
       "Spec.Matrix.sum_extensionality",
@@ -423,7 +422,7 @@
       0,
       [ "@query" ],
       0,
-      "f43e1e6bb62e116ea3e6d93abd3f546b"
+      "b03382051f6b21782fe106e8bd8a6440"
     ],
     [
       "Spec.Matrix.sum_extensionality",
@@ -456,7 +455,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "251ccdb0bca0faf949e9b83af1c8950b"
+      "9e0d40210d7aa54dc7c79e9db894c825"
     ],
     [
       "Spec.Matrix.mul_inner",
@@ -472,7 +471,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "13e9b0373cc813b899dc63fef5f4aaf0"
+      "4f4ada7495ed64a943d6d8507b6f186b"
     ],
     [
       "Spec.Matrix.mul_inner",
@@ -481,7 +480,7 @@
       0,
       [ "@query" ],
       0,
-      "ad9e712d52892edd22e0e60f9c6e3625"
+      "8d2f3002994e31e129c00f5500a3a56a"
     ],
     [
       "Spec.Matrix.mul_inner",
@@ -528,7 +527,7 @@
         "typing_Prims.pow2", "typing_tok_Lib.IntTypes.U16@tok"
       ],
       0,
-      "9cb7af47caf4de0e86a6bca8fc219f3f"
+      "de6a6cc14eca6fe2505af240b0c347a7"
     ],
     [
       "Spec.Matrix.mul",
@@ -544,7 +543,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "46bbf3e7643b2f48b812199ad0a42c79"
+      "69e45ad4db8e8eadcee9cb7e010d7616"
     ],
     [
       "Spec.Matrix.mul",
@@ -553,7 +552,7 @@
       0,
       [ "@query" ],
       0,
-      "59342cd06dac36e0c87e5ba3e6d623a8"
+      "9052b4be938e71d27fac8001745880a7"
     ],
     [
       "Spec.Matrix.mul",
@@ -592,7 +591,7 @@
         "typing_Spec.Matrix.mset"
       ],
       0,
-      "bafb22af19104fd94e2d65510af130b7"
+      "c3ec81007ab9aefda650abc21941b6fc"
     ],
     [
       "Spec.Matrix.mget_s",
@@ -620,7 +619,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "1a4d564ac204c5c54f2c328748d48f19"
+      "d10fccb2a41bde328d27578667f206ea"
     ],
     [
       "Spec.Matrix.mul_inner_s",
@@ -636,7 +635,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "5de8513fb95ddf928bf955b371c41ef3"
+      "4d3b91d51b93da2b2114c530e545f839"
     ],
     [
       "Spec.Matrix.mul_inner_s",
@@ -645,7 +644,7 @@
       0,
       [ "@query" ],
       0,
-      "3d9af746500427c82ee0dffc77a29a45"
+      "fc39b58b81468a7275350d8752491645"
     ],
     [
       "Spec.Matrix.mul_inner_s",
@@ -692,7 +691,7 @@
         "typing_Prims.pow2", "typing_tok_Lib.IntTypes.U16@tok"
       ],
       0,
-      "f689c580e2b1a458fa1aa16a936b935a"
+      "49529e57c0f2e032f015c22426451799"
     ],
     [
       "Spec.Matrix.mul_s",
@@ -708,7 +707,7 @@
         "equation_Lib.IntTypes.unsigned", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "c5775aed890d17d71ec3baa647e56c8d"
+      "7ec316ea34a34197e0504219601925aa"
     ],
     [
       "Spec.Matrix.mul_s",
@@ -717,7 +716,7 @@
       0,
       [ "@query" ],
       0,
-      "f600996a882e99b177a252a18deb40a2"
+      "26256add012049cb3b9699a549565e51"
     ],
     [
       "Spec.Matrix.mul_s",
@@ -756,7 +755,7 @@
         "typing_Spec.Matrix.mset"
       ],
       0,
-      "84500477c486167fce0aeb2fa10f6a22"
+      "1a35f5f1b9bf963e5fc24c3da50e1a4b"
     ],
     [
       "Spec.Matrix.fold_land_",
@@ -776,7 +775,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "6ddc11f5bc72d21db246f16b5e9ca1a6"
+      "12e75137f084a35fac992a50a9704a8c"
     ],
     [
       "Spec.Matrix.eq_m",
@@ -794,7 +793,7 @@
         "refinement_interpretation_Tm_refine_0766302b68bb44ab7aff8c4d8be0b46f"
       ],
       0,
-      "5a30fa0b9edb1d9050d2eae3f5c4096c"
+      "4648b1a92f9c6ef8d27cf3c1923d479b"
     ],
     [
       "Spec.Matrix.matrix_eq_fc",
@@ -814,7 +813,7 @@
         "refinement_interpretation_Tm_refine_b8224c6c43e6e9f067a2437fa08acf99"
       ],
       0,
-      "95fac8d982031f53df590dc3f7d9a66a"
+      "bd80d704969d2cbf4801546731c5dcae"
     ],
     [
       "Spec.Matrix.matrix_eq",
@@ -833,7 +832,7 @@
         "typing_FStar.Seq.Base.length"
       ],
       0,
-      "840490a17f2946a47a25dfa2e4abc274"
+      "362bb79eeb7a80c06d580aaf2c035844"
     ],
     [
       "Spec.Matrix.matrix_eq",
@@ -881,7 +880,7 @@
         "typing_Tm_abs_f2738f059364540e4bcc5f3fff4dccc4"
       ],
       0,
-      "65203c64e9067cc890f6b849b98c4971"
+      "a2cce7b860aac6202e9b6f6a1abc63d0"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes_fc",
@@ -903,7 +902,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "91fa18ba1ccdc5fb7fa05165d6458f57"
+      "deb069be59707bbd6feadcfc72949ebd"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes_fc",
@@ -929,7 +928,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "ed0880a4b1dfec7a65a4d37e8567ee77"
+      "18b033d4612f27021c387e1b5ea43508"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes_fc",
@@ -969,7 +968,7 @@
         "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "aa2445db9a701b99d00cfdef982b6a1d"
+      "bcaaaeaf7f8ca5b730ed65fb7664d043"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_fc",
@@ -1011,7 +1010,7 @@
         "typing_Prims.pow2", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "1b06786d784cceed8409836480f9e37c"
+      "a5c3738bca7b289f403b71513a5ba95b"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_fc",
@@ -1037,7 +1036,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "61d8e328d0914f7be658bc5fbf5ac5d0"
+      "52a14a7e15f4074e55e9efcadfca7bba"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_fc",
@@ -1046,7 +1045,7 @@
       0,
       [ "@query", "eq2-interp", "equation_Spec.Matrix.matrix_to_lbytes_fc" ],
       0,
-      "fd373efd87a049fa7dc9bfe9a64a0f7b"
+      "5e9cae39dd8b10bd7fe8df028d4921bd"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes",
@@ -1083,7 +1082,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "b5fc761f9a72a1c270c58946000a9d56"
+      "0dcf6cd1e5ebd55d54e5542766777c3f"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes",
@@ -1109,7 +1108,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "9a871df2d1129400c7e87621e438fe05"
+      "f0c79d17080d9444373ae3b73eba3655"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes",
@@ -1157,7 +1156,7 @@
         "typing_tok_Lib.IntTypes.U32@tok", "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "b287424ef0b97d073e504385884baff7"
+      "95190cb212ff623ac4b03635bd5da0de"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_ext",
@@ -1187,7 +1186,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "071932d60ca5f35dc87badc2b8a49095"
+      "a7f56d3e677e95a97365a5a15569f2ff"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_ext",
@@ -1213,7 +1212,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "77c17f8e6f3af86e89c26f7483d915bf"
+      "b39c528f4ab2b8fb8c642ee99e84b727"
     ],
     [
       "Spec.Matrix.lemma_matrix_to_lbytes_ext",
@@ -1260,7 +1259,7 @@
         "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "97037744221787ea44382423baf0b647"
+      "c4e81130181f2ae59e45201383d59b9c"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes",
@@ -1287,7 +1286,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "6a2c12e9d69984fb5a6d15f7391f9d7a"
+      "7d1395615901926122aea290333f1557"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes",
@@ -1306,7 +1305,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "4c5376e25c320aabcc09c5bcb7030dd5"
+      "3cf21c74a226127361abead691ffca1f"
     ],
     [
       "Spec.Matrix.matrix_to_lbytes",
@@ -1368,7 +1367,7 @@
         "typing_tok_Lib.IntTypes.U8@tok"
       ],
       0,
-      "0b36ad2e144510619ef68ca4f1a9582a"
+      "eb34de613f734bec723a40a8489939bf"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes_fc",
@@ -1389,7 +1388,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "b3044c8fcd01e7f32ef6492d0ad4aa8d"
+      "9703ea20c1b7cf5ac116bcf861221a6c"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes_fc",
@@ -1410,7 +1409,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "9c251a45ebc2342fa337091119e75429"
+      "efc497337c847f4cc5f2fb09f68c5012"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes_fc",
@@ -1442,7 +1441,7 @@
         "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "d8c75037ca4fca2f0f5304b825521901"
+      "4e34fa79be75257610f12c33cf629003"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes",
@@ -1467,7 +1466,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "e065435562046479c473ea6c002e6f88"
+      "60d505d7da9837d7a4f6bf7697eb403b"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes",
@@ -1488,7 +1487,7 @@
         "typing_Lib.IntTypes.bits", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "444e7ab04c982bfe7e0bcbd08fe16811"
+      "e4f4e936d28bce55533b8f8f33bd85ad"
     ],
     [
       "Spec.Matrix.matrix_from_lbytes",
@@ -1530,7 +1529,7 @@
         "typing_Lib.Sequence.upd", "typing_tok_Lib.IntTypes.U32@tok"
       ],
       0,
-      "48f6cd5861fb055f237ec3a834230446"
+      "a0de684e511fd74374c631bd5294fd3e"
     ]
   ]
 ]

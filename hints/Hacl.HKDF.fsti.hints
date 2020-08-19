@@ -20,7 +20,7 @@
         "typing_Spec.Hash.Definitions.word_length"
       ],
       0,
-      "457f9916728c2e6ae3193974910b55b1"
+      "6a5c777500c17126d0f68ec58f18d9af"
     ],
     [
       "Hacl.HKDF.hash_block_length_fits",
@@ -43,7 +43,7 @@
         "typing_Spec.Hash.Definitions.hash_word_length"
       ],
       0,
-      "54b44fba1182e90066ed4739640b273c"
+      "8f6fa151b787fd746655eed5cfc6dab8"
     ],
     [
       "Hacl.HKDF.extract_st",
@@ -69,7 +69,7 @@
         "typing_Spec.Hash.Definitions.word_length"
       ],
       0,
-      "97e52e2ba2d866bdb08263838f467a24"
+      "0515b9680c6dacaece97bc84830375db"
     ],
     [
       "Hacl.HKDF.expand_st",
@@ -96,7 +96,7 @@
         "typing_Spec.Hash.Definitions.word_length"
       ],
       0,
-      "209b5242f76c8c594248417dc943ef8e"
+      "2ce88df1dbe77ed25893b58da0fdfbf5"
     ]
   ]
 ]

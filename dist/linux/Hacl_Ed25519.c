@@ -71,13 +71,13 @@ static void times_2(u64 *out, u64 *a)
 
 static void times_d(u64 *out, u64 *a)
 {
-  u64 d1[5U] = { 0U };
-  d1[0U] = (u64)0x00034dca135978a3U;
-  d1[1U] = (u64)0x0001a8283b156ebdU;
-  d1[2U] = (u64)0x0005e7a26001c029U;
-  d1[3U] = (u64)0x000739c663a03cbbU;
-  d1[4U] = (u64)0x00052036cee2b6ffU;
-  fmul(out, d1, a);
+  u64 d[5U] = { 0U };
+  d[0U] = (u64)0x00034dca135978a3U;
+  d[1U] = (u64)0x0001a8283b156ebdU;
+  d[2U] = (u64)0x0005e7a26001c029U;
+  d[3U] = (u64)0x000739c663a03cbbU;
+  d[4U] = (u64)0x00052036cee2b6ffU;
+  fmul(out, d, a);
 }
 
 static void times_2d(u64 *out, u64 *a)
@@ -102,7 +102,7 @@ static void fsquare(u64 *out, u64 *a)
   Hacl_Impl_Curve25519_Field51_fsqr(out, a, tmp);
 }
 
-static void fsquare_times(u64 *output, u64 *input, u32 count1)
+static void fsquare_times(u64 *output, u64 *input, u32 count)
 {
   uint128_t tmp[5U];
   {
@@ -110,10 +110,10 @@ static void fsquare_times(u64 *output, u64 *input, u32 count1)
     for (_i = 0U; _i < (u32)5U; ++_i)
       tmp[_i] = (uint128_t)(u64)0U;
   }
-  Hacl_Curve25519_51_fsquare_times(output, input, tmp, count1);
+  Hacl_Curve25519_51_fsquare_times(output, input, tmp, count);
 }
 
-static void fsquare_times_inplace(u64 *output, u32 count1)
+static void fsquare_times_inplace(u64 *output, u32 count)
 {
   uint128_t tmp[5U];
   {
@@ -121,7 +121,7 @@ static void fsquare_times_inplace(u64 *output, u32 count1)
     for (_i = 0U; _i < (u32)5U; ++_i)
       tmp[_i] = (uint128_t)(u64)0U;
   }
-  Hacl_Curve25519_51_fsquare_times(output, output, tmp, count1);
+  Hacl_Curve25519_51_fsquare_times(output, output, tmp, count);
 }
 
 static void inverse(u64 *out, u64 *a)
@@ -346,7 +346,7 @@ static void store_51(u8 *output, u64 *input)
   store_4(output, o0, o1, o2, o3);
 }
 
-static void point_add(u64 *out, u64 *p, u64 *q1)
+static void point_add(u64 *out, u64 *p, u64 *q)
 {
   u64 tmp[30U] = { 0U };
   u64 *tmp10 = tmp;
@@ -355,8 +355,8 @@ static void point_add(u64 *out, u64 *p, u64 *q1)
   u64 *tmp40 = tmp + (u32)15U;
   u64 *x1 = p;
   u64 *y1 = p + (u32)5U;
-  u64 *x2 = q1;
-  u64 *y2 = q1 + (u32)5U;
+  u64 *x2 = q;
+  u64 *y2 = q + (u32)5U;
   u64 *tmp11;
   u64 *tmp2;
   u64 *tmp3;
@@ -375,13 +375,13 @@ static void point_add(u64 *out, u64 *p, u64 *q1)
   u64 *y3;
   u64 *z3;
   u64 *t3;
-  memcpy(tmp10, x1, (u32)5U * sizeof (x1[0U]));
-  memcpy(tmp20, x2, (u32)5U * sizeof (x2[0U]));
+  memcpy(tmp10, x1, (u32)5U * sizeof (u64));
+  memcpy(tmp20, x2, (u32)5U * sizeof (u64));
   fdifference(tmp10, y1);
   fdifference(tmp20, y2);
   fmul(tmp30, tmp10, tmp20);
-  memcpy(tmp10, y1, (u32)5U * sizeof (y1[0U]));
-  memcpy(tmp20, y2, (u32)5U * sizeof (y2[0U]));
+  memcpy(tmp10, y1, (u32)5U * sizeof (u64));
+  memcpy(tmp20, y2, (u32)5U * sizeof (u64));
   fsum(tmp10, x1);
   fsum(tmp20, x2);
   fmul(tmp40, tmp10, tmp20);
@@ -393,14 +393,14 @@ static void point_add(u64 *out, u64 *p, u64 *q1)
   tmp60 = tmp + (u32)25U;
   z1 = p + (u32)10U;
   t1 = p + (u32)15U;
-  z2 = q1 + (u32)10U;
-  t2 = q1 + (u32)15U;
+  z2 = q + (u32)10U;
+  t2 = q + (u32)15U;
   times_2d(tmp11, t1);
   fmul(tmp2, tmp11, t2);
   times_2(tmp11, z1);
   fmul(tmp50, tmp11, z2);
-  memcpy(tmp11, tmp3, (u32)5U * sizeof (tmp3[0U]));
-  memcpy(tmp60, tmp2, (u32)5U * sizeof (tmp2[0U]));
+  memcpy(tmp11, tmp3, (u32)5U * sizeof (u64));
+  memcpy(tmp60, tmp2, (u32)5U * sizeof (u64));
   fdifference(tmp11, tmp41);
   fdifference(tmp60, tmp50);
   fsum(tmp50, tmp2);
@@ -449,7 +449,7 @@ static void point_double(u64 *out, u64 *p)
   fsquare(tmp210, y10);
   fsquare(tmp310, z1);
   times_2(tmp410, tmp310);
-  memcpy(tmp310, tmp110, (u32)5U * sizeof (tmp110[0U]));
+  memcpy(tmp310, tmp110, (u32)5U * sizeof (u64));
   fsum(tmp310, tmp210);
   tmp11 = tmp;
   tmp21 = tmp + (u32)5U;
@@ -459,10 +459,10 @@ static void point_double(u64 *out, u64 *p)
   tmp61 = tmp + (u32)25U;
   x1 = p;
   y1 = p + (u32)5U;
-  memcpy(tmp51, x1, (u32)5U * sizeof (x1[0U]));
+  memcpy(tmp51, x1, (u32)5U * sizeof (u64));
   fsum(tmp51, y1);
   fsquare(tmp61, tmp51);
-  memcpy(tmp51, tmp31, (u32)5U * sizeof (tmp31[0U]));
+  memcpy(tmp51, tmp31, (u32)5U * sizeof (u64));
   reduce_513(tmp51);
   fdifference(tmp61, tmp51);
   fdifference(tmp21, tmp11);
@@ -475,7 +475,7 @@ static void point_double(u64 *out, u64 *p)
   fmul(z3, tmp4, tmp2);
 }
 
-static void swap_conditional_step(u64 *a_, u64 *b_, u64 *a, u64 *b, u64 swap1)
+static void swap_conditional_step(u64 *a_, u64 *b_, u64 *a, u64 *b, u64 swap)
 {
   u64 a0 = a[0U];
   u64 a1 = a[1U];
@@ -487,11 +487,11 @@ static void swap_conditional_step(u64 *a_, u64 *b_, u64 *a, u64 *b, u64 swap1)
   u64 b2 = b[2U];
   u64 b3 = b[3U];
   u64 b4 = b[4U];
-  u64 x0 = (a0 ^ b0) & swap1;
-  u64 x1 = (a1 ^ b1) & swap1;
-  u64 x2 = (a2 ^ b2) & swap1;
-  u64 x3 = (a3 ^ b3) & swap1;
-  u64 x4 = (a4 ^ b4) & swap1;
+  u64 x0 = (a0 ^ b0) & swap;
+  u64 x1 = (a1 ^ b1) & swap;
+  u64 x2 = (a2 ^ b2) & swap;
+  u64 x3 = (a3 ^ b3) & swap;
+  u64 x4 = (a4 ^ b4) & swap;
   a_[0U] = a0 ^ x0;
   b_[0U] = b0 ^ x0;
   a_[1U] = a1 ^ x1;
@@ -506,23 +506,23 @@ static void swap_conditional_step(u64 *a_, u64 *b_, u64 *a, u64 *b, u64 swap1)
 
 static void swap_conditional(u64 *a_, u64 *b_, u64 *a, u64 *b, u64 iswap)
 {
-  u64 swap1 = (u64)0U - iswap;
-  swap_conditional_step(a_, b_, a, b, swap1);
-  swap_conditional_step(a_ + (u32)5U, b_ + (u32)5U, a + (u32)5U, b + (u32)5U, swap1);
-  swap_conditional_step(a_ + (u32)10U, b_ + (u32)10U, a + (u32)10U, b + (u32)10U, swap1);
-  swap_conditional_step(a_ + (u32)15U, b_ + (u32)15U, a + (u32)15U, b + (u32)15U, swap1);
+  u64 swap = (u64)0U - iswap;
+  swap_conditional_step(a_, b_, a, b, swap);
+  swap_conditional_step(a_ + (u32)5U, b_ + (u32)5U, a + (u32)5U, b + (u32)5U, swap);
+  swap_conditional_step(a_ + (u32)10U, b_ + (u32)10U, a + (u32)10U, b + (u32)10U, swap);
+  swap_conditional_step(a_ + (u32)15U, b_ + (u32)15U, a + (u32)15U, b + (u32)15U, swap);
 }
 
 static void swap_conditional_inplace(u64 *a, u64 *b, u64 iswap)
 {
-  u64 swap1 = (u64)0U - iswap;
-  swap_conditional_step(a, b, a, b, swap1);
-  swap_conditional_step(a + (u32)5U, b + (u32)5U, a + (u32)5U, b + (u32)5U, swap1);
-  swap_conditional_step(a + (u32)10U, b + (u32)10U, a + (u32)10U, b + (u32)10U, swap1);
-  swap_conditional_step(a + (u32)15U, b + (u32)15U, a + (u32)15U, b + (u32)15U, swap1);
+  u64 swap = (u64)0U - iswap;
+  swap_conditional_step(a, b, a, b, swap);
+  swap_conditional_step(a + (u32)5U, b + (u32)5U, a + (u32)5U, b + (u32)5U, swap);
+  swap_conditional_step(a + (u32)10U, b + (u32)10U, a + (u32)10U, b + (u32)10U, swap);
+  swap_conditional_step(a + (u32)15U, b + (u32)15U, a + (u32)15U, b + (u32)15U, swap);
 }
 
-static void point_mul(u64 *result, u8 *scalar, u64 *q1)
+static void point_mul(u64 *result, u8 *scalar, u64 *q)
 {
   u64 b[80U] = { 0U };
   u64 *nq = b;
@@ -551,7 +551,7 @@ static void point_mul(u64 *result, u8 *scalar, u64 *q1)
   t[2U] = (u64)0U;
   t[3U] = (u64)0U;
   t[4U] = (u64)0U;
-  memcpy(nqpq, q1, (u32)20U * sizeof (q1[0U]));
+  memcpy(nqpq, q, (u32)20U * sizeof (u64));
   {
     u32 i;
     for (i = (u32)0U; i < (u32)256U; i++)
@@ -560,9 +560,9 @@ static void point_mul(u64 *result, u8 *scalar, u64 *q1)
       u64 *nqpq1 = b + (u32)20U;
       u64 *nq2 = b + (u32)40U;
       u64 *nqpq2 = b + (u32)60U;
-      u32 q2 = ((u32)255U - i) >> (u32)3U;
+      u32 q1 = ((u32)255U - i) >> (u32)3U;
       u32 r = ((u32)255U - i) & (u32)7U;
-      u8 kq = scalar[q2];
+      u8 kq = scalar[q1];
       u8 i1 = kq >> r & (u8)1U;
       swap_conditional_inplace(nq1, nqpq1, (u64)i1);
       point_double(nq2, nq1);
@@ -570,16 +570,16 @@ static void point_mul(u64 *result, u8 *scalar, u64 *q1)
       swap_conditional(nq1, nqpq1, nq2, nqpq2, (u64)i1);
     }
   }
-  memcpy(result, nq, (u32)20U * sizeof (nq[0U]));
+  memcpy(result, nq, (u32)20U * sizeof (u64));
 }
 
 static void point_mul_g(u64 *result, u8 *scalar)
 {
-  u64 g1[20U] = { 0U };
-  u64 *gx = g1;
-  u64 *gy = g1 + (u32)5U;
-  u64 *gz = g1 + (u32)10U;
-  u64 *gt1 = g1 + (u32)15U;
+  u64 g[20U] = { 0U };
+  u64 *gx = g;
+  u64 *gy = g + (u32)5U;
+  u64 *gz = g + (u32)10U;
+  u64 *gt = g + (u32)15U;
   gx[0U] = (u64)0x00062d608f25d51aU;
   gx[1U] = (u64)0x000412a4b4f6592aU;
   gx[2U] = (u64)0x00075b7171a4b31dU;
@@ -595,12 +595,12 @@ static void point_mul_g(u64 *result, u8 *scalar)
   gz[2U] = (u64)0U;
   gz[3U] = (u64)0U;
   gz[4U] = (u64)0U;
-  gt1[0U] = (u64)0x00068ab3a5b7dda3U;
-  gt1[1U] = (u64)0x00000eea2a5eadbbU;
-  gt1[2U] = (u64)0x0002af8df483c27eU;
-  gt1[3U] = (u64)0x000332b375274732U;
-  gt1[4U] = (u64)0x00067875f0fd78b7U;
-  point_mul(result, scalar, g1);
+  gt[0U] = (u64)0x00068ab3a5b7dda3U;
+  gt[1U] = (u64)0x00000eea2a5eadbbU;
+  gt[2U] = (u64)0x0002af8df483c27eU;
+  gt[3U] = (u64)0x000332b375274732U;
+  gt[4U] = (u64)0x00067875f0fd78b7U;
+  point_mul(result, scalar, g);
 }
 
 static void point_compress(u8 *z, u64 *p)
@@ -631,12 +631,12 @@ static void point_compress(u8 *z, u64 *p)
   z[31U] = o31 + (xbyte << (u32)7U);
 }
 
-static void secret_expand(u8 *expanded, u8 *secret1)
+static void secret_expand(u8 *expanded, u8 *secret)
 {
   u8 *h_low;
   u8 h_low0;
   u8 h_low31;
-  Hacl_Hash_SHA2_hash_512(secret1, (u32)32U, expanded);
+  Hacl_Hash_SHA2_hash_512(secret, (u32)32U, expanded);
   h_low = expanded;
   h_low0 = h_low[0U];
   h_low31 = h_low[31U];
@@ -644,12 +644,12 @@ static void secret_expand(u8 *expanded, u8 *secret1)
   h_low[31U] = (h_low31 & (u8)127U) | (u8)64U;
 }
 
-static void secret_to_public(u8 *out, u8 *secret1)
+static void secret_to_public(u8 *out, u8 *secret)
 {
   u8 expanded_secret[64U] = { 0U };
   u64 res[20U] = { 0U };
   u8 *a;
-  secret_expand(expanded_secret, secret1);
+  secret_expand(expanded_secret, secret);
   a = expanded_secret;
   point_mul_g(res, a);
   point_compress(out, res);
@@ -742,37 +742,36 @@ static void barrett_reduction(u64 *z, u64 *t)
   uint128_t z7 = xy34 + xy43;
   uint128_t z8 = xy44;
   uint128_t carry0 = z01 >> (u32)56U;
-  u64 t100 = (uint64_t)z01 & (u64)0xffffffffffffffU;
   uint128_t c00 = carry0;
   uint128_t carry1 = (z11 + c00) >> (u32)56U;
-  u64 t101 = (uint64_t)(z11 + c00) & (u64)0xffffffffffffffU;
+  u64 t100 = (uint64_t)(z11 + c00) & (u64)0xffffffffffffffU;
   uint128_t c10 = carry1;
   uint128_t carry2 = (z21 + c10) >> (u32)56U;
-  u64 t102 = (uint64_t)(z21 + c10) & (u64)0xffffffffffffffU;
+  u64 t101 = (uint64_t)(z21 + c10) & (u64)0xffffffffffffffU;
   uint128_t c20 = carry2;
   uint128_t carry3 = (z31 + c20) >> (u32)56U;
-  u64 t103 = (uint64_t)(z31 + c20) & (u64)0xffffffffffffffU;
+  u64 t102 = (uint64_t)(z31 + c20) & (u64)0xffffffffffffffU;
   uint128_t c30 = carry3;
   uint128_t carry4 = (z41 + c30) >> (u32)56U;
-  u64 t104 = (uint64_t)(z41 + c30) & (u64)0xffffffffffffffU;
+  u64 t103 = (uint64_t)(z41 + c30) & (u64)0xffffffffffffffU;
   uint128_t c40 = carry4;
-  u64 t410 = t104;
+  u64 t410 = t103;
   uint128_t carry5 = (z5 + c40) >> (u32)56U;
-  u64 t105 = (uint64_t)(z5 + c40) & (u64)0xffffffffffffffU;
+  u64 t104 = (uint64_t)(z5 + c40) & (u64)0xffffffffffffffU;
   uint128_t c5 = carry5;
-  u64 t51 = t105;
+  u64 t51 = t104;
   uint128_t carry6 = (z6 + c5) >> (u32)56U;
-  u64 t106 = (uint64_t)(z6 + c5) & (u64)0xffffffffffffffU;
+  u64 t105 = (uint64_t)(z6 + c5) & (u64)0xffffffffffffffU;
   uint128_t c6 = carry6;
-  u64 t61 = t106;
+  u64 t61 = t105;
   uint128_t carry7 = (z7 + c6) >> (u32)56U;
-  u64 t107 = (uint64_t)(z7 + c6) & (u64)0xffffffffffffffU;
+  u64 t106 = (uint64_t)(z7 + c6) & (u64)0xffffffffffffffU;
   uint128_t c7 = carry7;
-  u64 t71 = t107;
+  u64 t71 = t106;
   uint128_t carry8 = (z8 + c7) >> (u32)56U;
-  u64 t108 = (uint64_t)(z8 + c7) & (u64)0xffffffffffffffU;
+  u64 t107 = (uint64_t)(z8 + c7) & (u64)0xffffffffffffffU;
   uint128_t c8 = carry8;
-  u64 t81 = t108;
+  u64 t81 = t107;
   u64 t91 = (uint64_t)c8;
   u64 qmu4_ = t410;
   u64 qmu5_ = t51;
@@ -821,21 +820,21 @@ static void barrett_reduction(u64 *z, u64 *t)
   uint128_t xy31 = (uint128_t)qdiv3 * m1;
   uint128_t xy40 = (uint128_t)qdiv4 * m0;
   uint128_t carry9 = xy00 >> (u32)56U;
-  u64 t109 = (uint64_t)xy00 & (u64)0xffffffffffffffU;
+  u64 t108 = (uint64_t)xy00 & (u64)0xffffffffffffffU;
   uint128_t c0 = carry9;
-  u64 t010 = t109;
+  u64 t010 = t108;
   uint128_t carry10 = (xy01 + xy10 + c0) >> (u32)56U;
-  u64 t1010 = (uint64_t)(xy01 + xy10 + c0) & (u64)0xffffffffffffffU;
+  u64 t109 = (uint64_t)(xy01 + xy10 + c0) & (u64)0xffffffffffffffU;
   uint128_t c11 = carry10;
-  u64 t110 = t1010;
+  u64 t110 = t109;
   uint128_t carry11 = (xy02 + xy11 + xy20 + c11) >> (u32)56U;
-  u64 t1011 = (uint64_t)(xy02 + xy11 + xy20 + c11) & (u64)0xffffffffffffffU;
+  u64 t1010 = (uint64_t)(xy02 + xy11 + xy20 + c11) & (u64)0xffffffffffffffU;
   uint128_t c21 = carry11;
-  u64 t210 = t1011;
+  u64 t210 = t1010;
   uint128_t carry = (xy03 + xy12 + xy21 + xy30 + c21) >> (u32)56U;
-  u64 t1012 = (uint64_t)(xy03 + xy12 + xy21 + xy30 + c21) & (u64)0xffffffffffffffU;
+  u64 t1011 = (uint64_t)(xy03 + xy12 + xy21 + xy30 + c21) & (u64)0xffffffffffffffU;
   uint128_t c31 = carry;
-  u64 t310 = t1012;
+  u64 t310 = t1011;
   u64 t411 = (uint64_t)(xy04 + xy13 + xy22 + xy31 + xy40 + c31) & (u64)0xffffffffffU;
   u64 qmul0 = t010;
   u64 qmul1 = t110;
@@ -843,24 +842,24 @@ static void barrett_reduction(u64 *z, u64 *t)
   u64 qmul3 = t310;
   u64 qmul4 = t411;
   u64 b5 = (r0 - qmul0) >> (u32)63U;
-  u64 t1013 = (b5 << (u32)56U) + r0 - qmul0;
+  u64 t1012 = (b5 << (u32)56U) + r0 - qmul0;
   u64 c1 = b5;
-  u64 t011 = t1013;
+  u64 t011 = t1012;
   u64 b6 = (r1 - (qmul1 + c1)) >> (u32)63U;
-  u64 t1014 = (b6 << (u32)56U) + r1 - (qmul1 + c1);
+  u64 t1013 = (b6 << (u32)56U) + r1 - (qmul1 + c1);
   u64 c2 = b6;
-  u64 t111 = t1014;
+  u64 t111 = t1013;
   u64 b7 = (r2 - (qmul2 + c2)) >> (u32)63U;
-  u64 t1015 = (b7 << (u32)56U) + r2 - (qmul2 + c2);
+  u64 t1014 = (b7 << (u32)56U) + r2 - (qmul2 + c2);
   u64 c3 = b7;
-  u64 t211 = t1015;
+  u64 t211 = t1014;
   u64 b8 = (r3 - (qmul3 + c3)) >> (u32)63U;
-  u64 t1016 = (b8 << (u32)56U) + r3 - (qmul3 + c3);
+  u64 t1015 = (b8 << (u32)56U) + r3 - (qmul3 + c3);
   u64 c4 = b8;
-  u64 t311 = t1016;
+  u64 t311 = t1015;
   u64 b9 = (r4 - (qmul4 + c4)) >> (u32)63U;
-  u64 t1017 = (b9 << (u32)40U) + r4 - (qmul4 + c4);
-  u64 t412 = t1017;
+  u64 t1016 = (b9 << (u32)40U) + r4 - (qmul4 + c4);
+  u64 t412 = t1016;
   u64 s0 = t011;
   u64 s1 = t111;
   u64 s2 = t211;
@@ -877,21 +876,21 @@ static void barrett_reduction(u64 *z, u64 *t)
   u64 y3 = m31;
   u64 y4 = m41;
   u64 b10 = (s0 - y0) >> (u32)63U;
-  u64 t1018 = (b10 << (u32)56U) + s0 - y0;
+  u64 t1017 = (b10 << (u32)56U) + s0 - y0;
   u64 b0 = b10;
-  u64 t01 = t1018;
+  u64 t01 = t1017;
   u64 b11 = (s1 - (y1 + b0)) >> (u32)63U;
-  u64 t1019 = (b11 << (u32)56U) + s1 - (y1 + b0);
+  u64 t1018 = (b11 << (u32)56U) + s1 - (y1 + b0);
   u64 b1 = b11;
-  u64 t11 = t1019;
+  u64 t11 = t1018;
   u64 b12 = (s2 - (y2 + b1)) >> (u32)63U;
-  u64 t1020 = (b12 << (u32)56U) + s2 - (y2 + b1);
+  u64 t1019 = (b12 << (u32)56U) + s2 - (y2 + b1);
   u64 b2 = b12;
-  u64 t21 = t1020;
+  u64 t21 = t1019;
   u64 b13 = (s3 - (y3 + b2)) >> (u32)63U;
-  u64 t1021 = (b13 << (u32)56U) + s3 - (y3 + b2);
+  u64 t1020 = (b13 << (u32)56U) + s3 - (y3 + b2);
   u64 b3 = b13;
-  u64 t31 = t1021;
+  u64 t31 = t1020;
   u64 b = (s4 - (y4 + b3)) >> (u32)63U;
   u64 t10 = (b << (u32)56U) + s4 - (y4 + b3);
   u64 b4 = b;
@@ -1092,37 +1091,36 @@ static void mul_modq(u64 *out, u64 *x, u64 *y)
   uint128_t z7 = xy34 + xy43;
   uint128_t z8 = xy44;
   uint128_t carry9 = z02 >> (u32)56U;
-  u64 t21 = (uint64_t)z02 & (u64)0xffffffffffffffU;
   uint128_t c01 = carry9;
   uint128_t carry10 = (z12 + c01) >> (u32)56U;
-  u64 t22 = (uint64_t)(z12 + c01) & (u64)0xffffffffffffffU;
+  u64 t21 = (uint64_t)(z12 + c01) & (u64)0xffffffffffffffU;
   uint128_t c11 = carry10;
   uint128_t carry11 = (z22 + c11) >> (u32)56U;
-  u64 t23 = (uint64_t)(z22 + c11) & (u64)0xffffffffffffffU;
+  u64 t22 = (uint64_t)(z22 + c11) & (u64)0xffffffffffffffU;
   uint128_t c21 = carry11;
   uint128_t carry12 = (z32 + c21) >> (u32)56U;
-  u64 t24 = (uint64_t)(z32 + c21) & (u64)0xffffffffffffffU;
+  u64 t23 = (uint64_t)(z32 + c21) & (u64)0xffffffffffffffU;
   uint128_t c31 = carry12;
   uint128_t carry13 = (z42 + c31) >> (u32)56U;
-  u64 t25 = (uint64_t)(z42 + c31) & (u64)0xffffffffffffffU;
+  u64 t24 = (uint64_t)(z42 + c31) & (u64)0xffffffffffffffU;
   uint128_t c41 = carry13;
-  u64 t41 = t25;
+  u64 t41 = t24;
   uint128_t carry14 = (z5 + c41) >> (u32)56U;
-  u64 t26 = (uint64_t)(z5 + c41) & (u64)0xffffffffffffffU;
+  u64 t25 = (uint64_t)(z5 + c41) & (u64)0xffffffffffffffU;
   uint128_t c5 = carry14;
-  u64 t5 = t26;
+  u64 t5 = t25;
   uint128_t carry15 = (z6 + c5) >> (u32)56U;
-  u64 t27 = (uint64_t)(z6 + c5) & (u64)0xffffffffffffffU;
+  u64 t26 = (uint64_t)(z6 + c5) & (u64)0xffffffffffffffU;
   uint128_t c6 = carry15;
-  u64 t6 = t27;
+  u64 t6 = t26;
   uint128_t carry16 = (z7 + c6) >> (u32)56U;
-  u64 t28 = (uint64_t)(z7 + c6) & (u64)0xffffffffffffffU;
+  u64 t27 = (uint64_t)(z7 + c6) & (u64)0xffffffffffffffU;
   uint128_t c7 = carry16;
-  u64 t7 = t28;
+  u64 t7 = t27;
   uint128_t carry17 = (z8 + c7) >> (u32)56U;
-  u64 t29 = (uint64_t)(z8 + c7) & (u64)0xffffffffffffffU;
+  u64 t28 = (uint64_t)(z8 + c7) & (u64)0xffffffffffffffU;
   uint128_t c8 = carry17;
-  u64 t8 = t29;
+  u64 t8 = t28;
   u64 t9 = (uint64_t)c8;
   u64 qmu4_ = t41;
   u64 qmu5_ = t5;
@@ -1171,50 +1169,50 @@ static void mul_modq(u64 *out, u64 *x, u64 *y)
   uint128_t xy31 = (uint128_t)qdiv3 * m1;
   uint128_t xy40 = (uint128_t)qdiv4 * m0;
   uint128_t carry18 = xy00 >> (u32)56U;
-  u64 t31 = (uint64_t)xy00 & (u64)0xffffffffffffffU;
+  u64 t29 = (uint64_t)xy00 & (u64)0xffffffffffffffU;
   uint128_t c0 = carry18;
-  u64 t01 = t31;
+  u64 t01 = t29;
   uint128_t carry19 = (xy01 + xy10 + c0) >> (u32)56U;
-  u64 t32 = (uint64_t)(xy01 + xy10 + c0) & (u64)0xffffffffffffffU;
+  u64 t31 = (uint64_t)(xy01 + xy10 + c0) & (u64)0xffffffffffffffU;
   uint128_t c12 = carry19;
-  u64 t110 = t32;
+  u64 t110 = t31;
   uint128_t carry20 = (xy02 + xy11 + xy20 + c12) >> (u32)56U;
-  u64 t33 = (uint64_t)(xy02 + xy11 + xy20 + c12) & (u64)0xffffffffffffffU;
+  u64 t32 = (uint64_t)(xy02 + xy11 + xy20 + c12) & (u64)0xffffffffffffffU;
   uint128_t c22 = carry20;
-  u64 t210 = t33;
+  u64 t210 = t32;
   uint128_t carry = (xy03 + xy12 + xy21 + xy30 + c22) >> (u32)56U;
-  u64 t34 = (uint64_t)(xy03 + xy12 + xy21 + xy30 + c22) & (u64)0xffffffffffffffU;
+  u64 t33 = (uint64_t)(xy03 + xy12 + xy21 + xy30 + c22) & (u64)0xffffffffffffffU;
   uint128_t c32 = carry;
-  u64 t35 = t34;
+  u64 t34 = t33;
   u64 t42 = (uint64_t)(xy04 + xy13 + xy22 + xy31 + xy40 + c32) & (u64)0xffffffffffU;
   u64 qmul0 = t01;
   u64 qmul1 = t110;
   u64 qmul2 = t210;
-  u64 qmul3 = t35;
+  u64 qmul3 = t34;
   u64 qmul4 = t42;
   u64 b5 = (r01 - qmul0) >> (u32)63U;
-  u64 t36 = (b5 << (u32)56U) + r01 - qmul0;
+  u64 t35 = (b5 << (u32)56U) + r01 - qmul0;
   u64 c1 = b5;
-  u64 t02 = t36;
+  u64 t02 = t35;
   u64 b6 = (r11 - (qmul1 + c1)) >> (u32)63U;
-  u64 t37 = (b6 << (u32)56U) + r11 - (qmul1 + c1);
+  u64 t36 = (b6 << (u32)56U) + r11 - (qmul1 + c1);
   u64 c2 = b6;
-  u64 t111 = t37;
+  u64 t111 = t36;
   u64 b7 = (r21 - (qmul2 + c2)) >> (u32)63U;
-  u64 t38 = (b7 << (u32)56U) + r21 - (qmul2 + c2);
+  u64 t37 = (b7 << (u32)56U) + r21 - (qmul2 + c2);
   u64 c3 = b7;
-  u64 t211 = t38;
+  u64 t211 = t37;
   u64 b8 = (r31 - (qmul3 + c3)) >> (u32)63U;
-  u64 t39 = (b8 << (u32)56U) + r31 - (qmul3 + c3);
+  u64 t38 = (b8 << (u32)56U) + r31 - (qmul3 + c3);
   u64 c4 = b8;
-  u64 t310 = t39;
+  u64 t39 = t38;
   u64 b9 = (r41 - (qmul4 + c4)) >> (u32)63U;
   u64 t43 = (b9 << (u32)40U) + r41 - (qmul4 + c4);
   u64 t44 = t43;
   u64 s0 = t02;
   u64 s1 = t111;
   u64 s2 = t211;
-  u64 s3 = t310;
+  u64 s3 = t39;
   u64 s4 = t44;
   u64 m01 = (u64)0x12631a5cf5d3edU;
   u64 m11 = (u64)0xf9dea2f79cd658U;
@@ -1444,46 +1442,46 @@ static void store_56(u8 *out, u64 *b)
   store32_le(out + (u32)28U, b4_);
 }
 
-static void sha512_pre_msg(u8 *h1, u8 *prefix, u32 len, u8 *input)
+static void sha512_pre_msg(u8 *h, u8 *prefix, u32 len, u8 *input)
 {
   KRML_CHECK_SIZE(sizeof (u8), len + (u32)32U);
   {
     u8 pre_msg[len + (u32)32U];
-    memset(pre_msg, 0U, (len + (u32)32U) * sizeof (pre_msg[0U]));
-    memcpy(pre_msg, prefix, (u32)32U * sizeof (prefix[0U]));
-    memcpy(pre_msg + (u32)32U, input, len * sizeof (input[0U]));
-    Hacl_Hash_SHA2_hash_512(pre_msg, len + (u32)32U, h1);
+    memset(pre_msg, 0U, (len + (u32)32U) * sizeof (u8));
+    memcpy(pre_msg, prefix, (u32)32U * sizeof (u8));
+    memcpy(pre_msg + (u32)32U, input, len * sizeof (u8));
+    Hacl_Hash_SHA2_hash_512(pre_msg, len + (u32)32U, h);
   }
 }
 
-static void sha512_pre_pre2_msg(u8 *h1, u8 *prefix, u8 *prefix2, u32 len, u8 *input)
+static void sha512_pre_pre2_msg(u8 *h, u8 *prefix, u8 *prefix2, u32 len, u8 *input)
 {
   KRML_CHECK_SIZE(sizeof (u8), len + (u32)64U);
   {
     u8 pre_msg[len + (u32)64U];
-    memset(pre_msg, 0U, (len + (u32)64U) * sizeof (pre_msg[0U]));
-    memcpy(pre_msg, prefix, (u32)32U * sizeof (prefix[0U]));
-    memcpy(pre_msg + (u32)32U, prefix2, (u32)32U * sizeof (prefix2[0U]));
-    memcpy(pre_msg + (u32)64U, input, len * sizeof (input[0U]));
-    Hacl_Hash_SHA2_hash_512(pre_msg, len + (u32)64U, h1);
+    memset(pre_msg, 0U, (len + (u32)64U) * sizeof (u8));
+    memcpy(pre_msg, prefix, (u32)32U * sizeof (u8));
+    memcpy(pre_msg + (u32)32U, prefix2, (u32)32U * sizeof (u8));
+    memcpy(pre_msg + (u32)64U, input, len * sizeof (u8));
+    Hacl_Hash_SHA2_hash_512(pre_msg, len + (u32)64U, h);
   }
 }
 
 static void sha512_modq_pre(u64 *out, u8 *prefix, u32 len, u8 *input)
 {
   u64 tmp[10U] = { 0U };
-  u8 hash1[64U] = { 0U };
-  sha512_pre_msg(hash1, prefix, len, input);
-  load_64_bytes(tmp, hash1);
+  u8 hash[64U] = { 0U };
+  sha512_pre_msg(hash, prefix, len, input);
+  load_64_bytes(tmp, hash);
   barrett_reduction(out, tmp);
 }
 
 static void sha512_modq_pre_pre2(u64 *out, u8 *prefix, u8 *prefix2, u32 len, u8 *input)
 {
   u64 tmp[10U] = { 0U };
-  u8 hash1[64U] = { 0U };
-  sha512_pre_pre2_msg(hash1, prefix, prefix2, len, input);
-  load_64_bytes(tmp, hash1);
+  u8 hash[64U] = { 0U };
+  sha512_pre_pre2_msg(hash, prefix, prefix2, len, input);
+  load_64_bytes(tmp, hash);
   barrett_reduction(out, tmp);
 }
 
@@ -1494,12 +1492,12 @@ static void point_mul_g_compress(u8 *out, u8 *s)
   point_compress(out, tmp);
 }
 
-static void sign_step_1(u8 *secret1, u8 *tmp_bytes)
+static void sign_step_1(u8 *secret, u8 *tmp_bytes)
 {
   u8 *a__ = tmp_bytes + (u32)96U;
   u8 *apre = tmp_bytes + (u32)224U;
   u8 *a = apre;
-  secret_expand(apre, secret1);
+  secret_expand(apre, secret);
   point_mul_g_compress(a__, a);
 }
 
@@ -1522,10 +1520,10 @@ static void sign_step_3(u8 *tmp_bytes, u64 *tmp_ints)
 
 static void sign_step_4(u32 len, u8 *msg, u8 *tmp_bytes, u64 *tmp_ints)
 {
-  u64 *h1 = tmp_ints + (u32)60U;
+  u64 *h = tmp_ints + (u32)60U;
   u8 *a__ = tmp_bytes + (u32)96U;
   u8 *rs_ = tmp_bytes + (u32)160U;
-  sha512_modq_pre_pre2(h1, rs_, a__, len, msg);
+  sha512_modq_pre_pre2(h, rs_, a__, len, msg);
 }
 
 static void sign_step_5(u8 *tmp_bytes, u64 *tmp_ints)
@@ -1534,22 +1532,22 @@ static void sign_step_5(u8 *tmp_bytes, u64 *tmp_ints)
   u64 *aq = tmp_ints + (u32)45U;
   u64 *ha = tmp_ints + (u32)50U;
   u64 *s = tmp_ints + (u32)55U;
-  u64 *h1 = tmp_ints + (u32)60U;
+  u64 *h = tmp_ints + (u32)60U;
   u8 *s_ = tmp_bytes + (u32)192U;
   u8 *a = tmp_bytes + (u32)224U;
   load_32_bytes(aq, a);
-  mul_modq(ha, h1, aq);
+  mul_modq(ha, h, aq);
   add_modq(s, r, ha);
   store_56(s_, s);
 }
 
 static void pow2_252m2(u64 *out, u64 *z)
 {
-  u64 buf1[20U] = { 0U };
-  u64 *a0 = buf1;
-  u64 *t00 = buf1 + (u32)5U;
-  u64 *b0 = buf1 + (u32)10U;
-  u64 *c0 = buf1 + (u32)15U;
+  u64 buf[20U] = { 0U };
+  u64 *a0 = buf;
+  u64 *t00 = buf + (u32)5U;
+  u64 *b0 = buf + (u32)10U;
+  u64 *c0 = buf + (u32)15U;
   u64 *a;
   u64 *t0;
   u64 *b;
@@ -1569,10 +1567,10 @@ static void pow2_252m2(u64 *out, u64 *z)
   fsquare_times_inplace(t00, (u32)10U);
   fmul(b0, t00, b0);
   fsquare_times(t00, b0, (u32)50U);
-  a = buf1;
-  t0 = buf1 + (u32)5U;
-  b = buf1 + (u32)10U;
-  c = buf1 + (u32)15U;
+  a = buf;
+  t0 = buf + (u32)5U;
+  b = buf + (u32)10U;
+  c = buf + (u32)15U;
   fsquare_times(a, z, (u32)1U);
   fmul(c, t0, b);
   fsquare_times(t0, c, (u32)100U);
@@ -1604,51 +1602,51 @@ static void mul_modp_sqrt_m1(u64 *x)
   fmul(x, x, sqrt_m1);
 }
 
-static bool recover_x(u64 *x, u64 *y, u64 sign1)
+static bool recover_x(u64 *x, u64 *y, u64 sign)
 {
   u64 tmp[20U] = { 0U };
   u64 *x2 = tmp;
-  u64 x00 = y[0U];
+  u64 x0 = y[0U];
   u64 x1 = y[1U];
   u64 x21 = y[2U];
   u64 x30 = y[3U];
   u64 x4 = y[4U];
   bool
   b =
-    x00
+    x0
     >= (u64)0x7ffffffffffedU
     && x1 == (u64)0x7ffffffffffffU
     && x21 == (u64)0x7ffffffffffffU
     && x30 == (u64)0x7ffffffffffffU
     && x4 == (u64)0x7ffffffffffffU;
-  bool res;
+  bool res1;
   if (b)
-    res = false;
+    res1 = false;
   else
   {
     u64 tmp1[25U] = { 0U };
-    u64 *one1 = tmp1;
+    u64 *one = tmp1;
     u64 *y2 = tmp1 + (u32)5U;
     u64 *dyyi = tmp1 + (u32)10U;
     u64 *dyy = tmp1 + (u32)15U;
-    one1[0U] = (u64)1U;
-    one1[1U] = (u64)0U;
-    one1[2U] = (u64)0U;
-    one1[3U] = (u64)0U;
-    one1[4U] = (u64)0U;
+    one[0U] = (u64)1U;
+    one[1U] = (u64)0U;
+    one[2U] = (u64)0U;
+    one[3U] = (u64)0U;
+    one[4U] = (u64)0U;
     fsquare(y2, y);
     times_d(dyy, y2);
-    fsum(dyy, one1);
+    fsum(dyy, one);
     reduce_513(dyy);
     inverse(dyyi, dyy);
-    fdifference(one1, y2);
-    fmul(x2, one1, dyyi);
+    fdifference(one, y2);
+    fmul(x2, one, dyyi);
     reduce(x2);
     {
       bool x2_is_0 = is_0(x2);
       u8 z;
       if (x2_is_0)
-        if (sign1 == (u64)0U)
+        if (sign == (u64)0U)
         {
           x[0U] = (u64)0U;
           x[1U] = (u64)0U;
@@ -1662,9 +1660,9 @@ static bool recover_x(u64 *x, u64 *y, u64 sign1)
       else
         z = (u8)2U;
       if (z == (u8)0U)
-        res = false;
+        res1 = false;
       else if (z == (u8)1U)
-        res = true;
+        res1 = true;
       else
       {
         u64 *x210 = tmp;
@@ -1673,7 +1671,7 @@ static bool recover_x(u64 *x, u64 *y, u64 sign1)
         u64 *t10 = tmp + (u32)15U;
         pow2_252m2(x31, x210);
         fsquare(t00, x31);
-        memcpy(t10, x210, (u32)5U * sizeof (x210[0U]));
+        memcpy(t10, x210, (u32)5U * sizeof (u64));
         fdifference(t10, t00);
         reduce_513(t10);
         reduce(t10);
@@ -1687,23 +1685,23 @@ static bool recover_x(u64 *x, u64 *y, u64 sign1)
             u64 *t01 = tmp + (u32)10U;
             u64 *t1 = tmp + (u32)15U;
             fsquare(t01, x3);
-            memcpy(t1, x211, (u32)5U * sizeof (x211[0U]));
+            memcpy(t1, x211, (u32)5U * sizeof (u64));
             fdifference(t1, t01);
             reduce_513(t1);
             reduce(t1);
             {
               bool z1 = is_0(t1);
               if (z1 == false)
-                res = false;
+                res1 = false;
               else
               {
                 u64 *x32 = tmp + (u32)5U;
                 u64 *t0 = tmp + (u32)10U;
                 reduce(x32);
                 {
-                  u64 x0 = x32[0U];
-                  u64 x01 = x0 & (u64)1U;
-                  if (!(x01 == sign1))
+                  u64 x01 = x32[0U];
+                  u64 x00 = x01 & (u64)1U;
+                  if (!(x00 == sign))
                   {
                     t0[0U] = (u64)0U;
                     t0[1U] = (u64)0U;
@@ -1714,8 +1712,8 @@ static bool recover_x(u64 *x, u64 *y, u64 sign1)
                     reduce_513(x32);
                     reduce(x32);
                   }
-                  memcpy(x, x32, (u32)5U * sizeof (x32[0U]));
-                  res = true;
+                  memcpy(x, x32, (u32)5U * sizeof (u64));
+                  res1 = true;
                 }
               }
             }
@@ -1725,8 +1723,8 @@ static bool recover_x(u64 *x, u64 *y, u64 sign1)
     }
   }
   {
-    bool res0 = res;
-    return res0;
+    bool res = res1;
+    return res;
   }
 }
 
@@ -1737,31 +1735,31 @@ static bool point_decompress(u64 *out, u8 *s)
   u64 *x = tmp + (u32)5U;
   u8 s31 = s[31U];
   u8 z0 = s31 >> (u32)7U;
-  u64 sign1 = (u64)z0;
+  u64 sign = (u64)z0;
   bool z;
-  bool res0;
+  bool res1;
   bool res;
   load_51(y, s);
-  z = recover_x(x, y, sign1);
+  z = recover_x(x, y, sign);
   if (z == false)
-    res0 = false;
+    res1 = false;
   else
   {
     u64 *outx = out;
     u64 *outy = out + (u32)5U;
     u64 *outz = out + (u32)10U;
     u64 *outt = out + (u32)15U;
-    memcpy(outx, x, (u32)5U * sizeof (x[0U]));
-    memcpy(outy, y, (u32)5U * sizeof (y[0U]));
+    memcpy(outx, x, (u32)5U * sizeof (u64));
+    memcpy(outy, y, (u32)5U * sizeof (u64));
     outz[0U] = (u64)1U;
     outz[1U] = (u64)0U;
     outz[2U] = (u64)0U;
     outz[3U] = (u64)0U;
     outz[4U] = (u64)0U;
     fmul(outt, x, y);
-    res0 = true;
+    res1 = true;
   }
-  res = res0;
+  res = res1;
   return res;
 }
 
@@ -1806,34 +1804,34 @@ static bool eq(u64 *a, u64 *b)
   return a0 == b0 && a1 == b1 && a2 == b2 && a3 == b3 && a4 == b4;
 }
 
-static bool point_equal_1(u64 *p, u64 *q1, u64 *tmp)
+static bool point_equal_1(u64 *p, u64 *q, u64 *tmp)
 {
   u64 *pxqz = tmp;
   u64 *qxpz = tmp + (u32)5U;
-  fmul(pxqz, p, q1 + (u32)10U);
+  fmul(pxqz, p, q + (u32)10U);
   reduce(pxqz);
-  fmul(qxpz, q1, p + (u32)10U);
+  fmul(qxpz, q, p + (u32)10U);
   reduce(qxpz);
   return eq(pxqz, qxpz);
 }
 
-static bool point_equal_2(u64 *p, u64 *q1, u64 *tmp)
+static bool point_equal_2(u64 *p, u64 *q, u64 *tmp)
 {
   u64 *pyqz = tmp + (u32)10U;
   u64 *qypz = tmp + (u32)15U;
-  fmul(pyqz, p + (u32)5U, q1 + (u32)10U);
+  fmul(pyqz, p + (u32)5U, q + (u32)10U);
   reduce(pyqz);
-  fmul(qypz, q1 + (u32)5U, p + (u32)10U);
+  fmul(qypz, q + (u32)5U, p + (u32)10U);
   reduce(qypz);
   return eq(pyqz, qypz);
 }
 
-static bool point_equal(u64 *p, u64 *q1)
+static bool point_equal(u64 *p, u64 *q)
 {
   u64 tmp[20U] = { 0U };
-  bool b = point_equal_1(p, q1, tmp);
+  bool b = point_equal_1(p, q, tmp);
   if (b)
-    return point_equal_2(p, q1, tmp);
+    return point_equal_2(p, q, tmp);
   return false;
 }
 
@@ -1848,8 +1846,8 @@ void Hacl_Ed25519_sign(u8 *signature, u8 *priv, u32 len, u8 *msg)
   sign_step_3(tmp_bytes, tmp_ints);
   sign_step_4(len, msg, tmp_bytes, tmp_ints);
   sign_step_5(tmp_bytes, tmp_ints);
-  memcpy(signature, rs_, (u32)32U * sizeof (rs_[0U]));
-  memcpy(signature + (u32)32U, s_, (u32)32U * sizeof (s_[0U]));
+  memcpy(signature, rs_, (u32)32U * sizeof (u8));
+  memcpy(signature + (u32)32U, s_, (u32)32U * sizeof (u8));
 }
 
 bool Hacl_Ed25519_verify(u8 *pub, u32 len, u8 *msg, u8 *signature)
@@ -1859,7 +1857,7 @@ bool Hacl_Ed25519_verify(u8 *pub, u32 len, u8 *msg, u8 *signature)
   u64 *a_ = tmp;
   u64 *r_ = tmp + (u32)20U;
   bool b = point_decompress(a_, pub);
-  bool res;
+  bool res1;
   if (b)
   {
     u8 *rs = signature;
@@ -1874,7 +1872,7 @@ bool Hacl_Ed25519_verify(u8 *pub, u32 len, u8 *msg, u8 *signature)
       {
         bool b__ = gte_q(s1);
         if (b__)
-          res = false;
+          res1 = false;
         else
         {
           u64 r_2[5U] = { 0U };
@@ -1890,22 +1888,22 @@ bool Hacl_Ed25519_verify(u8 *pub, u32 len, u8 *msg, u8 *signature)
             point_mul(hA, tmp_, a_1);
             point_add(rhA, r_1, hA);
             {
-              bool b1 = point_equal(sB, rhA);
-              bool b10 = b1;
-              res = b10;
+              bool b2 = point_equal(sB, rhA);
+              bool b1 = b2;
+              res1 = b1;
             }
           }
         }
       }
     }
     else
-      res = false;
+      res1 = false;
   }
   else
-    res = false;
+    res1 = false;
   {
-    bool res0 = res;
-    return res0;
+    bool res = res1;
+    return res;
   }
 }
 
@@ -1928,13 +1926,13 @@ void Hacl_Ed25519_sign_expanded(u8 *signature, u8 *ks, u32 len, u8 *msg)
   u8 *s_ = tmp_bytes + (u32)192U;
   u8 *tmp_public = tmp_bytes + (u32)96U;
   u8 *tmp_xsecret = tmp_bytes + (u32)224U;
-  memcpy(tmp_public, ks, (u32)32U * sizeof (ks[0U]));
-  memcpy(tmp_xsecret, ks + (u32)32U, (u32)64U * sizeof ((ks + (u32)32U)[0U]));
+  memcpy(tmp_public, ks, (u32)32U * sizeof (u8));
+  memcpy(tmp_xsecret, ks + (u32)32U, (u32)64U * sizeof (u8));
   sign_step_2(len, msg, tmp_bytes, tmp_ints);
   sign_step_3(tmp_bytes, tmp_ints);
   sign_step_4(len, msg, tmp_bytes, tmp_ints);
   sign_step_5(tmp_bytes, tmp_ints);
-  memcpy(signature, rs_, (u32)32U * sizeof (rs_[0U]));
-  memcpy(signature + (u32)32U, s_, (u32)32U * sizeof (s_[0U]));
+  memcpy(signature, rs_, (u32)32U * sizeof (u8));
+  memcpy(signature + (u32)32U, s_, (u32)32U * sizeof (u8));
 }
 

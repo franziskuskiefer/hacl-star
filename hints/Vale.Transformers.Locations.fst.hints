@@ -8,7 +8,7 @@
       0,
       [ "@query", "assumption_Vale.X64.Machine_s.reg__uu___haseq" ],
       0,
-      "76d5ec887279c46ff25692b10d564db6"
+      "afa3b89a988931f4231555dc00a1ae11"
     ],
     [
       "Vale.Transformers.Locations.__proj__ALocReg__item___0",
@@ -22,7 +22,7 @@
         "refinement_interpretation_Tm_refine_3475018c8870eaf55e8ea5559487b430"
       ],
       0,
-      "5160f0977920104fb1db33485448c1da"
+      "afbc047ede50dbe25db889fbe4411103"
     ],
     [
       "Vale.Transformers.Locations.aux_print_reg_from_location",
@@ -42,7 +42,7 @@
         "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "92484c84c5dc39da779e56a993c4dd6e"
+      "d08c893dbb39269d7a1525a7ccaf6dbc"
     ],
     [
       "Vale.Transformers.Locations.disjoint_location",
@@ -51,7 +51,10 @@
       1,
       [
         "@MaxIFuel_assumption", "@query",
+        "Vale.Transformers.Locations_pretyping_f6ab80eb5ffc2f5a5eff56ec5e04f3b2",
         "assumption_Vale.X64.Machine_s.reg__uu___haseq",
+        "constructor_distinct_Vale.Transformers.Locations.ALocReg",
+        "data_typing_intro_Vale.Transformers.Locations.ALocStack@tok",
         "disc_equation_Vale.Transformers.Locations.ALocCf",
         "disc_equation_Vale.Transformers.Locations.ALocMem",
         "disc_equation_Vale.Transformers.Locations.ALocOf",
@@ -62,10 +65,11 @@
         "proj_equation_FStar.Pervasives.Native.Mktuple2__2",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
-        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2"
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "projection_inverse_Vale.Transformers.Locations.ALocReg__0"
       ],
       0,
-      "cfa0bc272535448a591edfac72e9e045"
+      "f596c73e9b0fb404be4689fd12f68997"
     ],
     [
       "Vale.Transformers.Locations.auto_lemma_disjoint_location",
@@ -93,7 +97,7 @@
         "typing_tok_Vale.Transformers.Locations.ALocMem@tok", "unit_typing"
       ],
       0,
-      "c40572d52e98e1eb40b048133658b69a"
+      "15e8ce40efae3f5997c35fa54715a56d"
     ],
     [
       "Vale.Transformers.Locations.lemma_disjoint_locations_symmetric",
@@ -160,7 +164,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "2c1d31b9179d65e09d56d25b0e72e7dc"
+      "20ebd053993dadcce7ce30b7971a1e51"
     ],
     [
       "Vale.Transformers.Locations.location_val_t",
@@ -177,7 +181,7 @@
         "fuel_guarded_inversion_Vale.Transformers.Locations.location"
       ],
       0,
-      "ce4366a8d8e5d642188f506e8a3fd40d"
+      "a88403c9505e67a3ee6eab79776ab9b9"
     ],
     [
       "Vale.Transformers.Locations.location_val_eqt",
@@ -188,7 +192,7 @@
         "@MaxIFuel_assumption", "@query",
         "Prims_pretyping_f537159ed795b314b4e58c260361ae86",
         "assumption_FStar.Pervasives.Native.option__uu___haseq",
-        "bool_typing", "constructor_distinct_Tm_unit",
+        "constructor_distinct_Tm_unit",
         "disc_equation_Vale.Transformers.Locations.ALocCf",
         "disc_equation_Vale.Transformers.Locations.ALocMem",
         "disc_equation_Vale.Transformers.Locations.ALocOf",
@@ -206,14 +210,16 @@
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "haseqTm_refine_c1424615841f28cac7fc34e92b7ff33c", "int_inversion",
         "proj_equation_Vale.X64.Machine_s.Reg_rf",
+        "projection_inverse_BoxBool_proj_0",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "typing_Vale.Def.Types_s.quad32",
+        "typing_Vale.Transformers.Locations.uu___is_ALocStack",
         "typing_Vale.X64.Machine_s.__proj__Reg__item__rf",
         "typing_Vale.X64.Machine_s.n_regs"
       ],
       0,
-      "b439c808d060cbeb7b9544e55321237b"
+      "6053a3699d19d55ba14f271775166eb7"
     ],
     [
       "Vale.Transformers.Locations.raise_location_val_eqt",
@@ -226,7 +232,7 @@
         "refinement_interpretation_Tm_refine_392b51d468236060fcf180188eadbab2"
       ],
       0,
-      "11b338130eb5c4f271f85c6dfe8bd834"
+      "b87aadcbb67fb9ebf0130fdffa6a9c69"
     ],
     [
       "Vale.Transformers.Locations.eval_location",
@@ -237,7 +243,11 @@
         "@MaxIFuel_assumption", "@query",
         "FStar.FunctionalExtensionality_interpretation_Tm_arrow_a7d5cc170be69663c495e8582d2bc62a",
         "Vale.X64.Machine_Semantics_s_pretyping_65b491a3aaa0023c48ae2461669f28bd",
+        "constructor_distinct_Vale.Transformers.Locations.ALocCf",
+        "constructor_distinct_Vale.Transformers.Locations.ALocMem",
+        "constructor_distinct_Vale.Transformers.Locations.ALocOf",
         "constructor_distinct_Vale.Transformers.Locations.ALocReg",
+        "constructor_distinct_Vale.Transformers.Locations.ALocStack",
         "data_elim_Vale.X64.Machine_Semantics_s.Mkmachine_state",
         "data_typing_intro_FStar.Pervasives.Native.Mktuple2@tok",
         "disc_equation_Vale.Transformers.Locations.ALocCf",
@@ -245,6 +255,10 @@
         "disc_equation_Vale.Transformers.Locations.ALocOf",
         "disc_equation_Vale.Transformers.Locations.ALocReg",
         "disc_equation_Vale.Transformers.Locations.ALocStack",
+        "equality_tok_Vale.Transformers.Locations.ALocCf@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocMem@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocOf@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocStack@tok",
         "equation_FStar.FunctionalExtensionality.restricted_t",
         "equation_Vale.Arch.HeapTypes_s.memTaint_t",
         "equation_Vale.Transformers.Locations.location_val_t",
@@ -258,7 +272,6 @@
         "kinding_Vale.X64.Machine_Semantics_s.machine_stack@tok",
         "proj_equation_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_heap",
         "proj_equation_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_regs",
-        "projection_inverse_BoxBool_proj_0",
         "projection_inverse_Vale.Transformers.Locations.ALocReg__0",
         "refinement_interpretation_Tm_refine_7e4a6c5999db731b5d17d0418dfeea3e",
         "refinement_kinding_Tm_refine_c2c488db3214c38826155caf10d30036",
@@ -272,7 +285,7 @@
         "typing_Vale.X64.Machine_s.t_reg"
       ],
       0,
-      "33a683f83d5ba12eb5801f2f49a2751c"
+      "bca1a25eb663ba2602b16aab932cb2b5"
     ],
     [
       "Vale.Transformers.Locations.update_location",
@@ -300,6 +313,10 @@
         "disc_equation_Vale.Transformers.Locations.ALocOf",
         "disc_equation_Vale.Transformers.Locations.ALocReg",
         "disc_equation_Vale.Transformers.Locations.ALocStack",
+        "equality_tok_Vale.Transformers.Locations.ALocCf@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocMem@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocOf@tok",
+        "equality_tok_Vale.Transformers.Locations.ALocStack@tok",
         "equation_FStar.FunctionalExtensionality.feq",
         "equation_FStar.Pervasives.Native.fst",
         "equation_FStar.Pervasives.Native.snd",
@@ -333,7 +350,6 @@
         "proj_equation_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_regs",
         "proj_equation_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_stack",
         "proj_equation_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_stackTaint",
-        "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "projection_inverse_Vale.Transformers.Locations.ALocReg__0",
         "projection_inverse_Vale.X64.Machine_Semantics_s.Mkmachine_state_ms_flags",
@@ -353,7 +369,7 @@
         "typing_Vale.X64.Machine_s.t_reg"
       ],
       0,
-      "83e4336e2fcf0ffba0f8d1eb42ea5de2"
+      "e27d2d571e61c6284378c98266fc4640"
     ],
     [
       "Vale.Transformers.Locations.lemma_locations_truly_disjoint",
@@ -420,7 +436,7 @@
         "typing_Vale.X64.Machine_s.t_reg"
       ],
       0,
-      "6ea72f72953d948078c24243a54422b9"
+      "cfcaabc3a77f72935f59093c6c2e9641"
     ],
     [
       "Vale.Transformers.Locations.lemma_locations_complete",
@@ -549,7 +565,7 @@
         "typing_Tm_abs_f086d77986b470aab4bfebc171e6c366"
       ],
       0,
-      "7f343940a084788dd1ada7b259d24158"
+      "ea2f48b7c5fe667ef3096c7812f0b050"
     ]
   ]
 ]

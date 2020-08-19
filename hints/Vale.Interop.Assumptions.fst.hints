@@ -11,19 +11,7 @@
         "refinement_interpretation_Tm_refine_b16bf82b210653a34e4d7322fab91ffb"
       ],
       0,
-      "345c217ff4b5d59b8973591940c0332d"
-    ],
-    [
-      "Vale.Interop.Assumptions.st_put",
-      2,
-      1,
-      0,
-      [
-        "@MaxIFuel_assumption", "@query",
-        "refinement_interpretation_Tm_refine_b16bf82b210653a34e4d7322fab91ffb"
-      ],
-      0,
-      "a41caf47dfd00283411c94b559a9de88"
+      "3f6bf709aee6e693296b4ed061a0862e"
     ]
   ]
 ]

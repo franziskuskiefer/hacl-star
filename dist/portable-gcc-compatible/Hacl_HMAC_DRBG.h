@@ -21,6 +21,11 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "evercrypt_targetconfig.h"
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
@@ -28,12 +33,12 @@
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Hacl_HMAC_DRBG_H
 #define __Hacl_HMAC_DRBG_H
 
 #include "Hacl_HMAC.h"
 #include "Hacl_Spec.h"
-
 
 /* SNIPPET_START: Hacl_HMAC_DRBG_supported_alg */
 
@@ -169,7 +174,7 @@ Hacl_HMAC_DRBG_generate(
   Spec_Hash_Definitions_hash_alg a,
   uint8_t *output,
   Hacl_HMAC_DRBG_state st,
-  uint32_t n1,
+  uint32_t n,
   uint32_t additional_input_len,
   uint8_t *additional_input
 );
@@ -178,3 +183,8 @@ Hacl_HMAC_DRBG_generate(
 
 #define __Hacl_HMAC_DRBG_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

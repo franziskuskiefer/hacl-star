@@ -21,66 +21,50 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __TestLib_H
 #define __TestLib_H
 
 
 
+extern void TestLib_touch(s32 uu___);
 
-/*
- Prevent F* from removing the use of a variable. 
-*/
-extern void TestLib_touch(s32 uu____11);
+extern void TestLib_check(bool uu___);
 
-/*
- Check that the two arguments are equal. 
-*/
-extern void TestLib_check(bool uu____26);
+extern void TestLib_check8(s8 uu___, s8 uu___1);
 
-extern void TestLib_check8(s8 uu____48, s8 uu____49);
+extern void TestLib_check16(s16 uu___, s16 uu___1);
 
-extern void TestLib_check16(s16 uu____70, s16 uu____71);
+extern void TestLib_check32(s32 uu___, s32 uu___1);
 
-extern void TestLib_check32(s32 uu____92, s32 uu____93);
+extern void TestLib_check64(s64 uu___, s64 uu___1);
 
-extern void TestLib_check64(s64 uu____114, s64 uu____115);
+extern void TestLib_checku8(u8 uu___, u8 uu___1);
 
-extern void TestLib_checku8(u8 uu____136, u8 uu____137);
+extern void TestLib_checku16(u16 uu___, u16 uu___1);
 
-extern void TestLib_checku16(u16 uu____158, u16 uu____159);
+extern void TestLib_checku32(u32 uu___, u32 uu___1);
 
-extern void TestLib_checku32(u32 uu____180, u32 uu____181);
+extern void TestLib_checku64(u64 uu___, u64 uu___1);
 
-extern void TestLib_checku64(u64 uu____202, u64 uu____203);
+extern void TestLib_compare_and_print(C_String_t uu___, u8 *b1, u8 *b2, u32 l);
 
-/*
- A test routine that takes a string as its first argument; two buffers to
- * compare; the length of the buffers; and exits the program if there is a
- * failure. 
-*/
-extern void TestLib_compare_and_print(C_String_t uu____242, u8 *b1, u8 *b2, u32 l);
-
-/*
- This function is for testing purposes only: this is an unmanaged, raw
- * pointer that cannot be freed. 
-*/
 extern u8 *TestLib_unsafe_malloc(u32 l);
 
-/*
- Prints: "got error code %d" where %d is the first argument 
-*/
-extern void TestLib_perr(u32 uu____281);
+extern void TestLib_perr(u32 uu___);
 
-/*
- A human-readable debug message specialized for [clock_t] 
-*/
-extern void TestLib_print_clock_diff(clock_t uu____302, clock_t uu____303);
+extern void TestLib_print_clock_diff(clock_t uu___, clock_t uu___1);
 
 KRML_DEPRECATED("p_null from TestLib; use LowStar.Buffer.null instead")
 
@@ -97,11 +81,12 @@ extern u64 *TestLib_uint64_p_null;
 extern TestLib_cycles TestLib_cpucycles();
 
 extern void
-TestLib_print_cycles_per_round(
-  TestLib_cycles uu____378,
-  TestLib_cycles uu____379,
-  u32 uu____380
-);
+TestLib_print_cycles_per_round(TestLib_cycles uu___, TestLib_cycles uu___1, u32 uu___2);
 
 #define __TestLib_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

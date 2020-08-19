@@ -21,19 +21,29 @@
  * SOFTWARE.
  */
 
+
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include "libintvector.h"
 #include "kremlin/internal/types.h"
 #include "kremlin/lowstar_endianness.h"
 #include <string.h>
 #include "kremlin/internal/target.h"
 
+
 #ifndef __Lib_RandomBuffer_System_H
 #define __Lib_RandomBuffer_System_H
 
 
 
-
-extern bool Lib_RandomBuffer_System_randombytes(u8 *buf1, u32 len);
+extern bool Lib_RandomBuffer_System_randombytes(u8 *buf, u32 len);
 
 #define __Lib_RandomBuffer_System_H_DEFINED
 #endif
+
+#if defined(__cplusplus)
+}
+#endif
+

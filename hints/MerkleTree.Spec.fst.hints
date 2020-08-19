@@ -1,29 +1,32 @@
 [
-  "\bå\u0001\u001c‰Cq¹¯{û  L×\u0002",
+  "y\rZÓÎ \u001cÀÔ¤É•=\u007f¬\u0002",
   [
     [
-      "MerkleTree.Spec.hash2_raw",
+      "MerkleTree.Spec.hash",
       1,
-      2,
+      0,
+      0,
+      [ "@query" ],
+      0,
+      "5e024a49ea92d231c0f13a154b56978a"
+    ],
+    [
+      "MerkleTree.Spec.sha256_compress",
       1,
+      0,
+      0,
       [
         "@MaxIFuel_assumption", "@query",
-        "constructor_distinct_FStar.Integers.W32",
-        "constructor_distinct_FStar.Integers.W63",
-        "constructor_distinct_FStar.Integers.W8",
         "constructor_distinct_Lib.IntTypes.U1",
+        "constructor_distinct_Lib.IntTypes.U128",
+        "constructor_distinct_Lib.IntTypes.U64",
         "constructor_distinct_Lib.IntTypes.U8",
         "constructor_distinct_Spec.Hash.Definitions.SHA2_256",
-        "equality_tok_FStar.Integers.W32@tok",
-        "equality_tok_FStar.Integers.W63@tok",
-        "equality_tok_FStar.Integers.W8@tok",
         "equality_tok_Spec.Hash.Definitions.SHA2_256@tok",
-        "equation_Lib.IntTypes.uint8", "equation_MerkleTree.Spec.hash_alg",
-        "equation_MerkleTree.Spec.hash_raw", "equation_Prims.nat",
-        "equation_Spec.Hash.Definitions.block_length",
+        "equation_Lib.IntTypes.uint8", "equation_MerkleTree.Spec.hash",
+        "equation_Prims.nat", "equation_Spec.Hash.Definitions.block_length",
         "equation_Spec.Hash.Definitions.block_word_length",
         "equation_Spec.Hash.Definitions.bytes",
-        "equation_Spec.Hash.Definitions.bytes_hash",
         "equation_Spec.Hash.Definitions.hash_length",
         "equation_Spec.Hash.Definitions.hash_word_length",
         "equation_Spec.Hash.Definitions.word_length",
@@ -31,48 +34,49 @@
         "lemma_FStar.Seq.Base.lemma_len_append",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Multiply",
         "projection_inverse_BoxInt_proj_0",
-        "projection_inverse_FStar.Integers.Signed__0",
-        "projection_inverse_FStar.Integers.Unsigned__0",
+        "refinement_interpretation_Tm_refine_29c27ac7c716b2238749315b70c9eca3",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_b3e3751c3894f166dfde09b500dd73a6",
         "typing_FStar.Seq.Base.append", "typing_FStar.Seq.Base.length",
-        "typing_MerkleTree.Spec.hash_alg",
-        "typing_Spec.Hash.Definitions.block_length"
+        "typing_Spec.Hash.Definitions.block_length",
+        "typing_Spec.Hash.Definitions.hash_length",
+        "typing_tok_Spec.Hash.Definitions.SHA2_256@tok"
       ],
       0,
-      "33669eb9a6e3b820c91a9f88ae373f32"
+      "508cd3ecfc98572b74d010022a2adef4"
     ],
     [
       "MerkleTree.Spec.__proj__HRaw__item__hr",
       1,
-      2,
-      1,
+      0,
+      0,
       [
         "@MaxIFuel_assumption", "@query",
         "disc_equation_MerkleTree.Spec.HRaw",
         "projection_inverse_BoxBool_proj_0",
-        "refinement_interpretation_Tm_refine_063a76819a1472a4e99c861adf5ddd89"
+        "refinement_interpretation_Tm_refine_1723d4c9b25e1d5754a0aed58daa09dd"
       ],
       0,
-      "a57045ece82fb8b6ca71edb5757f0241"
+      "c9ac74ddd6151fa1dd1cdb05c12a3a73"
     ],
     [
-      "MerkleTree.Spec.hash2",
+      "MerkleTree.Spec.padded_hash_fun",
       1,
       0,
       0,
       [
         "@MaxIFuel_assumption", "@query",
         "disc_equation_MerkleTree.Spec.HPad",
-        "disc_equation_MerkleTree.Spec.HRaw",
-        "fuel_guarded_inversion_MerkleTree.Spec.hash", "inversion-interp",
+        "disc_equation_MerkleTree.Spec.HRaw", "equation_Prims.pos",
+        "fuel_guarded_inversion_MerkleTree.Spec.padded_hash",
+        "int_inversion", "inversion-interp",
         "proj_equation_FStar.Pervasives.Native.Mktuple2__1",
         "proj_equation_FStar.Pervasives.Native.Mktuple2__2",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
-        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2"
+        "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "3c2eae539c2ed624cd5c1361047227da"
+      "af4b31c30f4922fbc40cab8f4011e7b5"
     ],
     [
       "MerkleTree.Spec.merkle_tree",
@@ -81,7 +85,7 @@
       1,
       [ "@query" ],
       0,
-      "18daa540b45db544c77d653e8e1e3fc8"
+      "77b9400401471ea5810ec0ae5d4db958"
     ],
     [
       "MerkleTree.Spec.mt_get",
@@ -91,10 +95,10 @@
       [
         "@MaxIFuel_assumption", "@query",
         "equation_MerkleTree.Spec.merkle_tree",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315"
       ],
       0,
-      "06696adbbda1aece6c4cc88e5d57b49e"
+      "d36e3540f56ed437f9eb03681221560d"
     ],
     [
       "MerkleTree.Spec.mt_left",
@@ -107,7 +111,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "72a608401105236a784a7153448bb1b0"
+      "9d91ed34fb5b8269ed42ca8983196c5d"
     ],
     [
       "MerkleTree.Spec.mt_left",
@@ -138,7 +142,7 @@
         "typing_FStar.Seq.Base.length"
       ],
       0,
-      "657baf147ba5c7c0938678989b6416fd"
+      "f5166bace85e4627860c1f1ba5278860"
     ],
     [
       "MerkleTree.Spec.mt_left",
@@ -149,27 +153,25 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_6ed4fdba1ed3b2f4b96dac68faab3b9a",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_FStar.Seq.Base.length", "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_b64050b06385957921d75996ec418d3c",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "typing_FStar.Seq.Base.length"
       ],
       0,
-      "a3135ff6430bc240ae5a59a33090c43a"
+      "75359c396d7612dce8534983303dfdbe"
     ],
     [
       "MerkleTree.Spec.mt_right",
@@ -182,7 +184,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "ca43d10a72b886f244ed8bd5b0da94ab"
+      "a7ff80c8a8c1bd692154b21ff2b0ae08"
     ],
     [
       "MerkleTree.Spec.mt_right",
@@ -212,7 +214,7 @@
         "typing_FStar.Seq.Base.length", "typing_Prims.pow2"
       ],
       0,
-      "6efb444acb889eb739a2bbb8746b1f2b"
+      "c1a1bd8e5fee7fe89e9d881a7be35b13"
     ],
     [
       "MerkleTree.Spec.mt_right",
@@ -223,13 +225,11 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "kinding_MerkleTree.Spec.hash@tok",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
@@ -238,11 +238,11 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_FStar.Seq.Base.length", "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "typing_FStar.Seq.Base.length"
       ],
       0,
-      "bdc5c8bf18efed573579e4f36af8788f"
+      "cfea8a127ee06e23d1efb861f3f5e875"
     ],
     [
       "MerkleTree.Spec.mt_left_right",
@@ -286,7 +286,7 @@
         "typing_Prims.pow2"
       ],
       0,
-      "c6316b800ad37d9151672f7eab50d87f"
+      "f08b47e30dd6cc8a4a49780a0bfd2ee5"
     ],
     [
       "MerkleTree.Spec.mt_left_right",
@@ -295,7 +295,7 @@
       0,
       [ "@query" ],
       0,
-      "e353e459bdd00df073d3ff18aed864a9"
+      "43ec12f1ee062fbcd1293686cbac5628"
     ],
     [
       "MerkleTree.Spec.mt_left_right",
@@ -306,16 +306,14 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equation_FStar.Seq.Base.op_At_Bar",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
         "equation_MerkleTree.Spec.mt_left",
         "equation_MerkleTree.Spec.mt_right", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
         "lemma_FStar.Seq.Base.lemma_index_app1",
         "lemma_FStar.Seq.Base.lemma_index_app2",
@@ -333,13 +331,12 @@
         "refinement_interpretation_Tm_refine_ac201cf927190d39c033967b63cb957b",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.op_At_Bar",
-        "typing_MerkleTree.Spec.mt_left", "typing_MerkleTree.Spec.mt_right",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_MerkleTree.Spec.mt_left", "typing_MerkleTree.Spec.mt_right"
       ],
       0,
-      "c9eba146ac5caa628acfa781f8db49ea"
+      "46e7f83732e632add0e34cb9bf5cc24d"
     ],
     [
       "MerkleTree.Spec.hs_next_lv",
@@ -353,7 +350,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "532a1297ee2f80465390c5c4078f492b"
+      "759f0ba2e8a93dbf2102a22bee5447bc"
     ],
     [
       "MerkleTree.Spec.hs_next_lv",
@@ -367,7 +364,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "8f72d899de65fc9c321ebcee70aa8ae3"
+      "cfbb5f96ecbe0ccd23770c406c96a02c"
     ],
     [
       "MerkleTree.Spec.hs_next_lv",
@@ -376,18 +373,17 @@
       0,
       [
         "@MaxIFuel_assumption", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_74e85aa672b15838ae0cbea432fb7aab_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_87edd3f05a6505b49ecc786ae5532faf_3",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.eqtype",
-        "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Prims.pos",
         "function_token_typing_Prims.__cache_version_number__",
         "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_len_append",
         "lemma_FStar.Seq.Base.lemma_len_slice",
@@ -396,16 +392,17 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_23198fb1eb94d082115a4c69de813cb0",
-        "refinement_interpretation_Tm_refine_2c4e1c971bb0b5100a4cfae9ed3843c2",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_f5cfc2a5eba744f480b1372c5b76164e",
+        "refinement_interpretation_Tm_refine_fd7f42e6ed86f5046ab93b7346631c4a",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.length",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "3dd4fe538f4dd6337ccc65d3bd99cf16"
+      "035ed602177fe17746242abbcd271719"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_index",
@@ -416,14 +413,14 @@
         "@MaxIFuel_assumption", "@query", "equation_Prims.nat",
         "int_inversion", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Multiply", "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "typing_MerkleTree.Spec.hs_next_lv"
       ],
       0,
-      "064a53503edbf25208f66d12c692bea6"
+      "b1823d1a5e4c51a9fb0665f70130ab32"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_index",
@@ -434,14 +431,14 @@
         "@MaxIFuel_assumption", "@query", "equation_Prims.nat",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Multiply",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_21f62200b25bb7fe1a7c229551615106",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_7fd955f9dfae0f9cdc7a6c3521db7fb4",
         "typing_MerkleTree.Spec.hs_next_lv"
       ],
       0,
-      "f2576d4cee2ade745cbe7f16ddc789f1"
+      "ceff2bacf2755f2e127c3af149472d1c"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_index",
@@ -452,19 +449,20 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_74e85aa672b15838ae0cbea432fb7aab_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "binder_x_e1beddd2e70f1dfd04dde9bc6d0479db_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_1e8e92810844635223566aa4424e1f57_4",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_87edd3f05a6505b49ecc786ae5532faf_3",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_index_app1",
         "lemma_FStar.Seq.Base.lemma_index_app2",
@@ -477,25 +475,27 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2c4e1c971bb0b5100a4cfae9ed3843c2",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_24e0f7a4ca49aa53202cb61b2d7edc7c",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_ac201cf927190d39c033967b63cb957b",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_dbafcf6ee852392ba6d4465af96e1a6f",
+        "refinement_interpretation_Tm_refine_fd7f42e6ed86f5046ab93b7346631c4a",
         "token_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_MerkleTree.Spec.hash2", "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.hs_next_lv",
+        "typing_MerkleTree.Spec.padded_hash_fun",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "79a0f66d74a90d4222f18f651ce92ddf"
+      "b24841e83f0e2357bd8737af58536b35"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_slice",
@@ -503,27 +503,25 @@
       1,
       0,
       [
-        "@MaxIFuel_assumption", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
-        "int_inversion", "kinding_MerkleTree.Spec.hash@tok",
+        "@MaxIFuel_assumption", "@query", "equation_MerkleTree.Spec.hashes",
+        "equation_Prims.nat", "equation_Prims.pos", "int_inversion",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_376b1a8de7c236d0c522ab3535e837d6",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_8900c7662303173c9b65a70de0db9314",
         "refinement_interpretation_Tm_refine_cc7ec1228e62f637b46417d43aae0cfa",
-        "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_FStar.Seq.Base.length", "typing_MerkleTree.Spec.hs_next_lv"
       ],
       0,
-      "847687d6e2b226500da19e595e7781f2"
+      "5bc22a54ef1ffaa2e6dd0912a1652dda"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_slice",
@@ -531,27 +529,25 @@
       1,
       0,
       [
-        "@MaxIFuel_assumption", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
-        "int_inversion", "kinding_MerkleTree.Spec.hash@tok",
+        "@MaxIFuel_assumption", "@query", "equation_MerkleTree.Spec.hashes",
+        "equation_Prims.nat", "equation_Prims.pos", "int_inversion",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_122e30c14c97dc2041716cbe93e891a5",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_376b1a8de7c236d0c522ab3535e837d6",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_5867ac15e1437f88cc1e0b5847007839",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_8900c7662303173c9b65a70de0db9314",
-        "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_MerkleTree.Spec.hs_next_lv"
       ],
       0,
-      "30ae9c7312e0c8e8e908676aa52928c0"
+      "2cfd7901a213d0b643a2cafb41cd1c77"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_slice",
@@ -562,21 +558,20 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_74e85aa672b15838ae0cbea432fb7aab_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_87edd3f05a6505b49ecc786ae5532faf_3",
+        "binder_x_b6833513713c1fbbf5e7aa07204a2f3a_5",
         "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
-        "binder_x_f6d4b18f07322bcfa4e6a482d27a0ca2_3",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equality_tok_Prims.LexTop@tok", "equation_MerkleTree.Spec.hash_seq",
-        "equation_Prims.eqtype", "equation_Prims.nat",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_4",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
+        "equality_tok_Prims.LexTop@tok", "equation_MerkleTree.Spec.hashes",
+        "equation_Prims.eqtype", "equation_Prims.nat", "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
         "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_refl",
         "lemma_FStar.Seq.Base.lemma_index_slice",
@@ -589,26 +584,29 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_055a3359dfb26bc47e1615a1b6632c6a",
         "refinement_interpretation_Tm_refine_09d2e9ab3b9c121b24316d151747e281",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
         "refinement_interpretation_Tm_refine_1ba8fd8bb363097813064c67740b2de5",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_1c7aee6393ba3979da6d719ae7f71ff7",
-        "refinement_interpretation_Tm_refine_2c4e1c971bb0b5100a4cfae9ed3843c2",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_41c5b4feeb1852f2c6fb45e7cd7055f4",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_85486a6bb8abf7faf9ccd474927b1b18",
         "refinement_interpretation_Tm_refine_b361ba8089a6e963921008d537e799a1",
         "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
+        "refinement_interpretation_Tm_refine_ddd44b85040d1947cca83550b7e21966",
+        "refinement_interpretation_Tm_refine_fd7f42e6ed86f5046ab93b7346631c4a",
+        "refinement_interpretation_Tm_refine_fe10cd968c0923234d8e335578ab9130",
         "typing_FStar.Seq.Base.empty", "typing_FStar.Seq.Base.length",
         "typing_FStar.Seq.Base.slice", "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "7a51dd8ee7fce0a301b414eb1714ab43"
+      "13f15106bb7942340f1e4763eb8a9a59"
     ],
     [
       "MerkleTree.Spec.mt_next_lv",
@@ -621,7 +619,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "0d89cccc0232544b3f2bb8a2dd4c830f"
+      "f561ea4b8e9b932873f40fd1af8ee82a"
     ],
     [
       "MerkleTree.Spec.mt_next_lv",
@@ -642,7 +640,7 @@
         "refinement_interpretation_Tm_refine_afd51579b90d50ea23e03b743a1fa001"
       ],
       0,
-      "f23359965b77684792f9fc6c374cd078"
+      "db0cde317923ed7cb20e24d2817dfcaa"
     ],
     [
       "MerkleTree.Spec.mt_next_lv",
@@ -662,7 +660,7 @@
         "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311"
       ],
       0,
-      "2e8bc7c738d0bedfaddfc037b558419e"
+      "85c8de006acbff4b64ede950a0a5532e"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_mt_left",
@@ -677,7 +675,7 @@
         "refinement_interpretation_Tm_refine_f641999d6ed36014062ea5dbfe670585"
       ],
       0,
-      "17a3ae01e1e69cf569791309fc1db36d"
+      "4af6e1d641163f0e0039164327278fda"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_mt_left",
@@ -716,7 +714,7 @@
         "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "c67a529d5a5d545da67e4888d070a32d"
+      "152f308932de0dbb28baf22fbdadea0c"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_mt_right",
@@ -731,7 +729,7 @@
         "refinement_interpretation_Tm_refine_f641999d6ed36014062ea5dbfe670585"
       ],
       0,
-      "41a1e4a91c80e60f96e03cff0936942d"
+      "af237f60ac5269dd666b3e4cc76eacc0"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_mt_right",
@@ -769,7 +767,7 @@
         "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "e05245e800b29378ce28accb21ad733b"
+      "d26ca3210f116003f8cef7574aa783ff"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_equiv",
@@ -782,14 +780,14 @@
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_60d621a26e5887485ae506e453a89824",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "26ad3672f5c3e24e7128264f2867ac9c"
+      "0db006a17aba318c95d7857617925c9f"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_equiv",
@@ -797,14 +795,11 @@
       1,
       0,
       [
-        "@MaxIFuel_assumption", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.eqtype",
-        "equation_Prims.nat", "equation_Prims.pos",
+        "@MaxIFuel_assumption", "@query", "equation_MerkleTree.Spec.hashes",
+        "equation_Prims.eqtype", "equation_Prims.nat", "equation_Prims.pos",
         "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
         "lemma_FStar.Seq.Base.lemma_index_slice",
@@ -814,9 +809,9 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_60d621a26e5887485ae506e453a89824",
@@ -826,10 +821,10 @@
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
         "refinement_interpretation_Tm_refine_f97fad2c1fb2db1c8f88c401525f4a64",
-        "typing_FStar.Seq.Base.slice", "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_FStar.Seq.Base.slice"
       ],
       0,
-      "1c999c2ce462f06dc8c61f4da1195698"
+      "da00976dbaa2daa64bea2f842bc1cc57"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_equiv",
@@ -849,11 +844,11 @@
         "refinement_interpretation_Tm_refine_0c2c2fc2e950c568d5764840f56db0fe",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_MerkleTree.Spec.mt_next_lv"
       ],
       0,
-      "a8ea1c186710b1eecbac92a84a123692"
+      "391d540a0ceef6c1da5aebac24002cd0"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_equiv",
@@ -879,7 +874,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "45edd5b0dbd4b6d0318caa0db83974d4"
+      "3fc459386e421b1d219c3d160787f41c"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_equiv",
@@ -901,7 +896,7 @@
         "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311"
       ],
       0,
-      "da8c06ca5778a2a3bb3736654bf6fc8a"
+      "d76fefb9ea7c347fd92eba320fbaacb0"
     ],
     [
       "MerkleTree.Spec.hs_next_rel",
@@ -915,7 +910,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "8d6bda4584f7887909309b90680ec4ae"
+      "395588755800b3cb9d355715e2f3ffe8"
     ],
     [
       "MerkleTree.Spec.hs_next_rel",
@@ -929,7 +924,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "f09bf9d1f1699d2738e3818b61243404"
+      "87c52c7fdd2e715c5d8f357a3f2335da"
     ],
     [
       "MerkleTree.Spec.hs_next_rel",
@@ -940,13 +935,13 @@
         "@MaxIFuel_assumption", "@query", "equation_Prims.nat",
         "int_inversion", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Multiply", "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c"
       ],
       0,
-      "2e7b70f900a8731901c4b8c89fde9157"
+      "91c311b5a1e03a61482ef7edb8624629"
     ],
     [
       "MerkleTree.Spec.mt_next_rel",
@@ -959,7 +954,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "72e7fb9e88511cfe3ee5b9ec88c2999d"
+      "c4de98ff0fc458b3b0069af083914fb3"
     ],
     [
       "MerkleTree.Spec.mt_next_rel",
@@ -972,7 +967,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "ff489a839ed1af01aa6313b42fbc3de0"
+      "c8532e8d666ffd9db3c10879398a22c8"
     ],
     [
       "MerkleTree.Spec.mt_next_rel",
@@ -997,7 +992,7 @@
         "typing_FStar.Seq.Base.length", "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "c3ebf5e283fac51ed8d19e692c33e882"
+      "2f851abb97e3c847e5b81ddbaa345ce0"
     ],
     [
       "MerkleTree.Spec.hs_next_rel_next_lv",
@@ -1011,7 +1006,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "5aa0d17e1e84803af388905382ae5353"
+      "d26590fa1ccf09a1e453cb6b858479e7"
     ],
     [
       "MerkleTree.Spec.hs_next_rel_next_lv",
@@ -1025,7 +1020,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "eb2d66afe8791f45f6c7ad1df47db691"
+      "e6fc5b212e42fcece2683d589e04ab75"
     ],
     [
       "MerkleTree.Spec.hs_next_rel_next_lv",
@@ -1036,20 +1031,21 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_74e85aa672b15838ae0cbea432fb7aab_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "binder_x_de0af632c07461500a53c61a5f345eaf_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_364e8fc0328ce7bd4d691aa53cd50b9c_4",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_87edd3f05a6505b49ecc786ae5532faf_3",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
-        "equation_MerkleTree.Spec.hs_next_rel", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes",
+        "equation_MerkleTree.Spec.hs_next_rel",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
@@ -1064,24 +1060,26 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2c4e1c971bb0b5100a4cfae9ed3843c2",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_6d6565172f85a789b3f79e0a34b51e79",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_ac201cf927190d39c033967b63cb957b",
+        "refinement_interpretation_Tm_refine_ae0ccf41effc2122db27984b542921f3",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "refinement_interpretation_Tm_refine_fd7f42e6ed86f5046ab93b7346631c4a",
+        "token_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
-        "typing_FStar.Seq.Base.length", "typing_MerkleTree.Spec.hash2",
-        "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_FStar.Seq.Base.length", "typing_MerkleTree.Spec.hs_next_lv",
+        "typing_MerkleTree.Spec.padded_hash_fun",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "85b6aa75096749136e8a2a7c9c33468c"
+      "143e9f59269e49f02cb0877093c57e53"
     ],
     [
       "MerkleTree.Spec.hs_next_rel_next_lv",
@@ -1095,7 +1093,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "09797d71d9cf74730237f73755488585"
+      "ac95b07e3264cdc5060075232e54d608"
     ],
     [
       "MerkleTree.Spec.hs_next_rel_next_lv",
@@ -1109,7 +1107,7 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f"
       ],
       0,
-      "b8c08339e2753cfa5f5bb3618dc5fd0b"
+      "2969187bf7278d05c496b0dcf43b6c49"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_next_lv",
@@ -1122,7 +1120,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "8e4642595e830375ae82503025330434"
+      "917ce17024f60925435c7f15203d5676"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_next_lv",
@@ -1135,7 +1133,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "bed1471ca4eb2b5f20d82777cd40ad47"
+      "ad36272aab8aaf7fe8a9f9b0692f924e"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_next_lv",
@@ -1162,7 +1160,7 @@
         "typing_FStar.Seq.Base.length", "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "04d3fbd96fb0792801076d868f80b533"
+      "f10848574119ee312376640045623913"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even",
@@ -1173,26 +1171,23 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "kinding_MerkleTree.Spec.hash@tok",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_upd", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_292c1be36e4b2bbb97ae0dae87966ea1",
         "refinement_interpretation_Tm_refine_2ca062977a42c36634b89c1c4f193f79",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_846c786b74a0ea856ce37380641c5798",
-        "refinement_interpretation_Tm_refine_ab0ebeb866adf6f02fb0a71da7fe725d",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315"
       ],
       0,
-      "8f08295c02d4d46fc2f7a7747ffd0450"
+      "a77ea62ac23085b75580e886cdb68072"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even",
@@ -1206,7 +1201,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "33405f5d766d7df1d29dd742f6ed332e"
+      "7262383aae04ebe9d3fd8658bbcf9de0"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even",
@@ -1217,16 +1212,14 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.hs_next_rel",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_next_rel", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.mt_next_rel",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_index_upd1",
         "lemma_FStar.Seq.Base.lemma_index_upd2",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Multiply",
@@ -1237,42 +1230,39 @@
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
         "refinement_interpretation_Tm_refine_df81b3f17797c6f405c1dbb191651292",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_FStar.Seq.Base.index", "typing_MerkleTree.Spec.hash2",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "typing_FStar.Seq.Base.index",
+        "typing_MerkleTree.Spec.padded_hash_fun"
       ],
       0,
-      "337133db16889eabbd42810c8a1dff4c"
+      "f1a68a99bad989274c7798a0a061c9a4"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even_pad",
       1,
       1,
-      0,
+      1,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "kinding_MerkleTree.Spec.hash@tok",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_upd", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_292c1be36e4b2bbb97ae0dae87966ea1",
         "refinement_interpretation_Tm_refine_2ca062977a42c36634b89c1c4f193f79",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_846c786b74a0ea856ce37380641c5798",
-        "refinement_interpretation_Tm_refine_ab0ebeb866adf6f02fb0a71da7fe725d",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315"
       ],
       0,
-      "73aa48f1d28d6044ca5c9db726d0e16e"
+      "77c4e2cf39e9045dd6cd63b0a7cf6cec"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even_pad",
@@ -1286,45 +1276,51 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "227f2f9bbaa48843534d1c4fbfb7aed9"
+      "0927a0baab7bd928278b978a333ae54c"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_even_pad",
       3,
       1,
-      0,
+      1,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
+        "MerkleTree.Spec_pretyping_de868e87a3b2cbc224620d2e725391a3",
+        "Prims_pretyping_f8666440faa91836cc5a13998af863fc",
         "constructor_distinct_MerkleTree.Spec.HPad",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
+        "constructor_distinct_MerkleTree.Spec.padded_hash",
+        "constructor_distinct_Prims.unit", "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.hs_next_rel",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_next_rel", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.mt_next_rel",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
         "equation_Prims.pos",
-        "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "equation_with_fuel_Prims.pow2.fuel_instrumented",
+        "fuel_guarded_inversion_MerkleTree.Spec.padded_hash",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_index_upd1",
         "lemma_FStar.Seq.Base.lemma_index_upd2",
-        "primitive_Prims.op_Addition", "primitive_Prims.op_Multiply",
-        "primitive_Prims.op_Subtraction", "projection_inverse_BoxInt_proj_0",
+        "lemma_FStar.Seq.Base.lemma_len_upd", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxInt_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "refinement_interpretation_Tm_refine_2ca062977a42c36634b89c1c4f193f79",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_846c786b74a0ea856ce37380641c5798",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
         "refinement_interpretation_Tm_refine_df81b3f17797c6f405c1dbb191651292",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "typing_FStar.Seq.Base.index", "typing_FStar.Seq.Base.upd",
+        "typing_MerkleTree.Spec.padded_hash_fun", "unit_typing"
       ],
       0,
-      "04261f55cbdafa6f7b8f755afa1da70f"
+      "2b8e0d4eb73223e76ec28276c7168e84"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_odd",
@@ -1335,26 +1331,23 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "kinding_MerkleTree.Spec.hash@tok",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_upd", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_292c1be36e4b2bbb97ae0dae87966ea1",
         "refinement_interpretation_Tm_refine_2ca062977a42c36634b89c1c4f193f79",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_846c786b74a0ea856ce37380641c5798",
-        "refinement_interpretation_Tm_refine_ab0ebeb866adf6f02fb0a71da7fe725d",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315"
       ],
       0,
-      "ebe846354e1fed0150016134e95d4c1f"
+      "fe3b541a8d235acb2ff4fbfadab9f6e4"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_odd",
@@ -1368,7 +1361,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "89e869664a26aa93917dac414e4d3c25"
+      "6330afad6902a2992b6b8b4dc9d92c7c"
     ],
     [
       "MerkleTree.Spec.mt_next_rel_upd_odd",
@@ -1379,16 +1372,14 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.hs_next_rel",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_next_rel", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.mt_next_rel",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_index_upd1",
         "lemma_FStar.Seq.Base.lemma_index_upd2",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Multiply",
@@ -1399,12 +1390,12 @@
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
         "refinement_interpretation_Tm_refine_df81b3f17797c6f405c1dbb191651292",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "typing_FStar.Seq.Base.index", "typing_MerkleTree.Spec.hash2",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "typing_FStar.Seq.Base.index",
+        "typing_MerkleTree.Spec.padded_hash_fun"
       ],
       0,
-      "02259bb7ebee8a88d647bea6db4c6cee"
+      "fe57a3639591052bd2187db632e30eab"
     ],
     [
       "MerkleTree.Spec.mt_get_root",
@@ -1414,8 +1405,9 @@
       [
         "@MaxIFuel_assumption", "@query",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_0d7a6896029700a85fe0c3d10ba2ae3d_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_eb6e2feb582eb76cd7b68bad49adce73_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
         "equation_Prims.pos",
         "function_token_typing_Prims.__cache_version_number__",
@@ -1423,11 +1415,11 @@
         "primitive_Prims.op_Subtraction", "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_Prims.pow2", "well-founded-ordering-on-nat"
       ],
       0,
-      "2bdbe8b2e877b57ccfb26afb7042ebb1"
+      "491f63e634c6f369c6459629ccaf6c41"
     ],
     [
       "MerkleTree.Spec.mt_get_root_step",
@@ -1440,7 +1432,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "3114a8f6037ec4d7e168e8960a483b48"
+      "2d574795e900e706375212bfea93ddb6"
     ],
     [
       "MerkleTree.Spec.mt_get_root_step",
@@ -1453,7 +1445,7 @@
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "d26ee5f9797d90a53e1bf8539929b77a"
+      "68973fe1cd142dfb7fb610056e6d0157"
     ],
     [
       "MerkleTree.Spec.mt_get_root_step",
@@ -1465,17 +1457,15 @@
         "@fuel_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_correspondence_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
-        "@fuel_irrelevance_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_8dc66d82b3c89c3d7652aca061721fce_1",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_66067bf4422ff36e3b0f55054666d1be_3",
         "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_2",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
         "equation_MerkleTree.Spec.mt_left",
         "equation_MerkleTree.Spec.mt_next_lv",
@@ -1485,19 +1475,21 @@
         "equation_with_fuel_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_index_app1",
         "lemma_FStar.Seq.Base.lemma_index_create",
         "lemma_FStar.Seq.Base.lemma_index_slice",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
         "lemma_FStar.Seq.Properties.slice_is_empty",
         "lemma_FStar.UInt.pow2_values", "primitive_Prims.op_Addition",
         "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
@@ -1507,17 +1499,18 @@
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.empty",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_MerkleTree.Spec.hash2", "typing_MerkleTree.Spec.mt_get_root",
+        "typing_MerkleTree.Spec.mt_get_root",
         "typing_MerkleTree.Spec.mt_left",
         "typing_MerkleTree.Spec.mt_next_lv",
-        "typing_MerkleTree.Spec.mt_right", "typing_Prims.pow2",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.mt_right",
+        "typing_MerkleTree.Spec.padded_hash_fun", "typing_Prims.pow2",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "72763b46ca356e3d9c214dddc424d540"
+      "b679db13b5cb01108f35ba7187d30d79"
     ],
     [
       "MerkleTree.Spec.mt_get_root_step",
@@ -1526,7 +1519,7 @@
       0,
       [ "@query" ],
       0,
-      "7eebb84a9fd1d4e7936fa530d58c6273"
+      "6c48d59f08c443a83bfd9f55aa15dd87"
     ],
     [
       "MerkleTree.Spec.mt_get_root_step",
@@ -1535,7 +1528,7 @@
       0,
       [ "@query" ],
       0,
-      "4e544fa0b764231d88aaffc86257f891"
+      "e29478f3cb55268f588b51e3526cfbc5"
     ],
     [
       "MerkleTree.Spec.mt_get_path",
@@ -1546,19 +1539,20 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_0d7a6896029700a85fe0c3d10ba2ae3d_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "binder_x_d4bca0c4915c238b6addaedcb52016ab_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_58232c9baeb1e7d93cf0ca17c6119d2c_4",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_eb6e2feb582eb76cd7b68bad49adce73_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.cons",
         "equation_FStar.Seq.Properties.lseq",
-        "equation_MerkleTree.Spec.merkle_path",
-        "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.merkle_tree",
+        "equation_MerkleTree.Spec.path", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_len_append",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Division",
@@ -1566,17 +1560,18 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_00bcd8319bec077649985b5de4f97724",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_a0cd7d06c5da6444b6b51b319febde8e",
         "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_bb8290f401f6be4f6139ae9c51e45571",
+        "refinement_interpretation_Tm_refine_d2789dce769f7256b6d1f497d1f6bc3e",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.empty",
-        "typing_FStar.Seq.Base.length",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "1a3485f56f7f99e183deffda29d06884"
+      "0371381d85709ec8bbcae8f271a3e591"
     ],
     [
       "MerkleTree.Spec.mt_verify_",
@@ -1587,30 +1582,31 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "binder_x_6162d906b2260bad672319e640fcb372_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "binder_x_d4bca0c4915c238b6addaedcb52016ab_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_58232c9baeb1e7d93cf0ca17c6119d2c_4",
+        "binder_x_891372484a5e2256bf243c77cd7e9291_3",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.lseq",
         "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.merkle_path", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.path", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_Division", "primitive_Prims.op_Equality",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_00bcd8319bec077649985b5de4f97724",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_a0cd7d06c5da6444b6b51b319febde8e",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "refinement_interpretation_Tm_refine_bb8290f401f6be4f6139ae9c51e45571",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "fe696678c5d8ce538cc633d630e76f7e"
+      "b10de378be0f4bcf0865adb2f9bb16f6"
     ],
     [
       "MerkleTree.Spec.mt_verify",
@@ -1626,7 +1622,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "3dd4456a2ae4e349ec2429f7c9ff7b6f"
+      "44986cd714f3f771de3982903fc78961"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_get",
@@ -1644,14 +1640,14 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_9581c37592f14f4e9181b056e5f7db68"
       ],
       0,
-      "e9397c4abc842e767e1e0eb237ad4162"
+      "e7935bbbd8b530ddc413e72818f9357d"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_get",
@@ -1668,14 +1664,14 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_2f55bf1d11c6e752fe0e00362a5ef85e",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_a493152fcc101b98bcb97e0f9144b010"
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5"
       ],
       0,
-      "39f5763176da13c9f5fcdfdb71f9d6ea"
+      "e936a585e4bafe7f33f851052c7d078f"
     ],
     [
       "MerkleTree.Spec.hs_next_lv_get",
@@ -1686,20 +1682,20 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_144ae6abe17a1cfabe55c8653e1130b6_2",
-        "binder_x_f23bbb683acf794ae7f814ebe04d18bc_1",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_2c39fb8f57d03da1651b478d6fcf8bb7_4",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_6a20c5f774517d73712853dae9f63f21_3",
         "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_2",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_index_app1",
         "lemma_FStar.Seq.Base.lemma_index_app2",
@@ -1713,27 +1709,28 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_092798ae5a6cef9c1c82401e5fdac3d8",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
+        "refinement_interpretation_Tm_refine_4a7354e95301ca0ea16b8262c008d283",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
+        "refinement_interpretation_Tm_refine_798d67b267f3e31cfd5a4d146a5c5872",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_a61c908bd5cb2ea8836adb7f08ff9bba",
         "refinement_interpretation_Tm_refine_ac201cf927190d39c033967b63cb957b",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e10240bee6c2fbc030cf8b9170454570",
+        "refinement_interpretation_Tm_refine_e5e7c01bcc6e083888a583b5eebe0867",
         "token_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_MerkleTree.Spec.hash2", "typing_MerkleTree.Spec.hs_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.hs_next_lv",
+        "typing_MerkleTree.Spec.padded_hash_fun",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "5009647424f7c58821196f287e7db33d"
+      "2aeec559feadd3393329b0debe5e8cb8"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_get",
@@ -1758,11 +1755,11 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_baba3c4ff195e8afc82d572a0bec0709",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_MerkleTree.Spec.mt_next_lv"
       ],
       0,
-      "7907fd688aa421aef3fcf2053194bbfb"
+      "195ef084bc5aa5efaba37d0d4948719b"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_get",
@@ -1785,7 +1782,7 @@
         "refinement_interpretation_Tm_refine_baba3c4ff195e8afc82d572a0bec0709"
       ],
       0,
-      "2ef6b277e4a1eed3eac16131360573fc"
+      "aea38f3d673b86dff64aab0dfe7b0d18"
     ],
     [
       "MerkleTree.Spec.mt_next_lv_get",
@@ -1807,7 +1804,7 @@
         "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311"
       ],
       0,
-      "74d0c8a7190201ba7533257de53c8897"
+      "9d9cc6c564fc5f7b1a1dec060e7ab058"
     ],
     [
       "MerkleTree.Spec.mt_get_path_ok_",
@@ -1816,7 +1813,7 @@
       1,
       [ "@query" ],
       0,
-      "ea76d6d3f42492bef1e5665f2aded293"
+      "784eef9e863c0e54179dc7557acf3e4f"
     ],
     [
       "MerkleTree.Spec.mt_get_path_ok_",
@@ -1833,28 +1830,29 @@
         "@fuel_irrelevance_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.mt_verify_.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_0d7a6896029700a85fe0c3d10ba2ae3d_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0",
-        "binder_x_d4bca0c4915c238b6addaedcb52016ab_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_58232c9baeb1e7d93cf0ca17c6119d2c_4",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_eb6e2feb582eb76cd7b68bad49adce73_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equation_FStar.Seq.Properties.cons",
         "equation_FStar.Seq.Properties.head",
         "equation_FStar.Seq.Properties.lseq",
         "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.hash_seq",
-        "equation_MerkleTree.Spec.merkle_path",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
         "equation_MerkleTree.Spec.mt_get",
-        "equation_MerkleTree.Spec.mt_next_lv", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.mt_next_lv",
+        "equation_MerkleTree.Spec.path", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.mt_get_path.fuel_instrumented",
         "equation_with_fuel_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "equation_with_fuel_MerkleTree.Spec.mt_verify_.fuel_instrumented",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
@@ -1870,7 +1868,6 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_00bcd8319bec077649985b5de4f97724",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
@@ -1878,19 +1875,19 @@
         "refinement_interpretation_Tm_refine_a0cd7d06c5da6444b6b51b319febde8e",
         "refinement_interpretation_Tm_refine_ac201cf927190d39c033967b63cb957b",
         "refinement_interpretation_Tm_refine_baba3c4ff195e8afc82d572a0bec0709",
+        "refinement_interpretation_Tm_refine_bb8290f401f6be4f6139ae9c51e45571",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "token_correspondence_MerkleTree.Spec.mt_get_path.fuel_instrumented",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
         "typing_FStar.Seq.Base.length", "typing_MerkleTree.Spec.mt_get",
         "typing_MerkleTree.Spec.mt_get_path",
-        "typing_MerkleTree.Spec.mt_next_lv",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.mt_next_lv", "well-founded-ordering-on-nat"
       ],
       0,
-      "51b45d7047f0f8d4f2bf5ee30f294cc8"
+      "2d2e3e6295992c654411e635873d56b2"
     ],
     [
       "MerkleTree.Spec.raw_hashes",
@@ -1899,13 +1896,13 @@
       0,
       [
         "@MaxIFuel_assumption", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "binder_x_1874aac7ff73f5008d26e73923d0310d_0",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "binder_x_6f28290f93390d12255318630c8ecfa2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "equality_tok_Prims.LexTop@tok",
         "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "equation_MerkleTree.Spec.hashes", "equation_Prims.nat",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
         "primitive_Prims.op_Subtraction",
@@ -1913,11 +1910,10 @@
         "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "typing_FStar.Seq.Base.length",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "05eeb8f9b05cf91c9e58c74fe5a7a90d"
+      "2271a6dda834c8c47af6d6908fe4b8e9"
     ],
     [
       "MerkleTree.Spec.raw_hashes_raws",
@@ -1928,28 +1924,30 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.raw_hashes.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "b2t_def", "binder_x_baf33fe09ef48fe410db04c4a9678d12_0",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
+        "@query", "b2t_def", "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_c0dd10ca5ac1ce6ad6a881d36b8a75d7_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0", "bool_inversion",
+        "bool_typing", "disc_equation_MerkleTree.Spec.HRaw",
         "equality_tok_Prims.LexTop@tok",
         "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_and-interp", "lemma_FStar.Seq.Base.lemma_len_slice",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok", "l_and-interp",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_98ad48bdc5613c44800483a86ff65dea",
-        "typing_FStar.Seq.Base.length",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "refinement_interpretation_Tm_refine_de518047687dbae99b09e646f3b3fe1b",
+        "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "44e5bb131d1b1c05b0f08e86c4d9e2c8"
+      "478f914144a2dbaad6a71ed83eab914d"
     ],
     [
       "MerkleTree.Spec.raw_hashes_index",
@@ -1958,7 +1956,7 @@
       1,
       [ "@query" ],
       0,
-      "30683d23d72750bbc26cf23e192fef52"
+      "aaf6318656c31c9118f1fe4514e8c539"
     ],
     [
       "MerkleTree.Spec.raw_hashes_index",
@@ -1969,38 +1967,39 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.raw_hashes.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565", "b2t_def",
-        "binder_x_1874aac7ff73f5008d26e73923d0310d_0",
-        "binder_x_f327f36093d0fca65c344e5891b0e2a5_1",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "b2t_def", "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_69320a8cab4b491ec8590195fb19243f_3",
+        "binder_x_6f28290f93390d12255318630c8ecfa2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "disc_equation_MerkleTree.Spec.HRaw",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equality_tok_Prims.LexTop@tok",
         "equation_FStar.Seq.Properties.head",
         "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_and-interp", "lemma_FStar.Seq.Base.lemma_index_slice",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok", "l_and-interp",
+        "lemma_FStar.Seq.Base.lemma_index_slice",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
         "primitive_Prims.op_LessThanOrEqual",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
-        "refinement_interpretation_Tm_refine_077d3dfe05d71a635f5cb31ad78c5142",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
-        "refinement_interpretation_Tm_refine_4b3ffcb73dba2b49ff1889589ba27d4d",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_5d0ec45f98c4e207a3fe886ccb04e80a",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_81edd68a1a54dc7bf0e946fc95adff76",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
-        "typing_FStar.Seq.Base.length",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "7d5cc4209e1b5fdaff13516692e7e0b9"
+      "bca58abb8d24ff8ea48454df57e7db93"
     ],
     [
       "MerkleTree.Spec.raw_hashes_slice",
@@ -2009,7 +2008,7 @@
       1,
       [ "@query" ],
       0,
-      "37b30df09f0dbea4461d4e95ff34d073"
+      "f15bc4920a5b11173aec5f5ff16d2e69"
     ],
     [
       "MerkleTree.Spec.raw_hashes_slice",
@@ -2020,24 +2019,23 @@
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.raw_hashes.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565", "b2t_def",
-        "binder_x_1874aac7ff73f5008d26e73923d0310d_0",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_1",
-        "binder_x_dfe151a9f596e665b9f5c1efdef2e56c_2",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "b2t_def", "binder_x_5712b65b1fffee701f5900b0de73ffb7_4",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_6f28290f93390d12255318630c8ecfa2_2",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
         "disc_equation_MerkleTree.Spec.HRaw",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equality_tok_Prims.LexTop@tok",
         "equation_FStar.Seq.Properties.head",
-        "equation_MerkleTree.Spec.hash_seq", "equation_Prims.eqtype",
-        "equation_Prims.nat",
+        "equation_MerkleTree.Spec.hashes", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
         "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok", "l_and-interp",
-        "lemma_FStar.Seq.Base.lemma_index_slice",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
+        "l_and-interp", "lemma_FStar.Seq.Base.lemma_index_slice",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "lemma_FStar.Seq.Properties.lemma_tail_slice",
         "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
@@ -2048,16 +2046,16 @@
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_a198230921c96fcb46227477f6787e51",
         "refinement_interpretation_Tm_refine_b138bd5848d4184f7632587e6e4bcf9f",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
-        "true_interp", "typing_FStar.Seq.Base.length",
-        "typing_FStar.Seq.Base.slice", "typing_tok_MerkleTree.Spec.HPad@tok",
+        "refinement_interpretation_Tm_refine_d678a450c5c5a4ea3284d5ca43ac700f",
+        "true_interp", "typing_FStar.Seq.Base.slice",
         "well-founded-ordering-on-nat"
       ],
       0,
-      "5d36e8030bc2cfa94adb7e58033334bb"
+      "f0c2a751e41da9a8b128abce1e813e70"
     ],
     [
       "MerkleTree.Spec.pad_hashes_slice",
@@ -2066,7 +2064,7 @@
       1,
       [ "@query" ],
       0,
-      "be26a199c60171e30b624a7ed7f61c89"
+      "c651612bc162c33ba62f4d3b30cd7f7d"
     ],
     [
       "MerkleTree.Spec.pad_hashes_slice",
@@ -2074,22 +2072,20 @@
       1,
       0,
       [
-        "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
+        "@MaxIFuel_assumption", "@query",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_1874aac7ff73f5008d26e73923d0310d_0",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_1",
-        "binder_x_dfe151a9f596e665b9f5c1efdef2e56c_2",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equality_tok_Prims.LexTop@tok", "equation_MerkleTree.Spec.hash_seq",
-        "equation_Prims.eqtype", "equation_Prims.nat",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
+        "binder_x_5712b65b1fffee701f5900b0de73ffb7_4",
+        "binder_x_6f28290f93390d12255318630c8ecfa2_2",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
+        "equality_tok_Prims.LexTop@tok", "equation_MerkleTree.Spec.hashes",
+        "equation_MerkleTree.Spec.pad_hashes", "equation_Prims.eqtype",
+        "equation_Prims.nat",
         "function_token_typing_Prims.__cache_version_number__",
         "function_token_typing_Prims.int",
         "haseqTm_refine_542f9d4f129664613f2483a6c88bc7c2", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
@@ -2106,18 +2102,17 @@
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_a198230921c96fcb46227477f6787e51",
         "refinement_interpretation_Tm_refine_b361ba8089a6e963921008d537e799a1",
-        "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
+        "refinement_interpretation_Tm_refine_d678a450c5c5a4ea3284d5ca43ac700f",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.empty",
+        "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "09032fbacc5ea19775405207ae5ce778"
+      "1d93d073648a2c2779e4a8d6ce131fda"
     ],
     [
       "MerkleTree.Spec.rpmt",
@@ -2132,10 +2127,10 @@
         "projection_inverse_BoxBool_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315"
       ],
       0,
-      "2433f12872c644360d87064c941f8f1e"
+      "0c7486579d4f7eb179850cfba7b4ed10"
     ],
     [
       "MerkleTree.Spec.rpmt_raws",
@@ -2147,15 +2142,17 @@
         "@fuel_correspondence_Prims.pow2.fuel_instrumented", "@query",
         "equation_MerkleTree.Spec.merkle_tree",
         "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
-        "int_inversion", "primitive_Prims.op_LessThanOrEqual",
+        "equation_Prims.pos", "int_inversion",
+        "primitive_Prims.op_LessThanOrEqual",
         "projection_inverse_BoxBool_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26"
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1"
       ],
       0,
-      "d82f89a132d4f0fc774fbbef0dc2b2a3"
+      "005fc71fd71359172de06f90860de81b"
     ],
     [
       "MerkleTree.Spec.rpmt_i_0",
@@ -2170,7 +2167,7 @@
         "typing_Prims.pow2"
       ],
       0,
-      "618546ef59952f3b4d404df777108b65"
+      "d2b9f4c816e7f461e02f112663ea1e4a"
     ],
     [
       "MerkleTree.Spec.rpmt_i_0",
@@ -2185,7 +2182,7 @@
         "typing_Prims.pow2"
       ],
       0,
-      "8f5cf6b9bd640ec11c1c8055771ee9fd"
+      "4c3ea03ca67a6ed550c5d3a990c0affe"
     ],
     [
       "MerkleTree.Spec.rpmt_i_0",
@@ -2193,24 +2190,18 @@
       1,
       0,
       [
-        "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
-        "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "@MaxIFuel_assumption", "@query", "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
+        "equation_MerkleTree.Spec.pad_hashes",
         "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
-        "int_inversion", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Properties.slice_length",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1"
       ],
       0,
-      "56642fc764270ac181e7c9ac06bfb34b"
+      "5049c5bbf8d9dde03442b1e591bf3ebc"
     ],
     [
       "MerkleTree.Spec.rpmt_left",
@@ -2230,7 +2221,7 @@
         "refinement_interpretation_Tm_refine_afd51579b90d50ea23e03b743a1fa001"
       ],
       0,
-      "437813186f3a09a054a17a7652e804e0"
+      "29a5b8fd3188513ddb0e60072a46ef8a"
     ],
     [
       "MerkleTree.Spec.rpmt_left",
@@ -2284,7 +2275,7 @@
         "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "01ac13ae128c147a3d943ea9c5a33b4e"
+      "7a0ed424d0b6da9cf9590ead61645750"
     ],
     [
       "MerkleTree.Spec.rpmt_left",
@@ -2293,18 +2284,17 @@
       0,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_MerkleTree.Spec.hash_seq",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_left", "equation_MerkleTree.Spec.rpmt",
-        "equation_Prims.nat", "equation_Prims.pos",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
+        "equation_MerkleTree.Spec.mt_left",
+        "equation_MerkleTree.Spec.pad_hashes",
+        "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_Prims.pow2.fuel_instrumented", "int_inversion",
-        "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_typing", "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
@@ -2317,28 +2307,27 @@
         "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_0bb529975fa1ed80d6d8687989d86ddf",
         "refinement_interpretation_Tm_refine_1ba8fd8bb363097813064c67740b2de5",
+        "refinement_interpretation_Tm_refine_277e8baa879773f898746def0f3871c3",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
-        "refinement_interpretation_Tm_refine_4a5da65b7b8968b5aec399d91ecaf336",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_9cf3deb4eab129e0325195a904e4c32a",
         "refinement_interpretation_Tm_refine_b361ba8089a6e963921008d537e799a1",
         "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
-        "refinement_interpretation_Tm_refine_ceff76a60859de17cf8827afe3dd6dac",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_f718e85bbba8993735044bc51d331c54",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.empty",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_MerkleTree.Spec.mt_left",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_MerkleTree.Spec.mt_left"
       ],
       0,
-      "e55affac745d26d8932d06e02316aa48"
+      "fb32e09fe122231783f11b1b9eae6518"
     ],
     [
       "MerkleTree.Spec.rpmt_right",
@@ -2359,7 +2348,7 @@
         "refinement_interpretation_Tm_refine_afd51579b90d50ea23e03b743a1fa001"
       ],
       0,
-      "3a461ec2acdbf6ffa972678a9c72d018"
+      "f4f8f8ba3dd59dcd64b54e9c2131f9e2"
     ],
     [
       "MerkleTree.Spec.rpmt_right",
@@ -2427,7 +2416,7 @@
         "typing_tok_MerkleTree.Spec.HPad@tok"
       ],
       0,
-      "30db433b7a6d0e8431fa8b4fede3735d"
+      "253ed0927b6bcec4667b8005bee63c19"
     ],
     [
       "MerkleTree.Spec.rpmt_right",
@@ -2436,62 +2425,54 @@
       0,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
-        "Prims_pretyping_ae567c2fb75be05905677af440075565", "b2t_def",
-        "disc_equation_MerkleTree.Spec.HRaw",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_FStar.Seq.Properties.head",
-        "equation_FStar.Seq.Properties.tail",
-        "equation_MerkleTree.Spec.hash_seq",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_right", "equation_MerkleTree.Spec.rpmt",
-        "equation_Prims.nat", "equation_Prims.pos",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
+        "equation_MerkleTree.Spec.mt_right",
+        "equation_MerkleTree.Spec.pad_hashes",
+        "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
+        "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_and-interp", "lemma_FStar.Seq.Base.lemma_create_len",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
+        "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
-        "lemma_FStar.Seq.Base.lemma_eq_refl",
         "lemma_FStar.Seq.Base.lemma_index_slice",
         "lemma_FStar.Seq.Base.lemma_len_slice",
-        "lemma_FStar.Seq.Properties.lemma_tail_slice",
         "lemma_FStar.Seq.Properties.slice_is_empty",
         "lemma_FStar.Seq.Properties.slice_length",
         "lemma_FStar.Seq.Properties.slice_slice",
-        "lemma_FStar.UInt.pow2_values", "primitive_Prims.op_Addition",
-        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThan",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
         "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_0bb529975fa1ed80d6d8687989d86ddf",
         "refinement_interpretation_Tm_refine_1ba8fd8bb363097813064c67740b2de5",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
-        "refinement_interpretation_Tm_refine_4a5da65b7b8968b5aec399d91ecaf336",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_b138bd5848d4184f7632587e6e4bcf9f",
         "refinement_interpretation_Tm_refine_b361ba8089a6e963921008d537e799a1",
         "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "true_interp", "typing_FStar.Seq.Base.create",
         "typing_FStar.Seq.Base.empty", "typing_FStar.Seq.Base.length",
-        "typing_FStar.Seq.Base.slice", "typing_MerkleTree.Spec.mt_right",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_FStar.Seq.Base.slice", "typing_MerkleTree.Spec.mt_right"
       ],
       0,
-      "9f6841a5f5ee343e80cd839463b9ab53"
+      "6040d88eccef4baa7981872b1d2047d2"
     ],
     [
       "MerkleTree.Spec.__proj__Collision__item__mt2",
@@ -2503,23 +2484,79 @@
         "projection_inverse_MerkleTree.Spec.Collision_mt1"
       ],
       0,
-      "66ca43cba3ed297d09a7e14b06fa8c49"
+      "f328292a467ccc83ed2b23ecb8eeb983"
+    ],
+    [
+      "MerkleTree.Spec.__proj__Collision2__item__f",
+      1,
+      1,
+      0,
+      [
+        "@query", "proj_equation_MerkleTree.Spec.Collision2_hsz",
+        "projection_inverse_MerkleTree.Spec.Collision2_hsz"
+      ],
+      0,
+      "7d73c42876bea22849403f2bac6817bd"
+    ],
+    [
+      "MerkleTree.Spec.__proj__Collision2__item__lh1",
+      1,
+      1,
+      0,
+      [
+        "@query", "proj_equation_MerkleTree.Spec.Collision2_hsz",
+        "projection_inverse_MerkleTree.Spec.Collision2_hsz"
+      ],
+      0,
+      "e659a6b227054111ac04b391710678bf"
+    ],
+    [
+      "MerkleTree.Spec.__proj__Collision2__item__rh1",
+      1,
+      1,
+      0,
+      [
+        "@query", "proj_equation_MerkleTree.Spec.Collision2_hsz",
+        "projection_inverse_MerkleTree.Spec.Collision2_hsz"
+      ],
+      0,
+      "330d7adb091f71c0edb5795207af8f47"
+    ],
+    [
+      "MerkleTree.Spec.__proj__Collision2__item__lh2",
+      1,
+      1,
+      0,
+      [
+        "@query", "proj_equation_MerkleTree.Spec.Collision2_hsz",
+        "projection_inverse_MerkleTree.Spec.Collision2_hsz"
+      ],
+      0,
+      "556dd1d024f2cf36de154848bc7f3536"
     ],
     [
       "MerkleTree.Spec.__proj__Collision2__item__rh2",
       1,
-      2,
       1,
+      0,
       [
-        "@query", "proj_equation_MerkleTree.Spec.Collision2_lh1",
+        "@MaxIFuel_assumption", "@query", "equation_MerkleTree.Spec.hash",
+        "proj_equation_MerkleTree.Spec.Collision2_f",
+        "proj_equation_MerkleTree.Spec.Collision2_hsz",
+        "proj_equation_MerkleTree.Spec.Collision2_lh1",
         "proj_equation_MerkleTree.Spec.Collision2_lh2",
         "proj_equation_MerkleTree.Spec.Collision2_rh1",
+        "projection_inverse_MerkleTree.Spec.Collision2_f",
+        "projection_inverse_MerkleTree.Spec.Collision2_hsz",
         "projection_inverse_MerkleTree.Spec.Collision2_lh1",
         "projection_inverse_MerkleTree.Spec.Collision2_lh2",
-        "projection_inverse_MerkleTree.Spec.Collision2_rh1"
+        "projection_inverse_MerkleTree.Spec.Collision2_rh1",
+        "refinement_interpretation_Tm_refine_29c27ac7c716b2238749315b70c9eca3",
+        "refinement_interpretation_Tm_refine_4cb3a329c370b868990b464e7839444d",
+        "token_correspondence_MerkleTree.Spec.__proj__Collision2__item__f"
       ],
       0,
-      "9c5f231ef9e2a619fee7fd0b6a1c1654"
+      "1f9a2c1eeaeb6a157045b20a0c435fc0"
     ],
     [
       "MerkleTree.Spec.rpmt_pad_hashes_0",
@@ -2528,24 +2565,23 @@
       0,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565", "b2t_def",
         "constructor_distinct_MerkleTree.Spec.HPad",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
         "disc_equation_MerkleTree.Spec.HRaw",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equation_FStar.Seq.Properties.head",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
+        "equation_MerkleTree.Spec.pad_hashes",
         "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
         "equation_Prims.pos",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_and-interp", "lemma_FStar.Seq.Base.lemma_eq_elim",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok", "l_and-interp",
+        "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_index_create",
         "lemma_FStar.Seq.Base.lemma_index_slice",
         "lemma_FStar.Seq.Base.lemma_len_slice",
@@ -2562,14 +2598,13 @@
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.length",
-        "typing_FStar.Seq.Base.slice", "typing_Prims.pow2",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_FStar.Seq.Base.slice", "typing_Prims.pow2"
       ],
       0,
-      "d95805a6f4dbf00db178bdf197274f91"
+      "49c939b48d8ef570a77132656a8dec5e"
     ],
     [
       "MerkleTree.Spec.rpmt_pad_hashes_index_0",
@@ -2584,12 +2619,12 @@
         "equation_Prims.pos", "int_inversion",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_Prims.pow2"
       ],
       0,
-      "9455d6e3fc998cb58e0fcbba6d6de691"
+      "782765abe71507f95e9a5e24e366fffe"
     ],
     [
       "MerkleTree.Spec.rpmt_pad_hashes_index_0",
@@ -2598,26 +2633,25 @@
       0,
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "@fuel_correspondence_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565", "b2t_def",
         "bool_inversion", "bool_typing",
         "constructor_distinct_MerkleTree.Spec.HPad",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
         "disc_equation_MerkleTree.Spec.HPad",
         "disc_equation_MerkleTree.Spec.HRaw",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equation_FStar.Seq.Properties.head",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
+        "equation_MerkleTree.Spec.pad_hashes",
         "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
         "equation_Prims.pos",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "equation_with_fuel_MerkleTree.Spec.raw_hashes.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_and-interp", "lemma_FStar.Seq.Base.lemma_eq_elim",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok", "l_and-interp",
+        "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_index_create",
         "lemma_FStar.Seq.Base.lemma_index_slice",
         "lemma_FStar.Seq.Base.lemma_len_slice",
@@ -2627,6 +2661,7 @@
         "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
+        "projection_inverse_MerkleTree.Spec.HPad_hsz",
         "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
@@ -2634,14 +2669,13 @@
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.length",
-        "typing_FStar.Seq.Base.slice", "typing_Prims.pow2",
-        "typing_tok_MerkleTree.Spec.HPad@tok"
+        "typing_FStar.Seq.Base.slice", "typing_Prims.pow2"
       ],
       0,
-      "f058df6e67ef1941315f02e17849b561"
+      "11bb9d7ec2cf3d4590e7041813fcba98"
     ],
     [
       "MerkleTree.Spec.mt_get_root_pad_index_0",
@@ -2654,11 +2688,11 @@
         "equation_Prims.pos", "int_inversion",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_Prims.pow2"
       ],
       0,
-      "df775e8049199872342b4ed4c8d7ca59"
+      "a8eafd6d85f30d51b9266b224424a04d"
     ],
     [
       "MerkleTree.Spec.mt_get_root_pad_index_0",
@@ -2668,13 +2702,13 @@
       [
         "@MaxIFuel_assumption", "@query",
         "equation_MerkleTree.Spec.merkle_tree", "equation_Prims.pos",
-        "refinement_interpretation_Tm_refine_3432b2dbe094a412e293cd4108a8ddd3",
+        "refinement_interpretation_Tm_refine_4f56f833a8151d81b3b95ccbb956ef44",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "typing_Prims.pow2"
       ],
       0,
-      "ec4a68f1c39a4dd4645df3f212235160"
+      "e83a89425ce73a62331bac6cd2178170"
     ],
     [
       "MerkleTree.Spec.mt_get_root_pad_index_0",
@@ -2688,25 +2722,26 @@
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_0d7a6896029700a85fe0c3d10ba2ae3d_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0", "bool_inversion",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_eb6e2feb582eb76cd7b68bad49adce73_3",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0", "bool_inversion",
         "bool_typing", "constructor_distinct_MerkleTree.Spec.HPad",
         "constructor_distinct_MerkleTree.Spec.HRaw",
         "constructor_distinct_Tm_unit", "disc_equation_MerkleTree.Spec.HPad",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
         "equation_FStar.Seq.Properties.cons",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
-        "equation_MerkleTree.Spec.mt_next_lv", "equation_Prims.nat",
+        "equation_MerkleTree.Spec.mt_next_lv",
+        "equation_MerkleTree.Spec.padded_hash_fun", "equation_Prims.nat",
         "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "equation_with_fuel_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok",
         "lemma_FStar.Seq.Base.lemma_create_len",
         "lemma_FStar.Seq.Base.lemma_index_app1",
         "lemma_FStar.Seq.Base.lemma_index_create",
@@ -2716,24 +2751,24 @@
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
-        "refinement_interpretation_Tm_refine_1bf5eca9600b9497f280acb06109e29b",
-        "refinement_interpretation_Tm_refine_2df74817c65a36b1b7800cc93eecfaaa",
+        "projection_inverse_MerkleTree.Spec.HPad_hsz",
+        "refinement_interpretation_Tm_refine_12b3c434aa6b331065cea3dabb126837",
+        "refinement_interpretation_Tm_refine_3a643af648e0e51f8493b1b7e51bd56c",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
         "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
         "token_correspondence_MerkleTree.Spec.hs_next_lv.fuel_instrumented",
         "token_correspondence_Prims.pow2.fuel_instrumented",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.index",
         "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Base.slice",
-        "typing_MerkleTree.Spec.hash2", "typing_MerkleTree.Spec.mt_get_root",
-        "typing_MerkleTree.Spec.uu___is_HPad", "typing_Prims.pow2",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.padded_hash_fun", "typing_Prims.pow2",
+        "well-founded-ordering-on-nat"
       ],
       0,
-      "a6bb72d8a3b0d6a44d2023ad21d995c9"
+      "9a7e249c93b73bc22fc1754dc2d61f16"
     ],
     [
       "MerkleTree.Spec.rpmt_get_root_pad_hashes",
@@ -2742,7 +2777,7 @@
       1,
       [ "@query" ],
       0,
-      "f308f6ef8c3df11664b239e535ca7760"
+      "5319d30f9d26c1d84f44977033698c07"
     ],
     [
       "MerkleTree.Spec.rpmt_get_root_pad",
@@ -2751,29 +2786,32 @@
       1,
       [ "@query" ],
       0,
-      "f75e12baad34fc9add9e6b60cc51c58a"
+      "b67f4468091fce42161b22494f95a3c6"
     ],
     [
       "MerkleTree.Spec.rpmt_get_root_raw",
       1,
-      2,
       1,
+      0,
       [
         "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.mt_get_root.fuel_instrumented",
         "@query", "disc_equation_MerkleTree.Spec.HPad",
         "disc_equation_MerkleTree.Spec.HRaw",
         "equation_MerkleTree.Spec.rpmt", "equation_Prims.nat",
-        "fuel_guarded_inversion_MerkleTree.Spec.hash", "int_inversion",
+        "equation_Prims.pos",
+        "fuel_guarded_inversion_MerkleTree.Spec.padded_hash",
+        "int_inversion", "inversion-interp",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
         "refinement_interpretation_Tm_refine_62965edeceead4d487e326631269edf4",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_MerkleTree.Spec.mt_get_root"
       ],
       0,
-      "d19c133b17bd31301cc2d686c8cb6bc1"
+      "531e4c6dd82302919085186d2736d3bf"
     ],
     [
       "MerkleTree.Spec.extract",
@@ -2783,66 +2821,68 @@
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_MerkleTree.Spec.mt_get_root.fuel_instrumented",
-        "@fuel_correspondence_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "@fuel_correspondence_Prims.pow2.fuel_instrumented",
         "@fuel_irrelevance_Prims.pow2.fuel_instrumented", "@query",
-        "MerkleTree.Spec_pretyping_ecd3b9e5340b1979e8fd7a847e58cd73",
         "Prims_pretyping_ae567c2fb75be05905677af440075565",
-        "binder_x_3f3e2f87dc0a13852db02e3e849ea666_1",
-        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_0", "bool_inversion",
+        "binder_x_2492560bdbf098f6deb1b9e386caa735_3",
+        "binder_x_5e20d151293c9e40e5203cbcff29aebe_1",
+        "binder_x_bb4e1c9af0265270f8e7a5f250f730e2_2",
+        "binder_x_f26957a7e62b271a8736230b1e9c83c1_0", "bool_inversion",
         "constructor_distinct_MerkleTree.Spec.HPad",
+        "data_typing_intro_MerkleTree.Spec.HPad@tok",
         "disc_equation_MerkleTree.Spec.HPad",
         "disc_equation_MerkleTree.Spec.HRaw", "eq2-interp",
-        "equality_tok_MerkleTree.Spec.HPad@tok",
-        "equation_FStar.Seq.Base.op_At_Bar",
-        "equation_MerkleTree.Spec.hash2",
-        "equation_MerkleTree.Spec.hash2_raw",
-        "equation_MerkleTree.Spec.hash_raw",
-        "equation_MerkleTree.Spec.hash_seq",
+        "equation_FStar.Seq.Base.op_At_Bar", "equation_MerkleTree.Spec.hash",
+        "equation_MerkleTree.Spec.hashes",
         "equation_MerkleTree.Spec.merkle_tree",
         "equation_MerkleTree.Spec.mt_left",
-        "equation_MerkleTree.Spec.mt_right", "equation_MerkleTree.Spec.rpmt",
+        "equation_MerkleTree.Spec.mt_right",
+        "equation_MerkleTree.Spec.pad_hashes",
+        "equation_MerkleTree.Spec.padded_hash_fun",
+        "equation_MerkleTree.Spec.rpmt",
         "equation_MerkleTree.Spec.rpmt_left",
         "equation_MerkleTree.Spec.rpmt_right", "equation_Prims.l_not",
         "equation_Prims.logical", "equation_Prims.nat", "equation_Prims.pos",
         "equation_with_fuel_MerkleTree.Spec.mt_get_root.fuel_instrumented",
-        "equation_with_fuel_MerkleTree.Spec.pad_hashes.fuel_instrumented",
         "equation_with_fuel_Prims.pow2.fuel_instrumented",
-        "function_token_typing_MerkleTree.Spec.hash_raw",
         "function_token_typing_Prims.__cache_version_number__",
-        "int_inversion", "int_typing", "kinding_MerkleTree.Spec.hash@tok",
-        "l_not-interp", "lemma_FStar.Seq.Base.lemma_eq_elim",
+        "int_inversion", "int_typing",
+        "kinding_MerkleTree.Spec.padded_hash@tok", "l_not-interp",
+        "lemma_FStar.Seq.Base.lemma_eq_elim",
         "lemma_FStar.Seq.Base.lemma_eq_intro",
+        "lemma_FStar.Seq.Base.lemma_len_append",
         "lemma_FStar.Seq.Base.lemma_len_slice",
         "lemma_FStar.Seq.Properties.slice_length",
-        "lemma_FStar.UInt.pow2_values", "primitive_Prims.op_BarBar",
-        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
-        "primitive_Prims.op_Multiply", "primitive_Prims.op_Subtraction",
+        "lemma_FStar.UInt.pow2_values", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_BarBar", "primitive_Prims.op_Equality",
+        "primitive_Prims.op_LessThanOrEqual", "primitive_Prims.op_Multiply",
+        "primitive_Prims.op_Subtraction",
         "projection_inverse_BoxBool_proj_0",
         "projection_inverse_BoxInt_proj_0",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__1",
         "projection_inverse_FStar.Pervasives.Native.Mktuple2__2",
+        "projection_inverse_MerkleTree.Spec.HPad_hsz",
         "projection_inverse_MerkleTree.Spec.HRaw_hr",
+        "projection_inverse_MerkleTree.Spec.HRaw_hsz",
         "refinement_interpretation_Tm_refine_2c7ecebd8a41d0890aab4251b61d6458",
+        "refinement_interpretation_Tm_refine_510e0e40c0eae7eea40c300dfc42218f",
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_545572ef735b56d10b297939a0e2f2a9",
         "refinement_interpretation_Tm_refine_774ba3f728d91ead8ef40be66c9802e5",
         "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
-        "refinement_interpretation_Tm_refine_814624efcb3b6884bea7fec1215a7044",
-        "refinement_interpretation_Tm_refine_a970a7bb9adaf2032bbaef5941d92541",
-        "refinement_interpretation_Tm_refine_b34704ce9941b10cc043bcd0d26b585e",
+        "refinement_interpretation_Tm_refine_a65cb1e60bb869c115f780c5cefffa1e",
         "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
-        "refinement_interpretation_Tm_refine_e18ab4a50c2390ee0bac8f9f64c08311",
-        "refinement_interpretation_Tm_refine_fe5bfde21a5cf527c4834d999126bd26",
+        "refinement_interpretation_Tm_refine_e166b70fde2cd9152c503654048d8315",
+        "refinement_interpretation_Tm_refine_e3bb46e403ec9d0fdcbeb076406810b1",
         "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.length",
         "typing_FStar.Seq.Base.op_At_Bar",
         "typing_FStar.StrongExcludedMiddle.strong_excluded_middle",
-        "typing_MerkleTree.Spec.mt_get_root",
-        "typing_MerkleTree.Spec.mt_left", "typing_MerkleTree.Spec.mt_right",
-        "typing_Prims.eq2", "typing_Prims.l_not",
-        "typing_tok_MerkleTree.Spec.HPad@tok", "well-founded-ordering-on-nat"
+        "typing_MerkleTree.Spec.hash", "typing_MerkleTree.Spec.mt_left",
+        "typing_MerkleTree.Spec.mt_right", "typing_Prims.eq2",
+        "typing_Prims.l_not", "well-founded-ordering-on-nat"
       ],
       0,
-      "d56a3cdd933860b6d10b3095447a027e"
+      "33260594424fcd4081713288936cce7c"
     ]
   ]
 ]

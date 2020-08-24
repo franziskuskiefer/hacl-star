@@ -13,10 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup
-      run: |
-        apt update
-        apt install xz-utils make
     - name: Setup Toolchain
       working-directory: $HOME
       run: |

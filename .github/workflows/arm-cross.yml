@@ -16,7 +16,7 @@ jobs:
     - name: Setup Toolchain
       working-directory: $HOME
       run: |
-        curl -L -O https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
+        curl --verbose -L -O https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
         tar -xf gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
     - name: Configure aarch64-none-linux-gnu
       run: |
